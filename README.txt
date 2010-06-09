@@ -26,7 +26,7 @@ BUILDING
 In order successfully complete these build instructions you must have:
 * git
 * ant >= 1.7.1
-* java >= 1.5
+* java development kit (JDK) >= 1.5
 
 To obtain and build the source code enter the following commands:
     git clone git://github.com/keithshep/j-qtl.git
