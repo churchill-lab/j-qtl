@@ -1,0 +1,18 @@
+[submodule "build-common"]
+	path = build-common
+	url = ../build-common
+[submodule "modules/data-plots"]
+	path = modules/data-plots
+	url = ../data-plots
+[submodule "modules/rjava-conf-schema"]
+	path = modules/rjava-conf-schema
+	url = ../rjava-conf-schema
+[submodule "modules/java-util"]
+	path = modules/java-util
+	url = ../java-util
+[submodule "modules/managed-jvm-launcher"]
+	path = modules/managed-jvm-launcher
+	url = ../managed-jvm-launcher
+[submodule "modules/rjava-interface"]
+	path = modules/rjava-interface
+	url = ../rjava-interface
