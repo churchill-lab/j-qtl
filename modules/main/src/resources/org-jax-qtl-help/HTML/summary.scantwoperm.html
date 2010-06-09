@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: LOD thresholds from scantwo permutation results</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for summary.scantwoperm {qtl}"><tr><td>summary.scantwoperm {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>LOD thresholds from scantwo permutation results</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Print the estimated genome-wide LOD thresholds on the basis of
+permutation results from <code><a href="scantwo.html">scantwo</a></code> (with
+<code>n.perm</code> &gt; 0).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scantwoperm':
+summary(object, alpha=c(0.05, 0.10), df=FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+Output from the function <code><a href="scantwo.html">scantwo</a></code>
+with <code>n.perm</code> &gt; 0.</td></tr>
+<tr valign="top"><td><code>alpha</code></td>
+<td>
+Genome-wide significance levels.</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+If TRUE, the degrees of freedom associated with the LOD
+scores are shown.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored at this point.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+We take the <i>1-alpha</i> quantiles of the individual LOD
+scores.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>summary.scantwoperm</code>, to be printed by
+<code>print.summary.scantwoperm</code>.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Churchill, G. A. and Doerge, R. W. (1994) Empirical threshold values for
+quantitative trait mapping.  <EM>Genetics</EM> <B>138</B>, 963&ndash;971.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scantwo.html">scantwo</a></code>,
+<code><a href="summary.scantwo.html">summary.scantwo</a></code>,
+<code><a href="plot.scantwoperm.html">plot.scantwoperm</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+fake.f2 &lt;- calc.genoprob(fake.f2, step=0)
+
+operm &lt;- scantwo(fake.f2, n.perm=100, method="hk")
+summary(operm)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

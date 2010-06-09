@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ivy-module version="2.0">
+    <info organisation="org.jax" module="j-qtl" revision="1.3.1"/>
+    
+    <configurations>
+        <conf
+            name="compile"
+            description="dependencies needed to compile"/>
+        <conf
+            name="test"
+            extends="compile"
+            description="dependencies needed to test"/>
+    </configurations>
+
+    <publications>
+        <artifact name="j-qtl" type="jar" ext="jar"/>
+    </publications>
+    
+    <dependencies>
+        <dependency
+            org="org.junit"
+            name="junit"
+            conf="test->default"
+            rev="latest.integration"/>
+        <dependency
+            org="org.javadesktop"
+            name="swing-layout"
+            rev="latest.integration"/>
+        <dependency
+            org="net.java.dev.javahelp"
+            name="javahelp"
+            rev="latest.integration"/>
+        <dependency
+            org="org.rosuda"
+            name="rJava"
+            rev="latest.revision"/>
+        <dependency
+            org="org.jax"
+            name="managed-jvm-launcher"
+            rev="latest.integration"/>
+        <dependency
+            org="org.jax"
+            name="java-util"
+            rev="latest.integration"/>
+        <dependency
+            org="org.jax"
+            name="rjava-interface"
+            rev="latest.integration"/>
+        <dependency
+            org="org.jax"
+            name="data-plots"
+            rev="latest.integration"/>
+        <dependency
+            org="edu.stanford.ejalbert"
+            name="BrowserLauncher2"
+            rev="latest.integration"/>
+        <dependency
+            org="org.jax"
+            name="rjava-conf-schema"
+            rev="latest.integration"/>
+    </dependencies>
+    
+</ivy-module>

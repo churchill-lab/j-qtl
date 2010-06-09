@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Simulate a QTL experiment</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for sim.cross {qtl}"><tr><td>sim.cross {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Simulate a QTL experiment</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Simulates data for a QTL experiment using a model in which QTLs act additively.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+sim.cross(map, model=NULL, n.ind=100, type=c("f2", "bc", "4way"),
+          error.prob=0, missing.prob=0, partial.missing.prob=0,
+          keep.qtlgeno=TRUE, keep.errorind=TRUE, m=0, p=0,
+          map.function=c("haldane","kosambi","c-f","morgan"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>map</code></td>
+<td>
+A list whose components are vectors containing the marker
+locations on each of the chromosomes.</td></tr>
+<tr valign="top"><td><code>model</code></td>
+<td>
+A matrix where each row corresponds to a
+different QTL, and gives the chromosome number, cM position and
+effects of the QTL.</td></tr>
+<tr valign="top"><td><code>n.ind</code></td>
+<td>
+Number of individuals to simulate.</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+Indicates whether to simulate an intercross (<code>f2</code>),
+a backcross (<code>bc</code>), or a phase-known 4-way cross (<code>4way</code>).</td></tr>
+<tr valign="top"><td><code>error.prob</code></td>
+<td>
+The genotyping error rate.</td></tr>
+<tr valign="top"><td><code>missing.prob</code></td>
+<td>
+The rate of missing genotypes.</td></tr>
+<tr valign="top"><td><code>partial.missing.prob</code></td>
+<td>
+When simulating an intercross or 4-way
+cross, this gives the rate at which markers will be incompletely
+informative (i.e., dominant or recessive).</td></tr>
+<tr valign="top"><td><code>keep.qtlgeno</code></td>
+<td>
+If TRUE, genotypes for the simulated QTLs will be
+included in the output.</td></tr>
+<tr valign="top"><td><code>keep.errorind</code></td>
+<td>
+If TRUE, and if <code>error.prob &gt; 0</code>, the
+identity of genotyping errors will be included in the output.</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+Interference parameter; a non-negative integer.  0 corresponds
+to no interference.</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+Probability that a chiasma comes from the no-interference
+mechanism</td></tr>
+<tr valign="top"><td><code>map.function</code></td>
+<td>
+Indicates whether to use the Haldane, Kosambi, 
+Carter-Falconer, or Morgan map function when converting genetic
+distances into recombination fractions.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Meiosis is assumed to follow the Stahl model for crossover
+interference (see the references, below), of which the no interference
+model and the chi-square model are special cases.  Chiasmata on the
+four-strand bundle are a superposition of chiasmata from two different
+mechanisms.  With probability <code>p</code>, they arise by a mechanism
+exhibiting no interference; the remainder come from a chi-square model
+with inteference parameter <code>m</code>.  Note that <code>m=0</code> corresponds
+to no interference, and with <code>p=0</code>, one gets a pure chi-square
+model.
+</p>
+<p>
+If a chromosomes has class <code>X</code>, it is assumed to be the X
+chromosome, and is assumed to be segregating in the cross.  Thus, in
+an intercross, it is segregating like a backcross chromosome.  In a
+4-way cross, a second phenotype, <code>sex</code>, will be generated.
+</p>
+<p>
+QTLs are assumed to act additively, and the residual phenotypic
+variation is assumed to be normally distributed with variance 1.
+</p>
+<p>
+For a backcross, the effect of a QTL is a single number corresponding
+to the difference between the homozygote and the heterozygote.
+</p>
+<p>
+For an intercross, the effect of a QTL is a pair of numbers,
+(<i>a,d</i>), where <i>a</i> is the additive effect (half the difference
+between the homozygotes) and <i>d</i> is the dominance deviation (the
+difference between the heterozygote and the midpoint between the
+homozygotes).
+</p>
+<p>
+For a four-way cross, the effect of a QTL is a set of three numbers,
+(<i>a,b,c</i>), where, in the case of one QTL, the mean phenotype,
+conditional on the QTL genotyping being AC, BC, AD or BD, is  <i>a</i>,
+<i>b</i>, <i>c</i> or 0, respectively.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>cross</code>.  See <code><a href="read.cross.html">read.cross</a></code> for
+details. 
+<br>
+If <code>keep.qtlgeno</code> is TRUE, the cross object will contain a
+component <code>qtlgeno</code> which is a matrix containing the QTL
+genotypes (with complete data and no errors), coded as in the genotype
+data.
+<br>
+If <code>keep.errorind</code> is TRUE and errors were simulated, each
+component of <code>geno</code> will each contain a matrix <code>errors</code>,
+with 1's indicating simulated genotyping errors.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Copenhaver, G. P., Housworth, E. A. and Stahl, F. W. (2002) Crossover
+interference in arabidopsis.  <EM>Genetics</EM> <B>160</B>, 1631&ndash;1639.
+</p>
+<p>
+Foss, E., Lande, R., Stahl, F. W. and Steinberg, C. M. (1993) Chiasma
+interference as a function of genetic distance. <EM>Genetics</EM>
+<B>133</B>, 681&ndash;691.
+</p>
+<p>
+Zhao, H., Speed, T. P. and McPeek, M. S. (1995) Statistical analysis
+of crossover interference using the chi-square model.  <EM>Genetics</EM>
+<B>139</B>, 1045&ndash;1056.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="sim.map.html">sim.map</a></code>, <code><a href="read.cross.html">read.cross</a></code>,
+<code><a href="fake.f2.html">fake.f2</a></code>, <code><a href="fake.bc.html">fake.bc</a></code>
+<code><a href="fake.4way.html">fake.4way</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# simulate a genetic map
+map &lt;- sim.map()
+
+# simulate 250 intercross individuals with 2 QTLs
+fake &lt;- sim.cross(map, type="f2", n.ind=250,
+                  model = rbind(c(1,45,1,1),c(5,20,0.5,-0.5)))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

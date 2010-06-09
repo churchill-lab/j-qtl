@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Estimate genetic maps</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for est.map {qtl}"><tr><td>est.map {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Estimate genetic maps</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Uses the Lander-Green algorithm (i.e., the hidden Markov model
+technology) to re-estimate the genetic map for an experimental cross.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+est.map(cross, error.prob=0.0001,
+        map.function=c("haldane","kosambi","c-f","morgan"),
+        m=0, p=0, maxit=10000, tol=1e-6, sex.sp=TRUE,
+        verbose=FALSE, omit.noninformative=TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>error.prob</code></td>
+<td>
+Assumed genotyping error rate used in the calculation
+of the penetrance Pr(observed genotype | true genotype).</td></tr>
+<tr valign="top"><td><code>map.function</code></td>
+<td>
+Indicates whether to use the Haldane, Kosambi,
+Carter-Falconer, or Morgan map function when converting genetic
+distances into recombination fractions. (Ignored if m &gt; 0.)</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+Interference parameter for the chi-square model for
+interference; a non-negative integer, with m=0 corresponding to no
+interference. This may be used only for a backcross or intercross.</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+Proportion of chiasmata from the NI mechanism, in the Stahl
+model; p=0 gives a pure chi-square model.  This may be used only for
+a backcross or intercross.</td></tr>
+<tr valign="top"><td><code>maxit</code></td>
+<td>
+Maximum number of EM iterations to perform.</td></tr>
+<tr valign="top"><td><code>tol</code></td>
+<td>
+Tolerance for determining convergence.</td></tr>
+<tr valign="top"><td><code>sex.sp</code></td>
+<td>
+Indicates whether to estimate sex-specific maps; this is 
+used only for the 4-way cross.</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+Logical; indicates whether to print initial and final
+estimates of the recombination fractions for each chromosome.</td></tr>
+<tr valign="top"><td><code>omit.noninformative</code></td>
+<td>
+If TRUE, on each chromosome, omit individuals
+with fewer than two typed markers, since they are not informative for
+linkage.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+By default, the map is estimated assuming no crossover interference,
+but a map function is used to derive the genetic distances (though, by
+default, the Haldane map function is used).
+</p>
+<p>
+For a backcross or intercross, inter-marker distances may be estimated
+using the Stahl model for crossover interference, of which the
+chi-square model is a special case.
+</p>
+<p>
+In the chi-square model, points are tossed down onto the four-strand
+bundle according to a Poisson process, and every <i>(m+1)</i>st point is a
+chiasma.  With the assumption of no chromatid interference, crossover
+locations on a random meiotic product are obtained by thinning the
+chiasma process.  The parameter <i>m</i> (a non-negative integer)
+governs the strength of crossover interference, with <i>m=0</i>
+corresponding to no interference.
+</p>
+<p>
+In the Stahl model, chiasmata on the four-strand bundle are a
+superposition of chiasmata from two mechanisms, one following a
+chi-square model and one exhibiting no interference.  An additional
+parameter, <i>p</i>, gives the proportion of chiasmata from the no
+interference mechanism.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A <code>map</code> object; a list whose components (corresponding to
+chromosomes) are either vectors of marker positions (in cM) or
+matrices with two rows of sex-specific marker positions.
+The maximized log likelihood for each chromosome is saved as an
+attribute named <code>loglik</code>.  In the case that estimation was under
+an interference model (with m &gt; 0), allowed only for a backcross, m
+and p are also included as attributes.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Armstrong, N. J., McPeek, M. J. and Speed, T. P. (2006) Incorporating
+interference into linkage analysis for experimental crosses.
+<EM>Biostatistics</EM> <B>7</B>, 374&ndash;386.
+</p>
+<p>
+Lander, E. S. and Green, P. (1987) Construction of multilocus genetic linkage
+maps in humans.  <EM>Proc. Natl. Acad. Sci. USA</EM> <B>84</B>, 2363&ndash;2367.
+</p>
+<p>
+Lange, K. (1999) <EM>Numerical analysis for statisticians</EM>.
+Springer-Verlag. Sec 23.3.
+</p>
+<p>
+Rabiner, L. R. (1989) A tutorial on hidden Markov models and selected
+applications in speech recognition.  <EM>Proceedings of the IEEE</EM>
+<B>77</B>, 257&ndash;286.
+</p>
+<p>
+Zhao, H., Speed, T. P. and McPeek, M. S. (1995) Statistical analysis of
+crossover interference using the chi-square model.  <EM>Genetics</EM>
+<B>139</B>, 1045&ndash;1056.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="plot.map.html">plot.map</a></code>, <code><a href="replace.map.html">replace.map</a></code>,
+<code><a href="est.rf.html">est.rf</a></code>, <code><a href="fitstahl.html">fitstahl</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+newmap &lt;- est.map(fake.f2)
+logliks &lt;- sapply(newmap, attr, "loglik")
+plot.map(fake.f2, newmap)
+fake.f2 &lt;- replace.map(fake.f2, newmap)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

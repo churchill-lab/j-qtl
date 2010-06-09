@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Move a marker to a new chromosome</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for movemarker {qtl}"><tr><td>movemarker {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Move a marker to a new chromosome</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Move a specified marker to a different chromosome.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>movemarker(cross, marker, newchr, newpos)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>marker</code></td>
+<td>
+The name of the marker to be moved (a character string).</td></tr>
+<tr valign="top"><td><code>newchr</code></td>
+<td>
+The chromosome to which the marker should be moved.</td></tr>
+<tr valign="top"><td><code>newpos</code></td>
+<td>
+The position (in cM) at which the marker should be
+placed.  If missing, the marker is placed at the end of the
+chromosome.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+The input <code>cross</code> object, but with the specified marker moved to
+the specified chromosome.
+<br>
+All intermediate calculations (such as the results of
+<code><a href="calc.genoprob.html">calc.genoprob</a></code> and <code><a href="est.rf.html">est.rf</a></code>) are
+removed.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="switch.order.html">switch.order</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(badorder)
+badorder &lt;- movemarker(badorder, "D2M937", 3, 48.15)
+badorder &lt;- movemarker(badorder, "D3M160", 2, 28.83)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

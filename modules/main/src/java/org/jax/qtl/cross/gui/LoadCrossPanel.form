@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.5" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="dataPreviewScrollPane" alignment="0" pref="701" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="crossFileLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="fileFormatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="fileFormatComboBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="crossFileTextField" pref="472" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="browseCrossFilesButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="crossNameLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="crossNameTextField" min="-2" pref="111" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="aaGenoCodeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="aaGenoCodeTextField" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="abGenoCodeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="abGenoCodeTextField" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bbGenoCodeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bbGenoCodeTextField" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="notBbGenoCodeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="notBbGenoCodeTextField" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="notAaGenoCodeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="notAaGenoCodeTextField" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="missingGenoCodeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="missingGenoCodeTextField" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="genotypeCodesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="crossDataPreviewLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="convertXDataCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="crossFileLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="browseCrossFilesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="crossFileTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fileFormatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fileFormatComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="crossDataPreviewLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="dataPreviewScrollPane" pref="275" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="crossNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="crossNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="genotypeCodesLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="aaGenoCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="aaGenoCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="abGenoCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="abGenoCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bbGenoCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bbGenoCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="notBbGenoCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="notBbGenoCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="notAaGenoCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="notAaGenoCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="missingGenoCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="missingGenoCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="convertXDataCheckBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="crossFileLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cross Data File:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="crossFileTextField">
+    </Component>
+    <Component class="javax.swing.JButton" name="browseCrossFilesButton">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/action/browse-16x16.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Browse Files ..."/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="browseCrossFilesButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="fileFormatLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="File Format:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="fileFormatComboBox">
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="fileFormatComboBoxItemStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="crossDataPreviewLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cross Data Preview (First 10 Lines):"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="dataPreviewScrollPane">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[23, 150]"/>
+        </Property>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+    </Container>
+    <Component class="javax.swing.JLabel" name="crossNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cross Name:"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="crossNameTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="genotypeCodesLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Genotype Codes (You must specify at least AA and AB. The cross type will be inferred from the data):"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="aaGenoCodeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="AA:"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="aaGenoCodeTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="abGenoCodeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="AB:"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="abGenoCodeTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="bbGenoCodeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="BB:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="bbGenoCodeTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="notBbGenoCodeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not BB:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="notBbGenoCodeTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="notAaGenoCodeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not AA:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="notAaGenoCodeTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="missingGenoCodeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Missing:"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="missingGenoCodeTextField">
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="convertXDataCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Convert X Chromosome Data to Internal Format (Recommended)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="convertXDataCheckBoxItemStateChanged"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

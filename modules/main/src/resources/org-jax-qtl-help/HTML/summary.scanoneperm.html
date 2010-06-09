@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: LOD thresholds from scanone permutation results</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for summary.scanoneperm {qtl}"><tr><td>summary.scanoneperm {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>LOD thresholds from scanone permutation results</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Print the estimated genome-wide LOD thresholds on the basis of
+permutation results from <code><a href="scanone.html">scanone</a></code> (with
+<code>n.perm</code> &gt; 0).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scanoneperm':
+summary(object, alpha=c(0.05, 0.10), df=FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+Output from the function <code><a href="scanone.html">scanone</a></code>
+with <code>n.perm</code> &gt; 0.</td></tr>
+<tr valign="top"><td><code>alpha</code></td>
+<td>
+Genome-wide significance levels.</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+If TRUE, the degrees of freedom associated with the LOD
+scores are shown.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored at this point.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+If there were autosomal data only or <code><a href="scanone.html">scanone</a></code> was
+run with <code>perm.Xsp=FALSE</code>, genome-wide LOD thresholds are given;
+these are the 1-<i>alpha</i> quantiles of the genome-wide maximum LOD
+scores from the permutations.
+</p>
+<p>
+If there were autosomal and X chromosome data and
+<code><a href="scanone.html">scanone</a></code> was run with <code>perm.Xsp=TRUE</code>,
+autosome- and X-chromsome-specific LOD thresholds are given, by the
+method described in Broman et al. (in press).  Let <i>L_A</i> and
+<i>L_X</i> be total the genetic lengths of the autosomes and X
+chromosome, respectively, and let <i>L_T = L_A + L_X</i>
+Then in place of <i>alpha</i>, we use
+</p><p align="center"><i>alpha_A = 1 - (1 -
+alpha)^(L_A/L_T)</i></p><p>
+as the significance level for the autosomes and 
+</p><p align="center"><i>alpha_x = 1 - (1 -
+alpha)^(LX/LT)</i></p><p>
+as the significance level for the X chromosome.  The result is a list
+with two matrices, one for the autosomes and one for the X chromosome.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>summary.scanoneperm</code>, to be printed by
+<code>print.summary.scanoneperm</code>.  If there were X chromosome data and
+<code>scanone</code> was run with <code>perm.Xsp=TRUE</code>, there are two
+matrices in the results, for the autosome and X-chromosome LOD
+thresholds.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Broman, K. W., Sen, 'S, Owens, S. E., Manichaikul, A.,
+Southard-Smith, E. M. and Churchill G. A.  The X chromosome in
+quantitative trait locus mapping.  <EM>Genetics</EM>, to appear.
+</p>
+<p>
+Churchill, G. A. and Doerge, R. W. (1994) Empirical threshold values for
+quantitative trait mapping.  <EM>Genetics</EM> <B>138</B>, 963&ndash;971.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scanone.html">scanone</a></code>,
+<code><a href="summary.scanone.html">summary.scanone</a></code>,
+<code><a href="plot.scanoneperm.html">plot.scanoneperm</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+fake.f2 &lt;- calc.genoprob(fake.f2, step=2.5)
+
+operm1 &lt;- scanone(fake.f2, n.perm=100, method="hk")
+summary(operm1)
+
+operm2 &lt;- scanone(fake.f2, n.perm=100, method="hk", perm.Xsp=TRUE)
+summary(operm2)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Pull out the genotype data from a cross</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for pull.geno {qtl}"><tr><td>pull.geno {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Pull out the genotype data from a cross</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Pull out the genotype data from a cross object, as a single big matrix.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>pull.geno(cross, chr)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+An optional vector specifying which chromosomes to keep or
+discard. This may be a logical vector, a numeric vector, or a vector
+of character strings.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A matrix of size n.ind x tot.mar.  The raw genotype data in the input
+cross object, with the chromosomes pasted together.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="pull.pheno.html">pull.pheno</a></code>, <code><a href="pull.map.html">pull.map</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(listeria)
+dat &lt;- pull.geno(listeria)
+
+# image of the genotype data
+image(1:ncol(dat),1:nrow(dat),t(dat),ylab="Individuals",xlab="Markers",
+      col=c("red","yellow","blue","green","violet"))
+abline(v=cumsum(c(0,nmar(listeria)))+0.5)
+abline(h=nrow(dat)+0.5)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

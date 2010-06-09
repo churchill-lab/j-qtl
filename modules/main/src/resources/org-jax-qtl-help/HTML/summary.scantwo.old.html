@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Summarize the results of a two-dimensional genome scan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for summary.scantwo.old {qtl}"><tr><td>summary.scantwo.old {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Summarize the results of a two-dimensional genome scan</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Summarize the interesting aspects of the results of
+<code><a href="scantwo.html">scantwo</a></code>; this is the version of
+<code><a href="summary.scantwo.html">summary.scantwo</a></code> that was included in R/qtl version
+1.03 and earlier.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scantwo.old':
+summary(object, thresholds = c(0, 0, 0), lodcolumn=1,
+                type = c("joint","interaction"), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+An object of class <code>scantwo</code>, the output of the
+function <code><a href="scantwo.html">scantwo</a></code>.</td></tr>
+<tr valign="top"><td><code>thresholds</code></td>
+<td>
+A vector of length three, giving LOD thresholds
+for the joint LOD, interaction LOD and single-QTL conditional
+LOD. Negative threshold values are taken relative to the maximum
+joint, interaction, or individual QTL LOD, respectively.</td></tr>
+<tr valign="top"><td><code>lodcolumn</code></td>
+<td>
+If the scantwo results contain LOD scores for
+multiple phenotypes, this argument indicates which to use in the
+summary.</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+Indicates whether to pick peaks with maximal joint or
+interaction LOD.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored at this point.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+For each pair of chromosomes, the pair of loci for which the 
+LOD score (either joint or interaction LOD, according to the argument
+<code>type</code>) is a maximum is considered.  The pair is printed only if
+its joint LOD score exceeds the joint threshold and either (a) the
+interaction LOD score exceeds its threshold or (b) both of the loci have
+conditional LOD scores that are above the conditional LOD threshold,
+where the conditional LOD score for locus <i>q1</i>, <i>LOD(q1 | q2)</i>, is the <i>log10</i> likelihood ratio
+comparing the model with <i>q1</i> and <i>q2</i> acting
+additively to the model with <i>q2</i> alone. 
+</p>
+<p>
+In the case the results of <code><a href="scanone.html">scanone</a></code> are not
+available, the maximum locus pair for each chromosome is printed
+whenever its joint LOD exceeds the joint LOD threshold.
+</p>
+<p>
+The criterion used in this summary is due to Gary Churchill and 'Saunak
+Sen, and deserves careful consideration and possible revision.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>summary.scantwo.old</code>, to be printed by
+<code>print.summary.scantwo.old</code>.  Pairs of loci meeting
+the specified criteria are printed, with their joint LOD, interaction
+LOD, and the conditional LOD for each locus, along with single-point
+P-values calculated by the <i>chi-square</i> approximation.
+P-values are printed as <i>-log10(P)</i>. <br>
+<br>
+If the input <code>scantwo</code> object does not include the results of
+<code>scanone</code>, the interaction and conditional LOD thresholds are
+ignored, and all pairs of loci for which the joint LOD exceeds its
+threshold are printed, though without their conditional LOD scores.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Hao Wu; Karl W Broman,
+<a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>; Brian Yandell
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="summary.scantwo.html">summary.scantwo</a></code>,
+<code><a href="scantwo.html">scantwo</a></code>, <code><a href="plot.scantwo.html">plot.scantwo</a></code>, 
+<code><a href="max.scantwo.html">max.scantwo</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+fake.f2 &lt;- calc.genoprob(fake.f2, step=5)
+out.2dim &lt;- scantwo(fake.f2, method="hk")
+
+# All pairs of loci
+summary.scantwo.old(out.2dim)
+
+# Pairs meeting specified criteria
+summary.scantwo.old(out.2dim, c(7, 3, 3))
+
+# Pairs with both conditional LODs &gt; 2
+summary.scantwo.old(out.2dim,c(0,1000,2))
+
+# Pairs with interaction LOD is above 3
+summary.scantwo.old(out.2dim,c(0,3,1000))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

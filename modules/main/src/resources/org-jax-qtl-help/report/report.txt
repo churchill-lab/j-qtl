@@ -1,0 +1,146 @@
+Topic Title	MapID	File Path	Index Keywords	Status	Notes
+Calculate Genotype Probabilities	Calculate_Genotype_Probabilities	Calculate_Genotype_Probabilities.htm		Not Specified	 
+Copyright and License	Copyright_and_License	License.htm		Not Specified	 
+Display and Estimate Genetic Map	Display_and_Estimate_Genetic_Map	Display_and_Estimate_Genetic_Map.htm		Not Specified	 
+Edit Preferences	Edit_Preferences	HTML\Edit_Preferences.htm		Not Specified	 
+Edit QTL Basket	Edit_QTL_Basket	HTML\Edit_QTL_Basket.htm		Not Specified	 
+Effect Plot	Effect_Plot	Effect_Plot.htm		Not Specified	 
+FirstTopic	FirstTopic	HTML\FirstTopic.htm		Not Specified	 
+Fit QTL	Fit_QTL	Fit_QTL.htm		Not Specified	 
+Fit Results	Fit_Results	Fit_Results.htm		Not Specified	 
+Genome Scans	Genome_Scans	HTML\Genome_Scans.htm		Not Specified	 
+Genotype Plot	Genotype_Plot	Genotype_Plot.htm		Not Specified	 
+Graph Settings	Graph_Settings	Graph_Settings.htm		Not Specified	 
+Graphs	Graphs	HTML\Graphs.htm		Not Specified	 
+Histogram and Scatterplot	Histogram_and_Scatterplot	Histogram_and_Scatterplot.htm		Not Specified	 
+Installation and Uninstallation	Installation_and_Uninstallation	HTML\Installation_and_Uninstallation.htm		Not Specified	 
+Jittermap	Jittermap	Jittermap.htm		Not Specified	 
+Load Cross Data	Load_Cross_Data	HTML\Load_Cross_Data.htm		Not Specified	 
+One QTL Genome Scan	One_QTL_Genome_Scan	HTML\One_QTL_Genome_Scan.htm		Not Specified	 
+One QTL Genome Scan Summary	One_QTL_Genome_Scan_Summary	HTML\One_QTL_Genome_Scan_Summary.htm		Not Specified	 
+One QTL Scan Plot	One_QTL_Scan_Plot	HTML\One_QTL_Scan_Plot.htm		Not Specified	 
+One QTL Scan Plot Setting	One_QTL_Scan_Plot_Settings	Scan_One_Graph_Settings.htm		Not Specified	 
+R/qtl Function Reference	R_qtl_Function_Reference	HTML\R_qtl_Function_Reference.htm		Not Specified	 
+R: Add pairwise interaction to a multiple-QTL model	rqtladdint	HTML\addint.html		Not Specified	 
+R: Add significance threshold to plot	rqtladd_threshold	HTML\add.threshold.html		Not Specified	 
+R: Add to a qtl object	rqtladdtoqtl	HTML\addtoqtl.html		Not Specified	 
+R: An example genetic map	rqtlmap10	HTML\map10.html		Not Specified	 
+R: An intercross with misplaced markers	rqtlbadorder	HTML\badorder.html		Not Specified	 
+R: Arithmetic Operators for permutation results	rqtlarithscanperm	HTML\arithscanperm.html		Not Specified	 
+R: Arithmetic Operators for scanone and scantwo results	rqtlarithscan	HTML\arithscan.html		Not Specified	 
+R: Bayesian credible interval	rqtlbayesint	HTML\bayesint.html		Not Specified	 
+R: Bootstrap confidence interval for QTL location	rqtlsummary_scanoneboot	HTML\summary.scanoneboot.html		Not Specified	 
+R: Bootstrap to get interval estimate of QTL location	rqtlscanoneboot	HTML\scanoneboot.html		Not Specified	 
+R: Calculate conditional genotype probabilities	rqtlcalc_genoprob	HTML\calc.genoprob.html		Not Specified	 
+R: Chromosome lengths in QTL experiment	rqtlchrlen	HTML\chrlen.html		Not Specified	 
+R: Clean up scantwo output	rqtlclean_scantwo	HTML\clean.scantwo.html		Not Specified	 
+R: Combine columns from multiple scanone permutation results	rqtlcbind_scanoneperm	HTML\cbind.scanoneperm.html		Not Specified	 
+R: Combine columns from multiple scanone results	rqtlc_scanone	HTML\c.scanone.html		Not Specified	 
+R: Combine data for QTL experiments	rqtlc_cross	HTML\c.cross.html		Not Specified	 
+R: Combine data from scanone permutations	rqtlc_scanoneperm	HTML\c.scanoneperm.html		Not Specified	 
+R: Combine data from scantwo permutations	rqtlc_scantwoperm	HTML\c.scantwoperm.html		Not Specified	 
+R: Compare individuals' genotype data	rqtlcomparegeno	HTML\comparegeno.html		Not Specified	 
+R: Compare marker orders	rqtlripple	HTML\ripple.html		Not Specified	 
+R: Compare two cross objects.	rqtlcomparecrosses	HTML\comparecrosses.html		Not Specified	 
+R: Compare two orderings of markers on a chromosome	rqtlcompareorder	HTML\compareorder.html		Not Specified	 
+R: Composite interval mapping	rqtlcim	HTML\cim.html		Not Specified	 
+R: Condense the output from a 2-d genome scan	rqtlcondense_scantwo	HTML\condense.scantwo.html		Not Specified	 
+R: Convert output from scanone for R/qtl version 0.98	rqtlconvert_scanone	HTML\convert.scanone.html		Not Specified	 
+R: Convert output from scantwo for R/qtl version 1.03 and earlier	rqtlconvert_scantwo	HTML\convert.scantwo.html		Not Specified	 
+R: Count number of obligate crossovers for each individual	rqtlcountXO	HTML\countXO.html		Not Specified	 
+R: Create table of genotype distributions	rqtlgeno_table	HTML\geno.table.html		Not Specified	 
+R: Create table of two-locus genotypes	rqtlgeno_crosstab	HTML\geno.crosstab.html		Not Specified	 
+R: Data on bristle number in Drosophila	rqtlbristleX	HTML\bristleX.html		Not Specified	 
+R: Data on bristle number in Drosophila	rqtlbristle3	HTML\bristle3.html		Not Specified	 
+R: Data on hypertension	rqtlhyper	HTML\hyper.html		Not Specified	 
+R: Data on Listeria monocytogenes susceptibility	rqtllisteria	HTML\listeria.html		Not Specified	 
+R: Drop a QTL from a qtl object	rqtldropfromqtl	HTML\dropfromqtl.html		Not Specified	 
+R: Drop a set of markers	rqtldrop_markers	HTML\drop.markers.html		Not Specified	 
+R: Drop markers without any genotype data	rqtldrop_nullmarkers	HTML\drop.nullmarkers.html		Not Specified	 
+R: Estimate genetic maps	rqtlest_map	HTML\est.map.html		Not Specified	 
+R: Estimate pairwise recombination fractions	rqtlest_rf	HTML\est.rf.html		Not Specified	 
+R: Fill holes in genotype data	rqtlfill_geno	HTML\fill.geno.html		Not Specified	 
+R: Find column number for a particular phenotype.	rqtlfind_pheno	HTML\find.pheno.html		Not Specified	 
+R: Find flanking markers for a specified position	rqtlfind_flanking	HTML\find.flanking.html		Not Specified	 
+R: Find marker closest to a specified position	rqtlfind_marker	HTML\find.marker.html		Not Specified	 
+R: Find position of a marker.	rqtlfind_markerpos	HTML\find.markerpos.html		Not Specified	 
+R: Find the pseudomarker closest to a specified position	rqtlfind_pseudomarker	HTML\find.pseudomarker.html		Not Specified	 
+R: Fit a multiple-QTL model	rqtlfitqtl	HTML\fitqtl.html		Not Specified	 
+R: Fit Stahl interference model	rqtlfitstahl	HTML\fitstahl.html		Not Specified	 
+R: General QTL scan	rqtlscanqtl	HTML\scanqtl.html		Not Specified	 
+R: Genome scan with a single QTL model	rqtlscanone	HTML\scanone.html		Not Specified	 
+R: Identify likely genotyping errors	rqtlcalc_errorlod	HTML\calc.errorlod.html		Not Specified	 
+R: Identify markers with switched alleles	rqtlcheckAlleles	HTML\checkAlleles.html		Not Specified	 
+R: Indicate marker covariates from composite interval mapping	rqtladd_cim_covar	HTML\add.cim.covar.html		Not Specified	 
+R: Installed version of R/qtl	rqtlqtlversion	HTML\qtlversion.html		Not Specified	 
+R: Internal qtl functions	rqtlqtl_internal	HTML\qtl-internal.html		Not Specified	 
+R: Introductory comments on R/qtl	rqtla_starting_point	HTML\a.starting.point.html		Not Specified	 
+R: Jitter marker positions in a genetic map	rqtljittermap	HTML\jittermap.html		Not Specified	 
+R: List genotypes with large error LOD scores	rqtltop_errorlod	HTML\top.errorlod.html		Not Specified	 
+R: LOD support interval	rqtllodint	HTML\lodint.html		Not Specified	 
+R: LOD thresholds from scanone permutation results	rqtlsummary_scanoneperm	HTML\summary.scanoneperm.html		Not Specified	 
+R: LOD thresholds from scantwo permutation results	rqtlsummary_scantwoperm	HTML\summary.scantwoperm.html		Not Specified	 
+R: Make a qtl object	rqtlmakeqtl	HTML\makeqtl.html		Not Specified	 
+R: Maximum peak in genome scan	rqtlmax_scanone	HTML\max.scanone.html		Not Specified	 
+R: Maximum peak in two-dimensional genome scan	rqtlmax_scantwo	HTML\max.scantwo.html		Not Specified	 
+R: Move a marker to a new chromosome	rqtlmovemarker	HTML\movemarker.html		Not Specified	 
+R: Number of missing genotypes	rqtlnmissing	HTML\nmissing.html		Not Specified	 
+R: Plot 1-d LOD profiles for a multiple QTL model	rqtlplotLodProfile	HTML\plotLodProfile.html		Not Specified	 
+R: Plot a phenotype distribution	rqtlplot_pheno	HTML\plot.pheno.html		Not Specified	 
+R: Plot estimated QTL effects across the whole genome	rqtleffectscan	HTML\effectscan.html		Not Specified	 
+R: Plot genetic map	rqtlplot_map	HTML\plot.map.html		Not Specified	 
+R: Plot grid of error LOD values	rqtlplot_errorlod	HTML\plot.errorlod.html		Not Specified	 
+R: Plot grid of genotype data	rqtlgeno_image	HTML\geno.image.html		Not Specified	 
+R: Plot grid of missing genotypes	rqtlplot_missing	HTML\plot.missing.html		Not Specified	 
+R: Plot LOD curves	rqtlplot_scanone	HTML\plot.scanone.html		Not Specified	 
+R: Plot LOD scores for a two-dimensional genome scan	rqtlplot_scantwo	HTML\plot.scantwo.html		Not Specified	 
+R: Plot observed genotypes, flagging likely errors	rqtlplot_geno	HTML\plot.geno.html		Not Specified	 
+R: Plot permutation results for a 2d, 2-QTL genome scan	rqtlplot_scantwoperm	HTML\plot.scantwoperm.html		Not Specified	 
+R: Plot permutation results for a single-QTL genome scan	rqtlplot_scanoneperm	HTML\plot.scanoneperm.html		Not Specified	 
+R: Plot phenotype means against genotypes at one or two markers.	rqtleffectplot	HTML\effectplot.html		Not Specified	 
+R: Plot phenotypes versus marker genotypes.	rqtlplot_pxg	HTML\plot.pxg.html		Not Specified	 
+R: Plot QTL locations	rqtlplot_qtl	HTML\plot.qtl.html		Not Specified	 
+R: Plot recombination fractions	rqtlplot_rf	HTML\plot.rf.html		Not Specified	 
+R: Plot results of bootstrap for QTL position.	rqtlplot_scanoneboot	HTML\plot.scanoneboot.html		Not Specified	 
+R: Plot the proportion of missing genotype information	rqtlplot_info	HTML\plot.info.html		Not Specified	 
+R: Plot various features of a cross object	rqtlplot_cross	HTML\plot.cross.html		Not Specified	 
+R: Print summary of a genetic map	rqtlsummary_map	HTML\summary.map.html		Not Specified	 
+R: Print summary of a QTL object	rqtlsummary_qtl	HTML\summary.qtl.html		Not Specified	 
+R: Print summary of QTL experiment	rqtlsummary_cross	HTML\summary.cross.html		Not Specified	 
+R: Print summary of ripple results	rqtlsummary_ripple	HTML\summary.ripple.html		Not Specified	 
+R: Pull out phenotype data from a cross	rqtlpull_pheno	HTML\pull.pheno.html		Not Specified	 
+R: Pull out the genetic map from a cross	rqtlpull_map	HTML\pull.map.html		Not Specified	 
+R: Pull out the genotype data from a cross	rqtlpull_geno	HTML\pull.geno.html		Not Specified	 
+R: Read data for a QTL experiment	rqtlread_cross	HTML\read.cross.html		Not Specified	 
+R: Reconstruct underlying genotypes	rqtlargmax_geno	HTML\argmax.geno.html		Not Specified	 
+R: Refine the positions of QTL	rqtlrefineqtl	HTML\refineqtl.html		Not Specified	 
+R: Remove derived data	rqtlclean_cross	HTML\clean.cross.html		Not Specified	 
+R: Reorder the QTL in a qtl object.	rqtlreorderqtl	HTML\reorderqtl.html		Not Specified	 
+R: Replace a QTL in a qtl object with a different position.	rqtlreplaceqtl	HTML\replaceqtl.html		Not Specified	 
+R: Replace the genetic map of a cross	rqtlreplace_map	HTML\replace.map.html		Not Specified	 
+R: Scan for an additional pair of QTL in a multiple-QTL model	rqtladdpair	HTML\addpair.html		Not Specified	 
+R: Scan for an additional QTL in a multiple-QTL model	rqtladdqtl	HTML\addqtl.html		Not Specified	 
+R: Simulate a genetic map	rqtlsim_map	HTML\sim.map.html		Not Specified	 
+R: Simulate a QTL experiment	rqtlsim_cross	HTML\sim.cross.html		Not Specified	 
+R: Simulate genotypes given observed marker data	rqtlsim_geno	HTML\sim.geno.html		Not Specified	 
+R: Simulated data for a 4-way cross	rqtlfake_4way	HTML\fake.4way.html		Not Specified	 
+R: Simulated data for a backcross	rqtlfake_bc	HTML\fake.bc.html		Not Specified	 
+R: Simulated data for an F2 intercross	rqtlfake_f2	HTML\fake.f2.html		Not Specified	 
+R: Strip partially informative genotypes	rqtlstrip_partials	HTML\strip.partials.html		Not Specified	 
+R: Subsetting data for QTL experiment	rqtlsubset_cross	HTML\subset.cross.html		Not Specified	 
+R: Subsetting the results of a 2-d genome scan	rqtlsubset_scantwo	HTML\subset.scantwo.html		Not Specified	 
+R: Subsetting the results of a genome scan	rqtlsubset_scanone	HTML\subset.scanone.html		Not Specified	 
+R: Summarize the results of a genome scans	rqtlsummary_scanone	HTML\summary.scanone.html		Not Specified	 
+R: Summarize the results of a two-dimensional genome scan	rqtlsummary_scantwo_old	HTML\summary.scantwo.old.html		Not Specified	 
+R: Summarize the results of a two-dimensional genome scan	rqtlsummary_scantwo	HTML\summary.scantwo.html		Not Specified	 
+R: Summary of fit of qtl model	rqtlsummary_fitqtl	HTML\summary.fitqtl.html		Not Specified	 
+R: Switch the order of markers on a chromosome	rqtlswitch_order	HTML\switch.order.html		Not Specified	 
+R: Test all possible positions for a marker	rqtltryallpositions	HTML\tryallpositions.html		Not Specified	 
+R: Two-dimensional genome scan with a two-QTL model	rqtlscantwo	HTML\scantwo.html		Not Specified	 
+R: Write data for a QTL experiment to a file	rqtlwrite_cross	HTML\write.cross.html		Not Specified	 
+RF Plot	RF_Plot	RF_Plot.htm		Not Specified	 
+Simulate Cross	Simulate_Cross	Simulate_Cross.htm		Not Specified	 
+Simulate Genotype Probabilities	Simulate_Genotype_Probabilities	Simulate_Genotype_Probabilities.htm		Not Specified	 
+Two QTL Genome Scan	Two_QTL_Genome_Scan	HTML\Two_QTL_Genome_Scan.htm		Not Specified	 
+Two QTL Genome Scan Summary	Two_QTL_Genome_Scan_Summary	Two_QTL_Genome_Scan_Summary.htm		Not Specified	 
+Two QTL Scan Plot	Two_QTL_Scan_Plot	Two_QTL_Scan_Plot.htm		Not Specified	 

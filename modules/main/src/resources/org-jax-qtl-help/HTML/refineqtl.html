@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Refine the positions of QTL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for refineqtl {qtl}"><tr><td>refineqtl {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Refine the positions of QTL</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Iteratively scan the positions for QTL in the context of a multiple
+QTL model, to try to identify the positions with maximum likelihood,
+for a fixed QTL model.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+refineqtl(cross, pheno.col=1, qtl, chr, pos, qtl.name, covar=NULL, formula,
+          method=c("imp","hk"), verbose=TRUE, maxit=10,
+          incl.markers=TRUE, keeplodprofile=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>pheno.col</code></td>
+<td>
+Column number in the phenotype matrix to be
+used as the phenotype.  One may also give a character string matching
+the phenotype name.</td></tr>
+<tr valign="top"><td><code>qtl</code></td>
+<td>
+A QTL object, as produced by <code><a href="makeqtl.html">makeqtl</a></code>,
+containing the positions of the QTL.  Provide either <code>qtl</code> or
+the pair <code>chr</code> and <code>pos</code>.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Vector indicating the chromosome for each QTL; if <code>qtl</code>
+is provided, this should not be.</td></tr>
+<tr valign="top"><td><code>pos</code></td>
+<td>
+Vector indicating the positions for each QTL; if <code>qtl</code>
+is provided, this should not be.</td></tr>
+<tr valign="top"><td><code>qtl.name</code></td>
+<td>
+Optional user-specified name for each QTL.  If
+<code>qtl</code> is provided, this should not be.</td></tr>
+<tr valign="top"><td><code>covar</code></td>
+<td>
+A data frame of covariates.</td></tr>
+<tr valign="top"><td><code>formula</code></td>
+<td>
+An object of class <code><a href="../../stats/html/formula.html">formula</a></code>
+indicating the model to be fitted.  QTLs are indicated as <code>Q1</code>,
+<code>Q2</code>, etc.  Covariates are indicated by their names in <code>covar</code>.</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+Indicates whether to use multiple imputation or
+Haley-Knott regression.</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+If TRUE, give feedback about progress.  If
+<code>verbose</code> is an integer &gt; 1, further messages from
+<code><a href="scanqtl.html">scanqtl</a></code> are also displayed.</td></tr>
+<tr valign="top"><td><code>maxit</code></td>
+<td>
+Maximum number of iterations.</td></tr>
+<tr valign="top"><td><code>incl.markers</code></td>
+<td>
+If FALSE, do calculations only at points on an
+evenly spaced grid.</td></tr>
+<tr valign="top"><td><code>keeplodprofile</code></td>
+<td>
+If TRUE, keep the LOD profiles from the last
+iteration as attributes to the output.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+QTL positions are optimized, within the context of a fixed QTL model,
+by a scheme described in Zeng et al. (1999).  Each QTL is considered
+one at a time (in a random order), and a scan is performed, allowing
+the QTL to vary across its chromosome, keeping the positions of all
+other QTL fixed.  If there is another QTL on the chromosome, the
+position of the floating QTL is scanned from the end of the chromosome
+to the position of the flanking QTL.  If the floating QTL is between
+two QTL on a chromosome, its position is scanned between those two QTL
+positions.  Each QTL is moved to the position giving the highest
+likelihood, and the entire process is repeated until no further
+improvement in likelihood can be obtained.
+</p>
+<p>
+One may provide either a <code>qtl</code> object (as produced by
+<code><a href="makeqtl.html">makeqtl</a></code>), or vectors <code>chr</code> and <code>pos</code>
+(and, optionally, <code>qtl.name</code>) indicating the positions of the
+QTL.
+</p>
+<p>
+If a <code>qtl</code> object is provided, QTL that do not appear in
+the model <code>formula</code> are ignored, but they remain part of the QTL
+object that is output.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>qtl</code>, with QTL placed in their new positions.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Zeng, Z.-B., Kao, C.-H., and Basten, C. J. (1999) Estimating the
+genetic architecture of quantitative traits.  <EM>Genet. Res.</EM>
+<B>74</B>, 279&ndash;289.
+</p>
+<p>
+Haley, C. S. and Knott, S. A. (1992) A simple regression method for mapping
+quantitative trait loci in line crosses using flanking markers.
+<EM>Heredity</EM> <B>69</B>, 315&ndash;324.
+</p>
+<p>
+Sen, 'S. and Churchill, G. A. (2001) A statistical framework for quantitative
+trait mapping.  <EM>Genetics</EM> <B>159</B>, 371&ndash;387.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="fitqtl.html">fitqtl</a></code>, <code><a href="makeqtl.html">makeqtl</a></code>,
+<code><a href="scanqtl.html">scanqtl</a></code>, <code><a href="addtoqtl.html">addtoqtl</a></code>,
+<code><a href="dropfromqtl.html">dropfromqtl</a></code>, <code><a href="replaceqtl.html">replaceqtl</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.bc)
+
+fake.bc &lt;- calc.genoprob(fake.bc, step=2)
+qtl &lt;- makeqtl(fake.bc, chr=c(2,5), pos=c(32.5, 17.5), what="prob")
+rqtl &lt;- refineqtl(fake.bc, qtl=qtl, method="hk")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

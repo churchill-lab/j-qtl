@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='ISO-8859-1'  ?>
+<!DOCTYPE toc
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 2.0//EN"
+         "http://java.sun.com/products/javahelp/toc_2_0.dtd">
+<toc version="2.0">
+
+<tocitem text="Welcome" target="FirstTopic"/>
+<tocitem text="Installation and Uninstallation" target="Installation_and_Uninstallation"/>
+<tocitem text="Edit Preferences" target="Edit_Preferences"/>
+<tocitem text="Load Cross Data" target="Load_Cross_Data"/>
+<tocitem text="Simulate Cross" target="Simulate_Cross"/>
+<tocitem text="Jittermap" target="Jittermap"/>
+<tocitem text="Calculate Genotype Probabilities" target="Calculate_Genotype_Probabilities"/>
+<tocitem text="Simulate Genotype Probabilities" target="Simulate_Genotype_Probabilities"/>
+<tocitem text="Edit QTL Basket" target="Edit_QTL_Basket"/>
+<tocitem text="Genome Scans" target="Genome_Scans">
+     <tocitem text="One QTL Genome Scan" target="One_QTL_Genome_Scan"/>
+     <tocitem text="One QTL Genome Scan Summary" target="One_QTL_Genome_Scan_Summary"/>
+     <tocitem text="Two QTL Genome Scan" target="Two_QTL_Genome_Scan"/>
+     <tocitem text="Two QTL Genome Scan Summary" target="Two_QTL_Genome_Scan_Summary"/>
+</tocitem>
+<tocitem text="QTL Model Fitting">
+     <tocitem text="Fit QTL" target="Fit_QTL"/>
+     <tocitem text="Fit Results" target="Fit_Results"/>
+</tocitem>
+<tocitem text="Graphs" target="Graphs">
+     <tocitem text="Graph Settings" target="Graph_Settings"/>
+     <tocitem text="Histogram and Scatterplot" target="Histogram_and_Scatterplot"/>
+     <tocitem text="Display and Estimate Genetic Map" target="Display_and_Estimate_Genetic_Map"/>
+     <tocitem text="RF Plot" target="RF_Plot"/>
+     <tocitem text="Genotype Plot" target="Genotype_Plot"/>
+     <tocitem text="One QTL Scan Plot" target="One_QTL_Scan_Plot"/>
+     <tocitem text="One QTL Scan Plot Settings" target="One_QTL_Scan_Plot_Settings"/>
+     <tocitem text="Two QTL Scan Plot" target="Two_QTL_Scan_Plot"/>
+     <tocitem text="Effect Plot" target="Effect_Plot"/>
+</tocitem>
+<tocitem text="R/qtl Function Reference" target="R_qtl_Function_Reference">
+     <tocitem text="R: Introductory comments on R/qtl" target="rqtla_starting_point"/>
+     <tocitem text="R: Add pairwise interaction to a multiple-QTL model" target="rqtladdint"/>
+     <tocitem text="R: Add significance threshold to plot" target="rqtladd_threshold"/>
+     <tocitem text="R: An example genetic map" target="rqtlmap10"/>
+     <tocitem text="R: Add to a qtl object" target="rqtladdtoqtl"/>
+     <tocitem text="R: An intercross with misplaced markers" target="rqtlbadorder"/>
+     <tocitem text="R: Arithmetic Operators for permutation results" target="rqtlarithscanperm"/>
+     <tocitem text="R: Arithmetic Operators for scanone and scantwo results" target="rqtlarithscan"/>
+     <tocitem text="R: Bayesian credible interval" target="rqtlbayesint"/>
+     <tocitem text="R: Bootstrap confidence interval for QTL location" target="rqtlsummary_scanoneboot"/>
+     <tocitem text="R: Bootstrap to get interval estimate of QTL location" target="rqtlscanoneboot"/>
+     <tocitem text="R: Calculate conditional genotype probabilities" target="rqtlcalc_genoprob"/>
+     <tocitem text="R: Chromosome lengths in QTL experiment" target="rqtlchrlen"/>
+     <tocitem text="R: Clean up scantwo output" target="rqtlclean_scantwo"/>
+     <tocitem text="R: Combine columns from multiple scanone permutation results" target="rqtlcbind_scanoneperm"/>
+     <tocitem text="R: Combine columns from multiple scanone results" target="rqtlc_scanone"/>
+     <tocitem text="R: Combine data for QTL experiments" target="rqtlc_cross"/>
+     <tocitem text="R: Combine data from scanone permutations" target="rqtlc_scanoneperm"/>
+     <tocitem text="R: Combine data from scantwo permutations" target="rqtlc_scantwoperm"/>
+     <tocitem text="R: Compare individuals' genotype data" target="rqtlcomparegeno"/>
+     <tocitem text="R: Compare marker orders" target="rqtlripple"/>
+     <tocitem text="R: Compare two cross objects." target="rqtlcomparecrosses"/>
+     <tocitem text="R: Compare two orderings of markers on a chromosome" target="rqtlcompareorder"/>
+     <tocitem text="R: Composite interval mapping" target="rqtlcim"/>
+     <tocitem text="R: Condense the output from a 2-d genome scan" target="rqtlcondense_scantwo"/>
+     <tocitem text="R: Convert output from scanone for R/qtl version 0.98" target="rqtlconvert_scanone"/>
+     <tocitem text="R: Convert output from scantwo for R/qtl version 1.03 and earlier" target="rqtlconvert_scantwo"/>
+     <tocitem text="R: Count number of obligate crossovers for each individual" target="rqtlcountXO"/>
+     <tocitem text="R: Create table of genotype distributions" target="rqtlgeno_table"/>
+     <tocitem text="R: Create table of two-locus genotypes" target="rqtlgeno_crosstab"/>
+     <tocitem text="R: Data on bristle number in Drosophila" target="rqtlbristleX"/>
+     <tocitem text="R: Data on bristle number in Drosophila" target="rqtlbristle3"/>
+     <tocitem text="R: Data on hypertension" target="rqtlhyper"/>
+     <tocitem text="R: Data on Listeria monocytogenes susceptibility" target="rqtllisteria"/>
+     <tocitem text="R: Drop a QTL from a qtl object" target="rqtldropfromqtl"/>
+     <tocitem text="R: Drop a set of markers" target="rqtldrop_markers"/>
+     <tocitem text="R: Drop markers without any genotype data" target="rqtldrop_nullmarkers"/>
+     <tocitem text="R: Estimate genetic maps" target="rqtlest_map"/>
+     <tocitem text="R: Estimate pairwise recombination fractions" target="rqtlest_rf"/>
+     <tocitem text="R: Fill holes in genotype data" target="rqtlfill_geno"/>
+     <tocitem text="R: Find column number for a particular phenotype." target="rqtlfind_pheno"/>
+     <tocitem text="R: Find flanking markers for a specified position" target="rqtlfind_flanking"/>
+     <tocitem text="R: Find marker closest to a specified position" target="rqtlfind_marker"/>
+     <tocitem text="R: Find position of a marker." target="rqtlfind_markerpos"/>
+     <tocitem text="R: Find the pseudomarker closest to a specified position" target="rqtlfind_pseudomarker"/>
+     <tocitem text="R: Fit a multiple-QTL model" target="rqtlfitqtl"/>
+     <tocitem text="R: Fit Stahl interference model" target="rqtlfitstahl"/>
+     <tocitem text="R: General QTL scan" target="rqtlscanqtl"/>
+     <tocitem text="R: Genome scan with a single QTL model" target="rqtlscanone"/>
+     <tocitem text="R: Identify likely genotyping errors" target="rqtlcalc_errorlod"/>
+     <tocitem text="R: Identify markers with switched alleles" target="rqtlcheckAlleles"/>
+     <tocitem text="R: Indicate marker covariates from composite interval mapping" target="rqtladd_cim_covar"/>
+     <tocitem text="R: Installed version of R/qtl" target="rqtlqtlversion"/>
+     <tocitem text="R: Internal qtl functions" target="rqtlqtl_internal"/>
+     <tocitem text="R: Jitter marker positions in a genetic map" target="rqtljittermap"/>
+     <tocitem text="R: List genotypes with large error LOD scores" target="rqtltop_errorlod"/>
+     <tocitem text="R: LOD support interval" target="rqtllodint"/>
+     <tocitem text="R: LOD thresholds from scanone permutation results" target="rqtlsummary_scanoneperm"/>
+     <tocitem text="R: LOD thresholds from scantwo permutation results" target="rqtlsummary_scantwoperm"/>
+     <tocitem text="R: Make a qtl object" target="rqtlmakeqtl"/>
+     <tocitem text="R: Maximum peak in genome scan" target="rqtlmax_scanone"/>
+     <tocitem text="R: Maximum peak in two-dimensional genome scan" target="rqtlmax_scantwo"/>
+     <tocitem text="R: Move a marker to a new chromosome" target="rqtlmovemarker"/>
+     <tocitem text="R: Number of missing genotypes" target="rqtlnmissing"/>
+     <tocitem text="R: Plot 1-d LOD profiles for a multiple QTL model" target="rqtlplotLodProfile"/>
+     <tocitem text="R: Plot a phenotype distribution" target="rqtlplot_pheno"/>
+     <tocitem text="R: Plot estimated QTL effects across the whole genome" target="rqtleffectscan"/>
+     <tocitem text="R: Plot genetic map" target="rqtlplot_map"/>
+     <tocitem text="R: Plot grid of error LOD values" target="rqtlplot_errorlod"/>
+     <tocitem text="R: Plot grid of genotype data" target="rqtlgeno_image" image="<ON"/>
+     <tocitem text="R: Plot grid of missing genotypes" target="rqtlplot_missing"/>
+     <tocitem text="R: Plot LOD curves" target="rqtlplot_scanone"/>
+     <tocitem text="R: Plot LOD scores for a two-dimensional genome scan" target="rqtlplot_scantwo"/>
+     <tocitem text="R: Plot observed genotypes, flagging likely errors" target="rqtlplot_geno"/>
+     <tocitem text="R: Plot permutation results for a 2d, 2-QTL genome scan" target="rqtlplot_scantwoperm"/>
+     <tocitem text="R: Plot permutation results for a single-QTL genome scan" target="rqtlplot_scanoneperm"/>
+     <tocitem text="R: Plot phenotype means against genotypes at one or two markers." target="rqtleffectplot"/>
+     <tocitem text="R: Plot phenotypes versus marker genotypes." target="rqtlplot_pxg"/>
+     <tocitem text="R: Plot QTL locations" target="rqtlplot_qtl"/>
+     <tocitem text="R: Plot recombination fractions" target="rqtlplot_rf"/>
+     <tocitem text="R: Plot results of bootstrap for QTL position." target="rqtlplot_scanoneboot"/>
+     <tocitem text="R: Plot the proportion of missing genotype information" target="rqtlplot_info"/>
+     <tocitem text="R: Plot various features of a cross object" target="rqtlplot_cross"/>
+     <tocitem text="R: Print summary of a genetic map" target="rqtlsummary_map"/>
+     <tocitem text="R: Print summary of a QTL object" target="rqtlsummary_qtl"/>
+     <tocitem text="R: Print summary of QTL experiment" target="rqtlsummary_cross"/>
+     <tocitem text="R: Print summary of ripple results" target="rqtlsummary_ripple"/>
+     <tocitem text="R: Pull out phenotype data from a cross" target="rqtlpull_pheno"/>
+     <tocitem text="R: Pull out the genetic map from a cross" target="rqtlpull_map"/>
+     <tocitem text="R: Pull out the genotype data from a cross" target="rqtlpull_geno"/>
+     <tocitem text="R: Read data for a QTL experiment" target="rqtlread_cross"/>
+     <tocitem text="R: Reconstruct underlying genotypes" target="rqtlargmax_geno"/>
+     <tocitem text="R: Refine the positions of QTL" target="rqtlrefineqtl"/>
+     <tocitem text="R: Remove derived data" target="rqtlclean_cross"/>
+     <tocitem text="R: Reorder the QTL in a qtl object." target="rqtlreorderqtl"/>
+     <tocitem text="R: Replace a QTL in a qtl object with a different position." target="rqtlreplaceqtl"/>
+     <tocitem text="R: Replace the genetic map of a cross" target="rqtlreplace_map"/>
+     <tocitem text="R: Scan for an additional pair of QTL in a multiple-QTL model" target="rqtladdpair"/>
+     <tocitem text="R: Scan for an additional QTL in a multiple-QTL model" target="rqtladdqtl"/>
+     <tocitem text="R: Simulate a genetic map" target="rqtlsim_map"/>
+     <tocitem text="R: Simulate a QTL experiment" target="rqtlsim_cross"/>
+     <tocitem text="R: Simulate genotypes given observed marker data" target="rqtlsim_geno"/>
+     <tocitem text="R: Simulated data for a 4-way cross" target="rqtlfake_4way"/>
+     <tocitem text="R: Simulated data for a backcross" target="rqtlfake_bc"/>
+     <tocitem text="R: Simulated data for an F2 intercross" target="rqtlfake_f2"/>
+     <tocitem text="R: Strip partially informative genotypes" target="rqtlstrip_partials"/>
+     <tocitem text="R: Subsetting data for QTL experiment" target="rqtlsubset_cross"/>
+     <tocitem text="R: Subsetting the results of a 2-d genome scan" target="rqtlsubset_scantwo"/>
+     <tocitem text="R: Subsetting the results of a genome scan" target="rqtlsubset_scanone"/>
+     <tocitem text="R: Summarize the results of a genome scans" target="rqtlsummary_scanone"/>
+     <tocitem text="R: Summarize the results of a two-dimensional genome scan" target="rqtlsummary_scantwo_old"/>
+     <tocitem text="R: Summarize the results of a two-dimensional genome scan" target="rqtlsummary_scantwo"/>
+     <tocitem text="R: Summary of fit of qtl model" target="rqtlsummary_fitqtl"/>
+     <tocitem text="R: Switch the order of markers on a chromosome" target="rqtlswitch_order"/>
+     <tocitem text="R: Test all possible positions for a marker" target="rqtltryallpositions"/>
+     <tocitem text="R: Two-dimensional genome scan with a two-QTL model" target="rqtlscantwo"/>
+     <tocitem text="R: Write data for a QTL experiment to a file" target="rqtlwrite_cross"/>
+</tocitem>
+</toc>

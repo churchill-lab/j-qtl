@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Two-dimensional genome scan with a two-QTL model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for scantwo {qtl}"><tr><td>scantwo {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Two-dimensional genome scan with a two-QTL model</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Perform a two-dimensional genome scan with a two-QTL model, with
+possible allowance for covariates.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scantwo(cross, chr, pheno.col=1, model=c("normal","binary"),
+        method=c("em","imp","hk","mr","mr-imp","mr-argmax"),
+        addcovar=NULL, intcovar=NULL, weights=NULL,
+        use=c("all.obs", "complete.obs"), 
+        incl.markers=FALSE, clean.output=FALSE,
+        maxit=4000, tol=1e-4,
+        verbose=TRUE, n.perm, perm.strata=NULL,
+        assumeCondIndep=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Optional vector indicating the chromosomes for which LOD scores
+should be calculated.</td></tr>
+<tr valign="top"><td><code>pheno.col</code></td>
+<td>
+Column number in the phenotype matrix which should be
+used as the phenotype.  This can be a vector of integers; for methods
+<code>"hk"</code> and <code>"imp"</code> this can be considerably faster than doing
+them one at a time.  One may also give character strings matching
+the phenotype names.</td></tr>
+<tr valign="top"><td><code>model</code></td>
+<td>
+The phenotypic model: the usual normal model or a model for
+binary traits.</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+Indicates whether to use the
+the EM algorithm, imputation, Haley-Knott regression, or marker
+regression.  Marker regression is performed either by dropping
+individuals with missing genotypes (<code>"mr"</code>), or by first filling
+in missing data using a single imputation (<code>"mr-imp"</code>) or by the
+Viterbi algorithm (<code>"mr-argmax"</code>).</td></tr>
+<tr valign="top"><td><code>addcovar</code></td>
+<td>
+Additive covariates.</td></tr>
+<tr valign="top"><td><code>intcovar</code></td>
+<td>
+Interactive covariates (interact with QTL genotype).</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+Optional weights of individuals.  Should be either NULL
+or a vector of length n.ind containing positive weights. Used only
+in the case <code>model="normal"</code>.</td></tr>
+<tr valign="top"><td><code>use</code></td>
+<td>
+In the case that multiple phenotypes are selected to be
+scanned, this argument indicates whether to use all individuals, 
+including those missing some phenotypes, or just those individuals
+that have data on all selected phenotypes.</td></tr>
+<tr valign="top"><td><code>incl.markers</code></td>
+<td>
+If FALSE, do calculations only at points on an
+evenly spaced grid.  If <code><a href="calc.genoprob.html">calc.genoprob</a></code> or
+<code><a href="sim.geno.html">sim.geno</a></code> were run with
+<code>stepwidth="variable"</code>, we force <code>incl.markers=TRUE</code>.</td></tr>
+<tr valign="top"><td><code>clean.output</code></td>
+<td>
+If TRUE, clean the output with
+<code><a href="clean.scantwo.html">clean.scantwo</a></code>, replacing LOD scores for pairs of
+positions that are between markers with 0.  In permutations, this
+will be done for each permutation replicate.  This can be important
+for the case of <code>method="em"</code>, as there can be difficulty with
+algorithm convergence in these regions.</td></tr>
+<tr valign="top"><td><code>maxit</code></td>
+<td>
+Maximum number of iterations; used
+only with method <code>"em"</code>.</td></tr>
+<tr valign="top"><td><code>tol</code></td>
+<td>
+Tolerance value for determining convergence; used only with
+method <code>"em"</code>.</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+If TRUE, display information about the progress of
+calculations.  For method <code>"em"</code>, if <code>verbose</code> is an integer
+above 1, further details on the progress of the algorithm will be
+displayed.</td></tr>
+<tr valign="top"><td><code>n.perm</code></td>
+<td>
+If specified, a permutation test is performed rather than
+an analysis of the observed data.  This argument defines the number
+of permutation replicates.</td></tr>
+<tr valign="top"><td><code>perm.strata</code></td>
+<td>
+If <code>n.perm</code> &gt; 0, this may be used to perform a
+stratified permutation test.  This should be a vector with the same
+number of individuals as in the cross data.  Unique values indicate
+the individual strata, and permutations will be performed within the
+strata.</td></tr>
+<tr valign="top"><td><code>assumeCondIndep</code></td>
+<td>
+If TRUE, assume conditional independence of QTL
+genotypes given marker genotypes.  This is an approximation, but it
+may speed things up.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Standard interval mapping (<code>method="em"</code>) and Haley-Knott
+regression (<code>method="hk"</code>) require that multipoint genotype probabilities are
+first calculated using <code><a href="calc.genoprob.html">calc.genoprob</a></code>.  The
+imputation method uses the results of <code><a href="sim.geno.html">sim.geno</a></code>. 
+</p>
+<p>
+The method <code>"em"</code> is standard interval mapping by the EM algorithm
+(Dempster et al. 1977; Lander and Botstein 1989).  Marker regression
+(<code>method="mr"</code>) is simply linear regression of phenotypes on
+marker genotypes  (individuals with missing genotypes are
+discarded). Haley-Knott regression (<code>method="hk"</code>) uses the
+regression of phenotypes on multipoint genotype probabilities.  The
+imputation method (<code>method="imp"</code>) uses the pseudomarker 
+algorithm described by Sen and Churchill (2001).
+</p>
+<p>
+Individuals with missing phenotypes are dropped.
+</p>
+<p>
+In the presence of covariates, the full model is 
+</p><p align="center"><i>y = m + b[q1] + b[q2] + b[q1 x q2] + A g + Z d[q1] + Z
+d[q2] + Z d[q1 x q2] + e</i></p><p>
+where <i>q1</i> and <i>q2</i> are the unknown QTL genotypes at two
+locations, <EM>A</EM> is a matrix of covariates, and <EM>Z</EM> is a
+matrix of covariates that interact with QTL genotypes.  The columns of
+<EM>Z</EM> are forced to be contained in the matrix <EM>A</EM>.
+</p>
+<p>
+The above full model is compared to the additive QTL model, 
+</p><p align="center"><i>y = m + b[q1] + b[q2] + A g + Z d[q1] + Z
+d[q2] + e</i></p><p>
+and also to the null model, with no QTL, 
+</p><p align="center"><i>y = m + A g + e</i></p>
+<p>
+In the case that <code>n.perm</code> is specified, the R function
+<code>scantwo</code> is called repeatedly.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+If <code>n.perm</code> is missing, the function returns a list with class
+<code>"scantwo"</code> and containing three components.  The first component
+is a matrix of dimension [tot.pos x tot.pos]; the upper triangle
+contains the LOD scores for the additive model, and the lower triangle
+contains the LOD scores for the full model.  The diagonal contains the
+results of <code><a href="scanone.html">scanone</a></code>. The second component of the
+output is a data.frame indicating the locations at which the two-QTL
+LOD scores were calculated.  The first column is the chromosome
+identifier, the second column is the position in cM, the third column
+is a 1/0 indicator for ease in later pulling out only the equally
+spaced positions, and the fourth column indicates whether the position
+is on the X chromosome or not.  The final component is a version of
+the results of <code><a href="scanone.html">scanone</a></code> including sex and/or cross
+direction as additive covariates, which is needed for a proper
+calculation of conditional LOD scores. 
+<br>
+If <code>n.perm</code> is specified, the function returns a list with five
+different LOD scores from each of the permutation replicates. 
+First, the maximum LOD score for the full model (two QTLs plus an
+interaction).  Second, for each pair of
+chromosomes, we take the difference between the full LOD and the
+maximum single-QTL LOD for those two chromosomes, and then maximize
+this across chromosome pairs.  Third, for each pair of chromosomes we
+take the difference between the maximum full LOD and the maximum
+additive LOD, and then maximize this across chromosome pairs.  Fourth,
+the maximum LOD score for the additive QTL model.  Finally, for each
+pair of chromosomes, we take the difference between the additive LOD
+and the maximum single-QTL LOD for those two chromosomes, and then
+maximize this across chromosome pairs.</p>
+
+<h3>X chromosome</h3>
+
+<p>
+The X chromosome must be treated specially in QTL mapping.
+</p>
+<p>
+As in <code><a href="scanone.html">scanone</a></code>, if both males and females are
+included, male hemizygotes are allowed to be different from female
+homozygotes, and the null hypothesis must be changed in order to ensure
+that sex- or pgm-differences in the phenotype do not results in spurious
+linkage to the X chromosome.  (See the help file for
+<code><a href="scanone.html">scanone</a></code>.)
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>; Hao Wu
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Churchill, G. A. and Doerge, R. W. (1994) Empirical threshold values for
+quantitative trait mapping.  <EM>Genetics</EM> <B>138</B>, 963&ndash;971.
+</p>
+<p>
+Dempster, A. P., Laird, N. M. and Rubin, D. B. (1977) Maximum
+likelihood from incomplete data via the EM algorithm.  <EM>J. Roy.
+Statist. Soc.</EM> B, <B>39</B>, 1&ndash;38.
+</p>
+<p>
+Haley, C. S. and Knott, S. A. (1992) A simple regression method for mapping
+quantitative trait loci in line crosses using flanking markers.
+<EM>Heredity</EM> <B>69</B>, 315&ndash;324.
+</p>
+<p>
+Lander, E. S. and Botstein, D. (1989) Mapping Mendelian factors underlying
+quantitative traits using RFLP linkage maps.  <EM>Genetics</EM>
+<B>121</B>, 185&ndash;199.
+</p>
+<p>
+Sen, 'S. and Churchill, G. A. (2001) A statistical framework for quantitative
+trait mapping.  <EM>Genetics</EM> <B>159</B>, 371&ndash;387.
+</p>
+<p>
+Soller, M., Brody, T. and Genizi, A. (1976) On the power of experimental
+designs for the detection of linkage between marker loci and
+quantitative loci in crosses between inbred lines.
+<EM>Theor. Appl. Genet.</EM> <B>47</B>, 35&ndash;39.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="plot.scantwo.html">plot.scantwo</a></code>, <code><a href="summary.scantwo.html">summary.scantwo</a></code>,
+<code><a href="scanone.html">scanone</a></code>, <code><a href="max.scantwo.html">max.scantwo</a></code>,
+<code><a href="summary.scantwoperm.html">summary.scantwoperm</a></code>,
+<code><a href="c.scantwoperm.html">c.scantwoperm</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+fake.f2 &lt;- calc.genoprob(fake.f2, step=5)
+out.2dim &lt;- scantwo(fake.f2, method="hk")
+plot(out.2dim)
+
+# permutations
+
+## Not run: permo.2dim &lt;- scantwo(fake.f2, method="hk", n.perm=1000)
+summary(permo.2dim, alpha=0.05)
+
+# summary with p-values
+summary(out.2dim, perms=permo.2dim, pvalues=TRUE,
+        alphas=c(0.05, 0.10, 0.10, 0.05, 0.10))
+
+# covariates
+data(fake.bc)
+
+fake.bc &lt;- calc.genoprob(fake.bc, step=10)
+ac &lt;- fake.bc$pheno[,c("sex","age")]
+ic &lt;- fake.bc$pheno[,"sex"]
+out &lt;- scantwo(fake.bc, method="hk", pheno.col=1,
+               addcovar=ac, intcovar=ic)
+plot(out)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

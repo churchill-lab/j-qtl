@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot permutation results for a 2d, 2-QTL genome scan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for plot.scantwoperm {qtl}"><tr><td>plot.scantwoperm {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot permutation results for a 2d, 2-QTL genome scan</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plot a histogram of the permutation results from a two-dimensional,
+two-QTL genome scan.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scantwoperm':
+plot(x, lodcolumn=1, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+An object of class <code>"scantwoperm"</code>, as output by
+<code><a href="scantwo.html">scantwo</a></code> when <code>n.perm</code> is specified.</td></tr>
+<tr valign="top"><td><code>lodcolumn</code></td>
+<td>
+This indicates the LOD score column to plot.  This
+should be a single number between 1 and the number of LOD columns in 
+the object input.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Passed to the function <code><a href="../../graphics/html/hist.html">hist</a></code> when it
+is called.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The function plots a histogram of the permutation results obtained by
+<code><a href="scantwo.html">scantwo</a></code> when <code>n.perm</code> is specified. Separate
+histograms are provided for the five LOD scores, <code>full</code>,
+<code>fv1</code>, <code>int</code>, <code>add</code>, and <code>av1</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+None.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scantwo.html">scantwo</a></code>,
+<code><a href="summary.scantwoperm.html">summary.scantwoperm</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.bc)
+fake.bc &lt;- calc.genoprob(fake.bc)
+
+operm2 &lt;- scantwo(fake.bc, method="hk", n.perm=10)
+plot(operm2)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

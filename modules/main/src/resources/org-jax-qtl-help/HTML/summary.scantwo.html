@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Summarize the results of a two-dimensional genome scan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for summary.scantwo {qtl}"><tr><td>summary.scantwo {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Summarize the results of a two-dimensional genome scan</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Summarize the interesting aspects of the results of <code><a href="scantwo.html">scantwo</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scantwo':
+summary(object, thresholds, 
+        what=c("best", "full", "add", "int"),
+        perms, alphas, lodcolumn=1, pvalues=FALSE,
+        df=FALSE, allpairs=TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+An object of class <code>scantwo</code>, the output of the
+function <code><a href="scantwo.html">scantwo</a></code>.</td></tr>
+<tr valign="top"><td><code>thresholds</code></td>
+<td>
+A vector of length 5, giving LOD thresholds
+for the full, conditional-interactive, interaction, additive, and
+conditional-additive LOD scores. See Details, below.</td></tr>
+<tr valign="top"><td><code>what</code></td>
+<td>
+Indicates for which LOD score the maximum should be
+reported. See Details, below.</td></tr>
+<tr valign="top"><td><code>perms</code></td>
+<td>
+Optional permutation results used to derive thresholds or
+to calculate genome-scan-adjusted p-values.  This must be consistent
+with the <code>object</code> input, in that it must have the same number of
+LOD score columns.</td></tr>
+<tr valign="top"><td><code>alphas</code></td>
+<td>
+If perms are included, these are the significance levels used
+to calculate thresholds for determining which peaks to pull out.  It
+should be a vector of length 5, giving significance levels 
+for the full, conditional-interactive, interaction, additive, and
+conditional-additive LOD scores.  (It can also be a single number, in
+which case it is assumed that the same value is used for all five LOD
+scores.)  If <code>thresholds</code> is specified, <code>alphas</code> should not
+be.</td></tr>
+<tr valign="top"><td><code>lodcolumn</code></td>
+<td>
+If the scantwo results contain LOD scores for
+multiple phenotypes, this argument indicates which to use in the
+summary.  Only one LOD score column may be considered at a time.</td></tr>
+<tr valign="top"><td><code>pvalues</code></td>
+<td>
+If TRUE, include columns with genome-scan-adjusted
+p-values in the results.  This requires that <code>perms</code> be
+provided.</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+If TRUE, the degrees of freedom associated with the LOD
+scores are shown.</td></tr>
+<tr valign="top"><td><code>allpairs</code></td>
+<td>
+If TRUE, all pairs of chromosomes are considered.  If
+FALSE, only self-self pairs are considered, so that one may more
+conveniently check for possible linked QTL.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored at this point.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+If <code>what="best"</code>, we calculate, for each pair of chromosomes, the
+maximum LOD score for the full model (two QTL plus interaction) and
+the maximum LOD score for the additive model.  The difference between
+these is a LOD score for a test for interaction.  We also calculate
+the difference between the maximum full LOD and the maximum single-QTL LOD
+score for the two chromosomes; this is the LOD score for a test for a
+second QTL, allowing for epistasis, which we call either the
+conditional-interactive or "fv1" LOD score.  Finally,
+we calculate the difference between the maximum additive LOD score and
+the maximum single-QTL LOD score for the two chromosomes; this is the
+LOD score for a test for a second QTL, assuming that the two QTL act
+additively, which we call either the conditional-additive or "av1" LOD
+score.  Note that the maximum full LOD and additive LOD are allowed to
+occur in different places. 
+</p>
+<p>
+If <code>what="full"</code>, we find the maximum full LOD and extract the
+additive LOD at the corresponding pair of positions; we derive
+the other three LOD scores for that fixed pair of positions.
+</p>
+<p>
+If <code>what="add"</code>, we find the maximum additive LOD and extract the
+full LOD  at the corresponding pair of positions; we derive
+the other three LOD scores for that fixed pair of positions.
+</p>
+<p>
+If <code>what="int"</code>, we find the pair of positions for which the
+difference between the full and additive LOD scores is largest, and
+then calculate the five LOD scores at that pair of positions.
+</p>
+<p>
+If <code>thresholds</code> or <code>alphas</code> is provided (and note that when
+<code>alphas</code> is provided, <code>perms</code> must also), we extract just
+those pairs of chromosomes for which either (a) the full LOD score
+exceeds its thresholds and either the conditional-interactive LOD or
+the interaction LOD exceed their threshold, or (b) the additive LOD
+score exceeds its threshold and the conditional-additive LOD exceeds
+its threshold.  The thresholds or alphas must be given in the order
+full, cond-int, int, add, cond-add. 
+</p>
+<p>
+Thresholds may be obtained by a permutation test with
+<code><a href="scantwo.html">scantwo</a></code>, but these are extremely time-consuming.
+For a mouse backcross, we suggest the thresholds (6.0, 4.7, 4.4, 4.7,
+2.6) for the full, conditional-interactive, interaction, additive, and
+conditional-additive LOD scores, respectively.  
+For a mouse intercross, we suggest the thresholds (9.1, 7.1, 6.3, 6.3,
+3.3) for the full, conditional-interactive, interaction, additive, and
+conditional-additive LOD scores, respectively.  These were obtained by
+10,000 simulations of crosses with 250 individuals, markers at a 10 cM
+spacing, and analysis by Haley-Knott regression.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>summary.scantwo</code>, to be printed by
+<code>print.summary.scantwo</code>;</p>
+
+<h3>Output of addpair</h3>
+
+<p>
+<B>Note</B> that, for output from <code><a href="addpair.html">addpair</a></code> in which the
+new loci are indicated explicitly in the formula, the summary provided
+by <code>summary.scantwo</code> is somewhat special.
+</p>
+<p>
+All arguments except <code>allpairs</code> and <code>thresholds</code> (and, of
+course, the input <code>object</code>) are ignored.
+</p>
+<p>
+If the formula is symmetric in the two new QTL, the output has just two LOD
+score columns: <code>lod.2v0</code> comparing the full model to the model
+with neither of the new QTL, and <code>lod.2v1</code> comparing the full
+model to the model with just one new QTL.
+</p>
+<p>
+If the formula is <EM>not</EM> symmetric in the two new QTL, the output
+has three LOD score columns: <code>lod.2v0</code> comparing the full model
+to the model with neither of the new QTL, <code>lod.2v1b</code> comparing
+the full model to the model in which the first of the new QTL is
+omitted, and <code>lod.2v1a</code> comparing the full model to the model
+with the second of the new QTL omitted.  
+</p>
+<p>
+The <code>thresholds</code> argument should have length 1 or 2, rather than
+the usual 5.  Rows will be retained if <code>lod.2v0</code> is greater than
+<code>thresholds[1]</code> and <code>lod.2v1</code> (or either of <code>lod.2v1a</code>
+or <code>lod.2v1b</code>) is greater than <code>thresholds[2]</code>.  (If a
+single thresholds is given, we assume that <code>thresholds[2]==0</code>.)
+</p>
+
+
+<h3>The older version</h3>
+
+<p>
+The previous version of this function is still available, though it is
+now named <code><a href="summary.scantwo.old.html">summary.scantwo.old</a></code>.
+</p>
+<p>
+We much prefer the revised function.  However, while we are confident
+that this function (and the permutations in
+<code><a href="scantwo.html">scantwo</a></code>) are calculating the relevant statistics,
+the appropriate significance levels for these relatively complex
+series of statistical tests is not yet completely clear.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scantwo.html">scantwo</a></code>, <code><a href="plot.scantwo.html">plot.scantwo</a></code>,
+<code><a href="max.scantwo.html">max.scantwo</a></code>, <code><a href="condense.scantwo.html">condense.scantwo</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+fake.f2 &lt;- calc.genoprob(fake.f2, step=5)
+out.2dim &lt;- scantwo(fake.f2, method="hk")
+
+# All pairs of chromosomes
+summary(out.2dim)
+
+# Chromosome pairs meeting specified criteria
+summary(out.2dim, thresholds=c(9.1, 7.1, 6.3, 6.3, 3.3))
+
+# Similar, but ignoring the interaction LOD score in the rule
+summary(out.2dim, thresholds=c(9.1, 7.1, Inf, 6.3, 3.3))
+
+# Pairs having largest interaction LOD score, if it's &gt; 4
+summary(out.2dim, thresholds=c(0, Inf, 4, Inf, Inf), what="int")
+
+# permutation test to get thresholds; run in two batches
+#     and then combined with c.scantwoperm
+## Not run: 
+operm.2dimA &lt;- scantwo(fake.f2, method="hk", n.perm=500)
+operm.2dimB &lt;- scantwo(fake.f2, method="hk", n.perm=500)
+operm.2dim &lt;- c(operm.2dimA, operm.2dimB)
+## End(Not run)
+
+
+# estimated LOD thresholds
+summary(operm.2dim)
+
+# Summary, citing significance levels and so estimating thresholds
+#     from the permutation results
+summary(out.2dim, perms=operm.2dim, alpha=rep(0.05, 5))
+
+# Similar, but ignoring the interaction LOD score in the rule
+summary(out.2dim, perms=operm.2dim, alpha=c(0.05, 0.05, 0, 0.05, 0.05))
+
+# Similar, but also getting genome-scan-adjusted p-values
+summary(out.2dim, perms=operm.2dim, alpha=c(0.05, 0.05, 0, 0.05, 0.05),
+        pvalues=TRUE)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

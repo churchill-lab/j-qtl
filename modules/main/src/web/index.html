@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+J/qtl installation
+</title></head>
+<body>
+SVN Revision: 9945<BR>
+Click <A HREF="app/j-qtl.jnlp">here</A> to deploy J/qtl 1.3.0-build1 (please
+uninstall earlier versions and remove the &lt;user home&gt;/.j-qtl first for a
+clean installation)<BR>
+Click <A HREF="http://cs-bugs.jax.org/buglist.cgi?query_format=advanced&short_desc_type=allwordssubstr&short_desc=&product=J%2Fqtl&long_desc_type=substring&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&deadlinefrom=&deadlineto=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&emailassigned_to1=1&emailtype1=substring&email1=&emailassigned_to2=1&emailreporter2=1&emailcc2=1&emailtype2=substring&email2=&bugidtype=include&bug_id=&votes=&chfieldfrom=&chfieldto=Now&chfieldvalue=&cmdtype=doit&order=Reuse+same+sort+as+last+time&field0-0-0=noop&type0-0-0=noop&value0-0-0=">here</A>
+for the list of current issues<BR>
+Click <A HREF="app/dist/j-qtl-1.3.0.zip">here</A> for the command line
+distribution of J/qtl<BR>
+<br>
+Notes:
+<pre>
+J/qtl 1.3.1:
+
+Hard Requirements (application will not start without these):
+Windows XP or Mac OS X >= 10.4
+Java Runtime >= 5.0
+
+Soft Requirements (the user will be prompted if they don't meet these requirements):
+R = 2.10.*
+R/qtl >= 1.10
+
+What's New in J/qtl 1.3.1-build1
+  - Added compatibility with R 2.10.* and removed compatibility with earlier
+    versions of R
+
+
+J/qtl 1.3.0:
+
+Hard Requirements (application will not start without these):
+Windows XP or Mac OS X >= 10.4
+Java Runtime >= 5.0
+
+Soft Requirements (the user will be prompted if they don't meet these requirements):
+R = 2.9.*
+R/qtl >= 1.10
+
+What's New in J/qtl 1.3.0-build1
+  - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=694">issue 694</a>
+    Fixed the order of the NotA and NotB allele codes
+  - Simplified the load cross dialog
+  - Added compatibility with R 2.9 and removed compatibility with earlier
+    versions of R
+
+================================================================================
+= NOTE BELOW THIS LINE I USE "WHATS NEW SINCE". ABOVE IS "WHATS NEW IN" WHICH  =
+= I THINK IS A MORE USEFUL WAY TO REFERENCE VERSION CHANGES                      =
+================================================================================
+
+What's New since J/qtl 1.2.1-build1
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=514">issue 514</a>
+   Fixed X chromosome allele values which needed special treatment
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=516">issue 516</a>
+   bug fix for bad pgm value (text in popup dialog was wrong)
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=517">issue 517</a>
+   upgrade to 1.10 (scanone indexing has changed for chromosome X)
+
+What's New since J/qtl 1.2.0-build2
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=498">issue 498</a>
+   fixed issue with genoplot sort order
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=499">issue 499</a>
+   fixed issue where infinite LOD scores break scanone plots
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=119">issue 119</a>
+   fixed issue with wrong tick marks and effect plot failing
+
+What's New since J/qtl 1.2.0-build1
+ - Updated help documentation to reflect interface changes
+ - Made help searchable
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=344">issue 344</a>
+   Added Copyright and License to help and linked to it from About dialog
+
+What's New since J/qtl 1.1.1
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=370">issue 370</a>
+   Changed the Two QTL Scan plot colors so that they now match the
+   updated R/qtl methods for plotting cond-add and cond-int
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=122">issue 122</a>
+   Fixed the problem with doing an effect plot on an imputed marker
+   from the One or Two QTL scan plots by doing the effect plot on
+   the nearest true marker.
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=114">issue 114</a>
+   Added a context menu item for plotting Two Qtl scan results
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=129">issue 129</a>
+   Added code to avoid name collision when creating objects. The
+   user is asked to use a different name if they use a name that
+   would cause J/qtl to overwrite an existing R object. This was
+   implemented for cross loading, cross simulation, scan one,
+   scan two, and fitting
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=267">issue 267</a>
+   Added a memory settings panel that allows the user to change
+   the Java and R memory limits (R memory limit is only available
+   in windows)
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=339">issue 339</a>
+   got rid of the spurrious error message that appears when all
+   of the scantwo results are filtered out in the scantwo summary
+   panel (the error message used to appear in the R output terminal).
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=340">issue 340</a>
+   J/qtl will now quit if the user refuses to install or upgrade
+   R/qtl when required
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=219">issue 219</a>
+   Changed default centimorgan distance to 2cm for the
+   Simulate Genotype and Calculate Genotype Probabilities dialogs
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=356">issue 356</a>
+   Fixed a randomly occuring bug where the wrong scantwo plot would
+   sometimes be displayed when there is more than one scantwo result
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=344">issue 344</a>
+   Changed all source file headers to GPL
+ - Added new graph customization features (fonts, tick marks etc...)
+ - Added support for R 2.8.* and removed support for R 2.6.*
+
+What's New since J/qtl 1.1.0-build3
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=209">issue 209</a> fixed an issue with a bad phenotype label being used for scanone
+   plot and summary
+ - modularized a bunch of functionality in preperation for J/maanova code sharing
+
+What's New since J/qtl 1.1.0-build2
+ - corrected the effect plot from scantwo with multiple phenotypes (was always
+   going to 1st phenotype before)
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=186">issue 186</a> added code to deal with multiple phenotypes in a scan interval command
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=183">issue 183</a> Fixed minor histogram selection rendering bug
+
+What's New since J/qtl 1.1.0-build1
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=181">issue 181</a> Fixed RF plot bug. The wrong colors were being rendered when a chromosome is
+   selected and, you couldn't open more thatn one RF plot at a time
+ - corrected help files for scantwo
+
+What's New since J/qtl 1.0.0-build17
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=170">issue 170</a> Fixed bug by catching the IndexOutOfBoundsException being thrown
+   and assigning a null value myself on the Java side
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=105">issue 105</a> Added a confirm on close dialog that checks for project changes before closing
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=173">issue 173</a> J/qtl now remembers: previous 10 project files, last image export directory,
+   last R script export directory, last export table directory
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=174">issue 174</a> change the scan dialogs, plots and summaries to allow for multiple phenotypes
+   per scan. this was fixed in revision 2554
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=77">issue 77</a> added "Save Image" to legacy graphs
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=179">issue 179</a> users can now modify histogram bin sizes
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=180">issue 180</a> users can now pan and zoom. a future version should have a point and click
+   interface, but the data fields work for now
+
+What's New since J/qtl 1.0.0-build16
+ - Changed deployment files for public site
+ - Added new copyright to the about dialog
+ - Added install instructions to deployment zip file
+
+What's New since J/qtl 1.0.0-build15
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=121">issue 121</a> added code to clean old project on project creation
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=124">issue 124</a> added missing help files
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=101">issue 101</a> added MGI link to scantwo plot
+
+What's New since J/qtl 1.0.0-build14
+ - Fixed a dialog layout problem that was showing up for "Simulate Cross"
+   on Windows XP
+ - Added help for "Simulate Cross"
+
+What's New since J/qtl 1.0.0-build13
+ - Removed licensing terms from the "About" menu since they were much more
+   liberal than the terms on the J/qtl home page
+ - Added a "Simulate Cross" menu item that allows users to build new crosses
+ - Added jittermap to main menu
+ - Fixed problem when genotype menus were not being disabled when no crosses
+   were available
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=101">issue 101</a> Added MGD link to scanone plot, scanone summary and scantwo summary
+   (still haven't added link to scantwo plot)
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=124">issue 124</a> added some new help files (still more to add)
+
+What's New since J/qtl 1.0.0-build12
+ - added a dialog for creating new QTL baskets
+ - added executable jar for easier local deployment
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=112">issue 112</a> reimplemented the load cross dialog
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=131">issue 131</a> implemented the "Add QTL" button for QTL basket
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=120">issue 120</a> fixed problem with plotting & summarizing scan one results that
+   used a spike up/down distribution
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=125">issue 125</a> fixed problem with the toggle select all button on the scantwo
+   results dialog
+
+What's New since J/qtl 1.0.0-build11
+ - added "insert command" button that allows the user to directly enter commands.
+   this was tested by loading crosses along with some read-only R commands
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=123">issue 123</a> fixed project save/load failure in windows
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=126">issue 126</a> data tree scrolling should now work
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=93">issue 93</a> added an indicator bar that shows when R is busy
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=106">issue 106</a> added a drop down to most displays with markers
+   that allows the user to select how the marker strings should be formatted
+
+What's New since J/qtl 1.0.0-build10
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=78">issue 78</a> data tables are now exportable to csv
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=118">issue 118</a> fixed issue with scatter plot and histogram breaking if phenotype
+   data was missing for individuals (now missing data is just ignored
+   in the plots)
+
+What's New since J/qtl 1.0.0-build9
+ - Changed minimum R version to 2.6
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=111">issue 111</a> Fixed bug with initial fit results being wrong
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=117">issue 117</a> Cross names are now validated
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=81">issue 81</a> Fixed bug where wrong scan data is shown (similar to 111)
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=83">issue 83</a> cross summaries are now accessible through a context menu
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=77">issue 77</a> added save image and configure to most plots. just a little bit more to do here
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=115">issue 115</a> expanded dialog sizes for fitqtl and scan one/scan two dialogs
+ - <a href="http://cs-bugs.jax.org/show_bug.cgi?id=113">issue 113</a> reimplemented chromosome selection for RF plot
+
+What's New since J/qtl 1.0.0-build8
+ - added QTL covariates
+ - redesigned and reimplemented the scan summary panels to use the R/qtl
+   summary functions
+ - added jittermap to the cross context menu
+
+What's New since J/qtl 1.0.0-build7
+ - new zip file for command-line deployment
+ - improved FIT QTL capabilities including a results panel, fitqtl
+   data tree nodes and menu items for fit qtl in the main menu
+ - fixed poor RF performance by rasterizing the graph image instead of rendering
+   the vector image every time
+ - fixed bug in the "estimate maps" dialog
+
+What's New since J/qtl 1.0.0-build6
+ - fixed a bad deployment file
+
+What's New since J/qtl 1.0.0-build4
+ - Added confidence interval (integrated with scanone plot)
+ - Fixed issues with dialogs not working the same on project reload as they
+   do in an active session
+
+What's New since J/qtl 1.0.0-build3
+ - Added a One & Two QTL scan summary dialogs
+ - Added One & Two QTL scan graphs (Two qtl version is integrated from an
+   older J/qtl release
+ - Added View/Edit QTL basket functionality
+ - Added Effect Plot which is accessible from a right-click context menu on
+   either the One QTL scan graph or the Two QTL scan graph
+
+What's New since J/qtl 1.0.0-build2
+ - Updated One QTL and Two QTL scan dialogs
+ - Integration of old Genome Plot
+ - New Scan One Summary with "Add to QTL Basket" button
+ - New "FIT QTL" dialog (right click QTL basket to perform fit)
+
+What's New since J/qtl 0.9
+ - New One QTL and Two QTL scan dialogs. See updated requirements sections 5.5.3.5.1.* and 5.5.3.6.1.*.
+ - Web Start deployment
+ - Automated R and R/qtl integration for windows and mac
+ - Automated creation of a &lt;user home&gt;/.j-qtl/1.0 directory which contains all
+ of the logs, configuration and state data used by J/qtl. This directory can always
+ be safely deleted which will make J/qtl think that it's being run for the 1st time
+ (ie. all configuration and application state data will be lost)
+ - integrated java logging framework
+
+</pre>
+</body>
+</html>

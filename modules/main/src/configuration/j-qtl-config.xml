@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+-->
+
+<jax-r:rApplicationConfiguration  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:jax-r='http://jax.org/r'
+   xsi:schemaLocation='http://jax.org/r file:/Users/kss/projects/j-qtl-dev/libraries/jax-schema/src/schema/jax.org/r/r-application-configuration.xsd'
+   javaMemoryLimitMegabytes="512"
+   rMemoryLimitMegabytes="2048">
+   <jax-r:rConfiguration/>
+   <jax-r:launchSystemProperty key="java.util.logging.config.class" value="org.jax.util.ResourceBasedLoggerConfiguration"/>
+</jax-r:rApplicationConfiguration>

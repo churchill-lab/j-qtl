@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Drop a set of markers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for drop.markers {qtl}"><tr><td>drop.markers {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Drop a set of markers</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Drop a vector of markers from the data matrices and genetic maps.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+drop.markers(cross, markers)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>markers</code></td>
+<td>
+A character vector of marker names.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+The input object, with any markers in the vector <code>markers</code> removed
+from the genotype data matrices, genetic maps, and, if applicable, any
+derived data (such as produced by <code><a href="calc.genoprob.html">calc.genoprob</a></code>).
+(It might be a good idea to re-derive such things after using this
+function.)</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="drop.nullmarkers.html">drop.nullmarkers</a></code>, <code><a href="geno.table.html">geno.table</a></code>,
+<code><a href="clean.cross.html">clean.cross</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(listeria)
+listeria2 &lt;- drop.markers(listeria, c("D10M44","D1M3","D1M75"))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

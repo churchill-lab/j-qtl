@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Test all possible positions for a marker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for tryallpositions {qtl}"><tr><td>tryallpositions {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Test all possible positions for a marker</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Try all possible positions for a marker, keeping all other markers
+fixed, and evaluate the log likelihood and estimate the chromosome
+length.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+tryallpositions(cross, marker, chr, error.prob=0.0001,
+                map.function=c("haldane","kosambi","c-f","morgan"),
+                m=0, p=0, maxit=4000, tol=1e-6, sex.sp=TRUE,
+                verbose=TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>marker</code></td>
+<td>
+Character string with name of the marker to move about.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+A vector specifying which chromosomes to test for the
+position of the marker.  This may be a logical vector, a numerical
+vector, or a vector of character strings.</td></tr>
+<tr valign="top"><td><code>error.prob</code></td>
+<td>
+Assumed genotyping error rate used in the calculation
+of the penetrance Pr(observed genotype | true genotype).</td></tr>
+<tr valign="top"><td><code>map.function</code></td>
+<td>
+Indicates whether to use the Haldane, Kosambi,
+Carter-Falconer, or Morgan map function when converting genetic
+distances into recombination fractions. (Ignored if m &gt; 0.)</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+Interference parameter for the chi-square model for
+interference; a non-negative integer, with m=0 corresponding to no
+interference. This may be used only for a backcross or intercross.</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+Proportion of chiasmata from the NI mechanism, in the Stahl
+model; p=0 gives a pure chi-square model.  This may be used only for
+a backcross or intercross.</td></tr>
+<tr valign="top"><td><code>maxit</code></td>
+<td>
+Maximum number of EM iterations to perform.</td></tr>
+<tr valign="top"><td><code>tol</code></td>
+<td>
+Tolerance for determining convergence.</td></tr>
+<tr valign="top"><td><code>sex.sp</code></td>
+<td>
+Indicates whether to estimate sex-specific maps; this is 
+used only for the 4-way cross.</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+If TRUE, print information on progress.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A data.frame with each row being a possible position for the marker.
+The first two columns are the chromosome ID and position.  The third
+column is a LOD score comparing the hypotheses that the marker in that
+position versus the hypothesis that it is not linked to that chromosome.
+<br>
+In the case of a 4-way cross, with <code>sex.sp=TRUE</code>, there are two
+additional columns with the estimated female and male genetic lengths
+of the respective chromosome, when the marker is in that position.
+With <code>sex.sp=FALSE</code>, or for other types of crosses, there is one
+additional column, with the estimated genetic length of the respective
+chromosome, when the marker is in that position.
+<br>
+A final column contains a character string indicating the nearest
+flanking markers for each interval.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="est.map.html">est.map</a></code>, <code><a href="ripple.html">ripple</a></code>,
+<code><a href="est.rf.html">est.rf</a></code>, <code><a href="switch.order.html">switch.order</a></code>,
+<code><a href="movemarker.html">movemarker</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.bc)
+tryallpositions(fake.bc, "D7M301", 7, error.prob=0, verbose=FALSE)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

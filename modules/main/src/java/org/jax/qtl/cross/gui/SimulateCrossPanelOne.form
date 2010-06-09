@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.5" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="numIndividualsLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="numIndividualsSpinner" min="-2" pref="67" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="crossTypeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="crossTypeComboBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="mapFunctionLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                      <Component id="mapFunctionComboBox" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="probabilityOfNoInterferenceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="partiallyInformativeRateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="partiallyInformativeRateSpinner" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="genoErrorRateSpinner" min="-2" pref="55" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="missingGenoRateLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="probabilityOfNoInterferenceSpinner" min="-2" pref="55" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="interferenceParameterLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="interferenceParameterSpinner" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                                  <Component id="missingGenoRateSpinner" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="genoErrorRateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="numIndividualsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numIndividualsSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="crossTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="crossTypeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mapFunctionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mapFunctionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="genoErrorRateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genoErrorRateSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="missingGenoRateSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="missingGenoRateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="partiallyInformativeRateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="partiallyInformativeRateSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="probabilityOfNoInterferenceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="probabilityOfNoInterferenceSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="interferenceParameterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="interferenceParameterSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="numIndividualsLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Number of Individuals:"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="numIndividualsSpinner">
+    </Component>
+    <Component class="javax.swing.JLabel" name="crossTypeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cross Type:"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="crossTypeComboBox">
+    </Component>
+    <Component class="javax.swing.JLabel" name="mapFunctionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Map Function:"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="mapFunctionComboBox">
+    </Component>
+    <Component class="javax.swing.JLabel" name="genoErrorRateLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Genotyping Error Rate (0-1):"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="genoErrorRateSpinner">
+    </Component>
+    <Component class="javax.swing.JLabel" name="missingGenoRateLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Missing Genotype Rate (0-1):"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="missingGenoRateSpinner">
+    </Component>
+    <Component class="javax.swing.JLabel" name="partiallyInformativeRateLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Partially Informative Rate (0-1):"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="partiallyInformativeRateSpinner">
+    </Component>
+    <Component class="javax.swing.JLabel" name="probabilityOfNoInterferenceLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Probability of No Interference (0-1):"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="probabilityOfNoInterferenceSpinner">
+    </Component>
+    <Component class="javax.swing.JLabel" name="interferenceParameterLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Interference Parameter:"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="interferenceParameterSpinner">
+    </Component>
+  </SubComponents>
+</Form>

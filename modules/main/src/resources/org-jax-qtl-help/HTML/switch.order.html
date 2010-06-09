@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Switch the order of markers on a chromosome</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for switch.order {qtl}"><tr><td>switch.order {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Switch the order of markers on a chromosome</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Switch the order of markers on a specified chromosome to a specified
+new order.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>switch.order(cross, chr, order, error.prob=0.0001,
+                    map.function=c("haldane","kosambi","c-f","morgan"),
+                    maxit=4000, tol=1e-4, sex.sp=TRUE)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+The chromosome for which the marker order is to be
+switched.</td></tr>
+<tr valign="top"><td><code>order</code></td>
+<td>
+A vector of numeric indices defining the new marker
+order. The vector may have length two more than the number of
+markers, for easy in use with the output of the function
+<code><a href="ripple.html">ripple</a></code>.</td></tr>
+<tr valign="top"><td><code>error.prob</code></td>
+<td>
+Assumed genotyping error rate (passed to
+<code><a href="est.map.html">est.map</a></code>).</td></tr>
+<tr valign="top"><td><code>map.function</code></td>
+<td>
+Map function to be used (passed to
+<code><a href="est.map.html">est.map</a></code>).</td></tr>
+<tr valign="top"><td><code>maxit</code></td>
+<td>
+Maximum number of EM iterations to perform.</td></tr>
+<tr valign="top"><td><code>tol</code></td>
+<td>
+Tolerance for determining convergence.</td></tr>
+<tr valign="top"><td><code>sex.sp</code></td>
+<td>
+Indicates whether to estimate sex-specific maps; this is 
+used only for the 4-way cross.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+The input <code>cross</code> object, but with the marker order on the
+specified chromosome updated, and with any derived data removed
+(except for recombination fractions, if present, which are not
+removed);  the genetic map for the relevant chromosome is
+re-estimated.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="ripple.html">ripple</a></code>, <code><a href="clean.html">clean</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+fake.f2 &lt;- switch.order(fake.f2, 1, c(1,3,2,4:7))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

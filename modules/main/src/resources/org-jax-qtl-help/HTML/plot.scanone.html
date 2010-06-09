@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot LOD curves</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for plot.scanone {qtl}"><tr><td>plot.scanone {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot LOD curves</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plot the LOD curve for a genome scan with a single-QTL model (the
+output of <code><a href="scanone.html">scanone</a></code>).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scanone':
+plot(x, x2, x3, chr, lodcolumn=1, incl.markers=TRUE,
+     xlim, ylim, lty=1, col=c("black","blue","red"), lwd=2,
+     add=FALSE, gap=25, mtick = c("line", "triangle"),
+     show.marker.names=FALSE, alternate.chrid=FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+An object of class <code>"scanone"</code>, as output by
+<code><a href="scanone.html">scanone</a></code>.</td></tr>
+<tr valign="top"><td><code>x2</code></td>
+<td>
+Optional second <code>scanone</code> object.</td></tr>
+<tr valign="top"><td><code>x3</code></td>
+<td>
+Optional third <code>scanone</code> object.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Optional vector specifying which chromosomes to plot. (The
+chromosomes must be specified by name.)</td></tr>
+<tr valign="top"><td><code>lodcolumn</code></td>
+<td>
+An integer, or vector of 3 integers, indicating which
+of the LOD score columns should be plotted (generally this is 1).</td></tr>
+<tr valign="top"><td><code>incl.markers</code></td>
+<td>
+Indicate whether to plot line segments at the
+marker locations.</td></tr>
+<tr valign="top"><td><code>xlim</code></td>
+<td>
+Limits for x-axis (optional).</td></tr>
+<tr valign="top"><td><code>ylim</code></td>
+<td>
+Limits for y-axis (optional).</td></tr>
+<tr valign="top"><td><code>lty</code></td>
+<td>
+Line types; a vector of length 1 or 3.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+Line colors; a vector of length 1 or 3.</td></tr>
+<tr valign="top"><td><code>lwd</code></td>
+<td>
+Line widths; a vector of length 1 or 3.</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+If TRUE, add to a current plot.</td></tr>
+<tr valign="top"><td><code>gap</code></td>
+<td>
+Gap separating chromosomes (in cM).</td></tr>
+<tr valign="top"><td><code>mtick</code></td>
+<td>
+Tick mark type for markers (line segments or
+upward-pointing triangels).</td></tr>
+<tr valign="top"><td><code>show.marker.names</code></td>
+<td>
+If TRUE, show the marker names along the x axis.</td></tr>
+<tr valign="top"><td><code>alternate.chrid</code></td>
+<td>
+If TRUE and more than one chromosome is
+plotted, alternate the placement of chromosome 
+axis labels, so that they may be more easily distinguished.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Passed to the function <code><a href="../../graphics/html/plot.html">plot</a></code> when it
+is called.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function allows you to plot the results of up to three genome
+scans against one another.  Such objects must conform with each
+other. 
+</p>
+<p>
+One may alternatively use the argument <code>add</code> to add the plot of
+an additional genome scan to the current figure, but some care is
+required: the same chromosomes should be selected, and the results
+must concern crosses with the same genetic maps.
+</p>
+<p>
+If a single <code>scanone</code> object containing multiple LOD score
+columns (for example, from different phenotypes) is input, up to three
+LOD curves may be plotted, by providing a vector in the argument
+<code>lodcolumn</code>.  If multiple <code>scanone</code> objects are input (via
+<code>x</code>, <code>x2</code> and <code>x3</code>), the LOD score columns to be
+plotted are chosen from the corresponding element of the
+<code>lodcolumn</code> argument.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+None.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scanone.html">scanone</a></code>,
+<code><a href="summary.scanone.html">summary.scanone</a></code>, <code><a href="../../graphics/html/par.html">par</a></code>,
+<code><a href="../../grDevices/html/colors.html">colors</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+fake.f2 &lt;- calc.genoprob(fake.f2,step=2.5)
+out.mr &lt;- scanone(fake.f2, method="mr")
+out.em &lt;- scanone(fake.f2, method="em")
+plot(out.mr)
+plot(out.mr, out.em, chr=c(1,13), lty=1, col=c("violetred","black"))
+out.hk &lt;- scanone(fake.f2, method="hk")
+plot(out.hk, chr=c(1,13), add=TRUE, col="slateblue")
+
+plot(out.hk, chr=13, show.marker.names=TRUE)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

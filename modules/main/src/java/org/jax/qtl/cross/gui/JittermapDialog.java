@@ -1,0 +1,239 @@
+/*
+ * Copyright (c) 2009 The Jackson Laboratory
+ * 
+ * This software was developed by Gary Churchill's Lab at The Jackson
+ * Laboratory (see http://research.jax.org/faculty/churchill).
+ *
+ * This is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this software.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package org.jax.qtl.cross.gui;
+
+import javax.help.CSH;
+import javax.help.HelpSet;
+import javax.help.SecondaryWindow;
+import javax.swing.JOptionPane;
+
+import org.jax.qtl.QTL;
+import org.jax.qtl.cross.Cross;
+import org.jax.r.RAssignmentCommand;
+import org.jax.r.jriutilities.RInterface;
+import org.jax.util.TextWrapper;
+
+/**
+ * Dialog for running jittermap
+ * @author <A HREF="mailto:keith.sheppard@jax.org">Keith Sheppard</A>
+ */
+public class JittermapDialog extends javax.swing.JDialog
+{
+    /**
+     * every {@link java.io.Serializable} is supposed to have one of these
+     */
+    private static final long serialVersionUID = 6938492359808669633L;
+    
+    private static final String HELP_ID_STRING = "Jittermap";
+    
+    /**
+     * Constructor
+     * @param parent
+     *          the parent frame
+     * @param availableCrosses
+     *          the cross list that the user can select from
+     * @param selectedCross
+     *          the initial selection value to use (can be null)
+     */
+    public JittermapDialog(
+            java.awt.Frame parent,
+            Cross[] availableCrosses,
+            Cross selectedCross)
+    {
+        super(parent, true);
+        this.initComponents();
+        this.postGuiInit(availableCrosses, selectedCross);
+    }
+    
+    /**
+     * Take care of the initialization that wasn't done by the GUI builder
+     * @param availableCrosses
+     *          the cross list that the user can select from
+     * @param selectedCross
+     *          the initial selection value to use (can be null)
+     */
+    private void postGuiInit(Cross[] availableCrosses, Cross selectedCross)
+    {
+        for(Cross cross: availableCrosses)
+        {
+            this.crossComboBox.addItem(cross);
+        }
+        
+        if(selectedCross != null)
+        {
+            this.crossComboBox.setSelectedItem(selectedCross);
+        }
+        
+        // initialize the help stuff
+        HelpSet hs = QTL.getInstance().getMenubar().getHelpSet();
+        CSH.setHelpIDString(
+                this.helpButton,
+                HELP_ID_STRING);
+        this.helpButton.addActionListener(
+                new CSH.DisplayHelpFromSource(
+                        hs,
+                        SecondaryWindow.class.getName(),
+                        null));
+    }
+    
+    /**
+     * Get the currently selected cross
+     * @return
+     *          the cross or null if no cross is selected
+     */
+    private Cross getSelectedCross()
+    {
+        return (Cross)this.crossComboBox.getSelectedItem();
+    }
+    
+    /**
+     * Validate the data in this dialog
+     * @return
+     *          true iff the data is valid
+     */
+    public boolean validateData()
+    {
+        String validationErrorMessage = null;
+
+        if(this.getSelectedCross() == null)
+        {
+            validationErrorMessage =
+                "Please either select a cross or cancel.";
+        }
+
+        if(validationErrorMessage != null)
+        {
+            JOptionPane.showMessageDialog(
+                    this,
+                    TextWrapper.wrapText(
+                            validationErrorMessage,
+                            TextWrapper.DEFAULT_DIALOG_COLUMN_COUNT),
+                            "Validation Failed",
+                            JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    
+    /**
+     * Run the jittermap command
+     */
+    private void runJittermap()
+    {
+        Cross selectedCross = this.getSelectedCross();
+        RInterface rInterface = selectedCross.getRInterface();
+        
+        rInterface.evaluateCommandNoReturn(
+                new RAssignmentCommand(
+                        selectedCross.getAccessorExpressionString(),
+                        "jittermap(" + selectedCross.getAccessorExpressionString() + ")"));
+    }
+
+    /**
+     * This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    @SuppressWarnings("all")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        javax.swing.JLabel crossLabel = new javax.swing.JLabel();
+        crossComboBox = new javax.swing.JComboBox();
+        javax.swing.JPanel actionPanel = new javax.swing.JPanel();
+        javax.swing.JButton okButton = new javax.swing.JButton();
+        javax.swing.JButton cancelButton = new javax.swing.JButton();
+        helpButton = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Run Jittermap");
+
+        crossLabel.setText("Cross:");
+
+        okButton.setText("OK");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
+        actionPanel.add(okButton);
+
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+        actionPanel.add(cancelButton);
+
+        helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/action/help-16x16.png"))); // NOI18N
+        helpButton.setText("Help ...");
+        actionPanel.add(helpButton);
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(crossLabel)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(crossComboBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(176, Short.MAX_VALUE))
+            .add(actionPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(crossLabel)
+                    .add(crossComboBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
+                .add(actionPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        if(this.validateData())
+        {
+            this.dispose();
+            this.runJittermap();
+        }
+    }//GEN-LAST:event_okButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+    
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox crossComboBox;
+    private javax.swing.JButton helpButton;
+    // End of variables declaration//GEN-END:variables
+    
+}

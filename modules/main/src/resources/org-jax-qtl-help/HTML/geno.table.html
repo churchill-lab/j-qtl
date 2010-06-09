@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Create table of genotype distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for geno.table {qtl}"><tr><td>geno.table {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Create table of genotype distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Create table showing the observed numbers of individuals with each
+genotype at each marker, including P-values from chi-square tests
+for Mendelian segregation.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+geno.table(cross, chr)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+A vector specifying which chromosomes to consider.
+This may be a logical vector, a numeric vector, or a vector of
+character strings.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The P-values are obtained from chi-square tests of Mendelian
+segregation.  In the case of the X chromosome, the sexes and cross
+directions are tested separately, and the chi-square statistics
+combined, and so the test is of whether any of the groups show
+deviation from Mendel's rules.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A matrix containing, for each marker, the number of individuals with
+each possible genotype, as well as the number that were not typed.
+The first column gives the chromosome ID, and the last column gives
+P-values from chi-square tests of Mendelian segregation.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="summary.cross.html">summary.cross</a></code>,
+<code><a href="drop.markers.html">drop.markers</a></code>, <code><a href="drop.nullmarkers.html">drop.nullmarkers</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(listeria)
+geno.table(listeria)
+
+geno.table(listeria, chr=13)
+
+gt &lt;- geno.table(listeria)
+gt[gt$P.value &lt; 0.01,]
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

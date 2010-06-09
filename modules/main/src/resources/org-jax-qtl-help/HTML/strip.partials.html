@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Strip partially informative genotypes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for strip.partials {qtl}"><tr><td>strip.partials {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Strip partially informative genotypes</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Replace all partially informative genotypes (e.g., dominant markers in
+an intercross) with missing values.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>strip.partials(cross, verbose=TRUE)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+If TRUE, print the number of genotypes removed.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+The same class <code>cross</code> object as in the input, but with partially
+informative genotypes made missing.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="plot.missing.html">plot.missing</a></code>, <code><a href="plot.info.html">plot.info</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(listeria)
+sum(nmissing(listeria))
+listeria &lt;- strip.partials(listeria)
+sum(nmissing(listeria))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

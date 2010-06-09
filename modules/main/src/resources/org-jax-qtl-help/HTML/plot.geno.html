@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot observed genotypes, flagging likely errors</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for plot.geno {qtl}"><tr><td>plot.geno {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot observed genotypes, flagging likely errors</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plot the genotypes on a particular chromosome for a set of
+individuals, flagging likely errors.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+plot.geno(x, chr, ind, include.xo=TRUE, horizontal=TRUE,
+          cutoff=4, min.sep=2, cex=1.2, ...) 
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details. </td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Chromosome number to plot.</td></tr>
+<tr valign="top"><td><code>ind</code></td>
+<td>
+Vector of individuals to plot.  If missing, all individuals
+are plotted.</td></tr>
+<tr valign="top"><td><code>include.xo</code></td>
+<td>
+If TRUE, plot X's in intervals having a
+crossover. Not available for a 4-way cross.</td></tr>
+<tr valign="top"><td><code>horizontal</code></td>
+<td>
+If TRUE, chromosomes are plotted horizontally.</td></tr>
+<tr valign="top"><td><code>cutoff</code></td>
+<td>
+Genotypes with error LOD scores above this value are
+flagged as possible errors.</td></tr>
+<tr valign="top"><td><code>min.sep</code></td>
+<td>
+Markers separated by less than this value (as a
+percent of the chromosome length) are pulled apart, so that they may
+be distinguished in the picture.</td></tr>
+<tr valign="top"><td><code>cex</code></td>
+<td>
+Character expansion for the size of points in the plot.
+Larger numbers give larger points; see <code><a href="par.html">par</a></code>.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored at this point.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Plots the genotypes for a set of individuals.  Likely errors are
+indicated by red squares.  In a backcross, genotypes AA and AB are
+indicated by white and black circles, respectively.  In an intercross,
+genotypes AA, AB and BB are indicated by white, gray, and black
+circles, respectively, and the partially missing genotypes "not BB"
+(D in mapmaker) and "not AA" (C in mapmaker) are indicated by green
+and orange circles, respectively.
+</p>
+<p>
+For a 4-way cross, two lines are plotted for each individual.  The
+left or upper line indicates the allele A (white) or B (black); the
+right or lower line indicates the allele C (white) or D (black).  For
+the case that genotype is known to be only AC/BD or AD/BC, we use
+green and orange, respectively.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+None.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="calc.errorlod.html">calc.errorlod</a></code>,
+<code><a href="top.errorlod.html">top.errorlod</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(hyper)
+
+# Calculate error LOD scores
+hyper &lt;- calc.errorlod(hyper,error.prob=0.01)
+
+# print those above a specified cutoff 
+top.errorlod(hyper,cutoff=4)
+
+# plot genotype data, flagging genotypes with error LOD &gt; cutoff
+plot.geno(hyper, chr=1, ind=160:200, cutoff=7, min.sep=2)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

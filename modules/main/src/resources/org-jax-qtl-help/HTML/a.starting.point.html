@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Introductory comments on R/qtl</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for A starting point {qtl}"><tr><td>A starting point {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Introductory comments on R/qtl</h2>
+
+
+<h3>Description</h3>
+
+<p>
+A brief introduction to the R/qtl package, with a walk-through of an
+analysis.
+</p>
+
+
+<h3>New to R and/or R/qtl?</h3>
+
+<ul>
+<li>In order to use the R/qtl package, you must type (within R)
+<code>library(qtl)</code>.  You may wish to include this in a
+<code><A href="../../base/html/Startup.html">.Rprofile</A></code> file. 
+<li>Documention and several tutorials are available
+at the R archive (<a href="http://cran.r-project.org">http://cran.r-project.org</a>).
+<li>Use the <code><A href="../../utils/html/help.start.html">help.start</A></code> function to start the
+html version of the R help.
+<li>Type <code>library(help=qtl)</code> to get a list of the functions
+in R/qtl.
+<li>Use the <code><A href="../../utils/html/example.html">example</A></code> function to run examples
+of the various functions in R/qtl.
+<li>A tutorial on the use of R/qtl is distributed with the
+package and is also available at <a href="http://www.rqtl.org/rqtltour.pdf">http://www.rqtl.org/rqtltour.pdf</a>. 
+<li>Download the latest version of R/qtl from the R archive or
+from <a href="http://www.rqtl.org">http://www.rqtl.org</a>.</li>
+</ul>
+
+<h3>Walk-through of an analysis</h3>
+
+<p>
+Here we briefly describe the use of R/qtl to analyze an experimental
+cross.  A more extensive tutorial on its use is distributed with the
+package and is also available at <a href="http://www.rqtl.org/rqtltour.pdf">http://www.rqtl.org/rqtltour.pdf</a>.
+</p>
+<p>
+A difficult first step in the use of most data analysis software is the
+import of data.  With R/qtl, one may import data in several different
+formats by use of the function <code><A href="read.cross.html">read.cross</A></code>.  The
+internal data structure used by R/qtl is rather complicated, and is
+described in the help file for <code><A href="read.cross.html">read.cross</A></code>.  We won't
+discuss data import any further here, except to say that the
+comma-delimited format (<code>"csv"</code>) is recommended.  If you have
+trouble importing data, send an email to Karl Broman,
+<A href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</A>, perhaps attaching examples of your data
+files.  (Such data will be kept confidential.)  Also see the sample data
+files and code at <a href="http://www.rqtl.org/sampledata">http://www.rqtl.org/sampledata</a>.
+</p>
+<p>
+We consider the example data <code><A href="hyper.html">hyper</A></code>, an experiment on
+hypertension in the mouse, kindly provided
+by Bev Paigen and Gary Churchill.  Use the <code><A href="../../utils/html/data.html">data</A></code>
+function to load the data.  
+</p>
+<p>
+<code>data(hyper)</code>
+</p>
+<p>
+The <code><A href="hyper.html">hyper</A></code> data set has class <code>"cross"</code>.  The
+function <code><A href="summary.cross.html">summary.cross</A></code> gives summary information
+on the data, and checks the data for internal consistency.  A number
+of other utility functions are available; hopefully these are
+self-explanatory.
+</p>
+<p>
+<code>summary(hyper)</code> <br>
+<code>nind(hyper)</code> <br>
+<code>nphe(hyper)</code> <br>
+<code>nchr(hyper)</code> <br>
+<code>nmar(hyper)</code> <br>
+<code>totmar(hyper)</code>
+</p>
+<p>
+The function <code><A href="plot.cross.html">plot.cross</A></code> gives a graphical summary of
+the data; it calls <code><A href="plot.missing.html">plot.missing</A></code> (to plot a matrix
+displaying missing genotypes) and <code><A href="plot.map.html">plot.map</A></code> (to plot
+the genetic maps), and also displays histograms or barplots of the
+phenotypes.  The <code><A href="plot.missing.html">plot.missing</A></code> function can plot
+individuals ordered by their phenotypes; you can see that for most
+markers, only individuals with extreme phenotypes were genotyped.
+</p>
+<p>
+<code>plot(hyper)</code> <br>
+<code>plot.missing(hyper)</code> <br>
+<code>plot.missing(hyper, reorder=TRUE)</code> <br>
+<code>plot.map(hyper)</code>
+</p>
+<p>
+Note that one marker (on chromosome 14) has no genotype data.  The
+function <code><A href="drop.nullmarkers.html">drop.nullmarkers</A></code> removes such markers from
+the data. 
+</p>
+<p>
+<code>hyper &lt;- drop.nullmarkers(hyper)</code> <br>
+<code>totmar(hyper)</code>
+</p>
+<p>
+The function <code><A href="est.rf.html">est.rf</A></code> estimates the recombination
+fraction between each pair of markers, and calculates a LOD score for
+the test of <i>r</i> = 1/2.  This is useful for identifying markers that
+are placed on the wrong chromosome.  Note that since, for these data,
+many markers were typed only on recombinant individuals, the pairwise
+recombination fractions show rather odd patterns.
+</p>
+<p>
+<code>hyper &lt;- est.rf(hyper)</code> <br>
+<code>plot.rf(hyper)</code> <br>
+<code>plot.rf(hyper, chr=c(1,4))</code>
+</p>
+<p>
+To re-estimate the genetic map for an experimental cross, use the
+function <code><A href="est.map.html">est.map</A></code>.  The function
+<code><A href="plot.map.html">plot.map</A></code>, in addition to plotting a single map, can
+plot the comparison of two genetic maps (as long as they are composed of
+the same numbers of chromosomes and markers per chromosome).  The
+function <code><A href="replace.map.html">replace.map</A></code> map be used to replace the
+genetic map in a cross with a new one.
+</p>
+<p>
+<code>newmap &lt;- est.map(hyper, error.prob=0.01, verbose=TRUE)</code> <br>
+<code>plot.map(hyper, newmap)</code> <br>
+<code>hyper &lt;- replace.map(hyper, newmap)</code>
+</p>
+<p>
+The function <code><A href="calc.errorlod.html">calc.errorlod</A></code> may be used to assist in
+identifying possible genotyping errors; it calculates the error LOD
+scores described by Lincoln and Lander (1992).  The
+<code><A href="calc.errorlod.html">calc.errorlod</A></code> function return a modified version of
+the input cross, with error LOD scores included.  The function
+<code><A href="top.errorlod.html">top.errorlod</A></code> prints the genotypes with values above a
+cutoff (by default, the cutoff is 4.0).
+</p>
+<p>
+<code>hyper &lt;- calc.errorlod(hyper, error.prob=0.01)</code> <br>
+<code>top.errorlod(hyper)</code> 
+</p>
+<p>
+The function <code><A href="plot.geno.html">plot.geno</A></code> may be used to inspect the
+observed genotypes for a chromosome, with likely genotyping errors
+flagged.
+</p>
+<p>
+<code>plot.geno(hyper, chr=16, ind=c(24:34, 71:81))</code>
+</p>
+<p>
+Before doing QTL analyses, some intermediate calculations need to be
+performed.  The function <code><A href="calc.genoprob.html">calc.genoprob</A></code> calculates
+conditional genotype probabilities given the multipoint marker data.
+<code><A href="sim.geno.html">sim.geno</A></code> simulates sequences of genotypes from their
+joint distribution, given the observed marker data.
+</p>
+<p>
+As with <code><A href="calc.errorlod.html">calc.errorlod</A></code>, these functions return a
+modified version of the input cross, with the intermediate calculations
+included.  The <code>step</code> argument indicates the density of the grid on
+which the calculations will be performed, and determines the density at
+which LOD scores will be calculated.
+</p>
+<p>
+<code>hyper &lt;- calc.genoprob(hyper, step=2.5, error.prob=0.01)</code> <br>
+<code>hyper &lt;- sim.geno(hyper, step=2.5, n.draws=64, error.prob=0.01)</code> 
+</p>
+<p>
+The function <code><A href="scanone.html">scanone</A></code> performs a genome scan with a
+single QTL model.  By default, it performs standard interval mapping
+(Lander and Botstein 1989): use of a normal model and the EM algorithm.
+If one specifies <code>method="hk"</code>, Haley-Knott regression is performed
+(Haley and Knott 1992).  These two methods require the results from
+<code><A href="calc.genoprob.html">calc.genoprob</A></code>.
+</p>
+<p>
+<code>out.em &lt;- scanone(hyper)</code> <br>
+<code>out.hk &lt;- scanone(hyper, method="hk")</code>
+</p>
+<p>
+If one specifies <code>method="imp"</code>, a genome scan is performed by the
+multiple imputation method of Sen and Churchill (2001).  This method
+requires the results from <code><A href="sim.geno.html">sim.geno</A></code>.
+</p>
+<p>
+<code>out.imp &lt;- scanone(hyper, method="imp")</code>
+</p>
+<p>
+The output of <code><A href="scanone.html">scanone</A></code> is a data.frame with class
+<code>"scanone"</code>.  The function <code><A href="plot.scanone.html">plot.scanone</A></code> may be
+used to plot the results, and may plot up to three sets of results
+against each other, as long as they conform appropriately.
+</p>
+<p>
+<code>plot(out.em)</code> <br>
+<code>plot(out.hk, col="blue", add=TRUE)</code> <br>
+<code>plot(out.imp, col="red", add=TRUE)</code> <br>
+<code>plot(out.hk, out.imp, out.em, chr=c(1,4), lty=1,</code> <br>
+<code>     col=c("blue","red","black"))</code> 
+</p>
+<p>
+The function <code><A href="summary.scanone.html">summary.scanone</A></code> may be used to list
+information on the peak LOD for each chromosome for which the LOD
+exceeds a specified threshold.
+</p>
+<p>
+<code>summary(out.em)</code> <br>
+<code>summary(out.em, threshold=3)</code> <br>
+<code>summary(out.hk, threshold=3)</code> <br>
+<code>summary(out.imp, threshold=3)</code>
+</p>
+<p>
+The function <code><A href="max.scanone.html">max.scanone</A></code> returns the maximum LOD
+score, genome-wide.
+</p>
+<p>
+<code>max(out.em)</code> <br>
+<code>max(out.hk)</code> <br>
+<code>max(out.imp)</code>
+</p>
+<p>
+One may also use <code><A href="scanone.html">scanone</A></code> to perform a permutation
+test to get a genome-wide LOD significance threshold.  
+</p>
+<p>
+<code>operm.hk &lt;- scanone(hyper, method="hk", n.perm=1000)</code>
+</p>
+<p>
+The result has class <code>"scanoneperm"</code>.  The
+<code><A href="summary.scanoneperm.html">summary.scanoneperm</A></code> function may be used to calculate
+LOD thresholds.
+</p>
+<p>
+<code>summary(operm.hk, alpha=0.05)</code>
+</p>
+<p>
+The permutation results may also be used in the
+<code><A href="summary.scanone.html">summary.scanone</A></code> function to calculate LOD thresholds
+and genome-scan-adjusted p-values.
+</p>
+<p>
+<code>summary(out.hk, perms=operm.hk, alpha=0.05, pvalues=TRUE)</code>
+</p>
+<p>
+We should say at this point that the function
+<code><A href="../../base/html/save.html">save.image</A></code> will save your workspace to disk.  You'll
+wish you had used this if R crashes.
+</p>
+<p>
+<code>save.image()</code>
+</p>
+<p>
+The function <code><A href="scantwo.html">scantwo</A></code> performs a two-dimensional
+genome scan with a two-QTL model.  Methods <code>"em"</code>, <code>"hk"</code> and
+<code>"imp"</code> are all available.  <code><A href="scantwo.html">scantwo</A></code> is
+considerably slower than <code><A href="scanone.html">scanone</A></code>, and can require a
+great deal of memory.  Thus, you may wish to re-run
+<code><A href="calc.genoprob.html">calc.genoprob</A></code> and/or <code><A href="sim.geno.html">sim.geno</A></code> with
+a more coarse grid.
+</p>
+<p>
+<code>hyper &lt;- calc.genoprob(hyper, step=10, err=0.01)</code> <br>
+<code>hyper &lt;- sim.geno(hyper, step=10, n.draws=64, err=0.01)</code> <br>
+<br>
+<code>out2.hk &lt;- scantwo(hyper, method="hk")</code> <br>
+<code>out2.em &lt;- scantwo(hyper)</code> <br>
+<code>out2.imp &lt;- scantwo(hyper, method="imp")</code>
+</p>
+<p>
+The output is an object with class <code>scantwo</code>.  The function
+<code><A href="plot.scantwo.html">plot.scantwo</A></code> may be used to plot the results.  The
+upper triangle contains LOD scores for tests of epistasis, while the
+lower triangle contains LOD scores for the full model.
+</p>
+<p>
+<code>plot(out2.hk)</code> <br>
+<code>plot(out2.em)</code> <br>
+<code>plot(out2.imp)</code>
+</p>
+<p>
+The function <code><A href="summary.scantwo.html">summary.scantwo</A></code> lists the interesting
+aspects of the output.  For each pair of chromosomes <i>(k,l)</i>, it
+calculates the maximum LOD score for the full model, <i>M_f(k,l)</i>; a
+LOD score indicating evidence for a second QTL, allowing for epistasis),
+<i>M_fv1(k,l)</i>; a LOD score indicating evidence for
+epistasis, <i>M_i(k,l)</i>; the LOD score for the additive QTL model,
+<i>M_a(k,l)</i>; and a LOD score indicating evidence for a second QTL,
+assuming no epistasis, <i>M_av1(k,l)</i>.  
+</p>
+<p>
+You must provide five LOD thresholds, corresponding to the above five
+LOD scores, and in that order.  A chromosome pair is printed if either
+(a) <i>M_f(k,l) &gt;= T_f</i> and (<i>M_fv1(k,l) &gt;= T_fv1</i> or <i>M_i(k,l) &gt;= T_i</i>), or (b) 
+<i>M_a(k,l) &gt;= T_a</i> and <i>M_av1(k,l) &gt;= T_av1</i>.
+</p>
+<p>
+<code>summary(out2.em, thresholds=c(6.2, 5.0, 4.6, 4.5, 2.3))</code> <br>
+<code>summary(out2.em, thresholds=c(6.2, 5.0, Inf, 4.5, 2.3))</code> 
+</p>
+<p>
+In the latter case, the interaction LOD score will be ignored.
+</p>
+<p>
+The function <code><A href="max.scantwo.html">max.scantwo</A></code> returns the maximum joint
+and additive LODs for a two-dimensional genome scan.
+</p>
+<p>
+<code>max(out2.em)</code>
+</p>
+<p>
+Permutation tests may also performed with <code><A href="scantwo.html">scantwo</A></code>;
+it may take a few days of CPU time.  The output is a list containing the 
+maxima of the above five LOD scores for each of the imputations.  
+</p>
+<p>
+<code>operm2 &lt;- scantwo(hyper, method="hk", n.perm=100)</code> <br>
+<code>summary(operm2, alpha=0.05)</code>
+</p>
+
+
+<h3>Citing R/qtl</h3>
+
+<p>
+To cite R/qtl in publications, use the Broman et al. (2003) reference
+listed below.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <A href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</A>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Broman, K. W., Wu, H., Sen, 'S. and Churchill, G. A. (2003) R/qtl: QTL
+mapping in experimental crosses.  <EM>Bioinformatics</EM> <B>19</B>,
+889–890. 
+</p>
+<p>
+Haley, C. S. and Knott, S. A. (1992) A simple regression method for mapping
+quantitative trait loci in line crosses using flanking markers.
+<EM>Heredity</EM> <B>69</B>, 315–324.
+</p>
+<p>
+Lander, E. S. and Botstein, D. (1989) Mapping Mendelian factors underlying
+quantitative traits using RFLP linkage maps.  <EM>Genetics</EM>
+<B>121</B>, 185–199.
+</p>
+<p>
+Lincoln, S. E. and Lander, E. S. (1992) Systematic detection of
+errors in genetic linkage data.  <EM>Genomics</EM> <B>14</B>, 604–610.
+</p>
+<p>
+Sen, 'S. and Churchill, G. A. (2001) A statistical framework for quantitative
+trait mapping.  <EM>Genetics</EM> <B>159</B>, 371–387.
+</p>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <A href="00Index.html">Index]</A></div>
+
+</body></html>

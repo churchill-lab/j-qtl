@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Create table of two-locus genotypes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for geno.crosstab {qtl}"><tr><td>geno.crosstab {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Create table of two-locus genotypes</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Create a cross tabulation of the genotypes at a pair of markers.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+geno.crosstab(cross, mname1, mname2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>mname1</code></td>
+<td>
+The name of the first marker (as a character string).</td></tr>
+<tr valign="top"><td><code>mname2</code></td>
+<td>
+The name of the second marker (as a character string).</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A matrix containing the number of individuals having each possible
+pair of genotypes.  Genotypes for the first marker are in the rows;
+genotypes for the second marker are in the columns.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="geno.table.html">geno.table</a></code>,
+<code><a href="find.marker.html">find.marker</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(hyper)
+geno.crosstab(hyper, "D1Mit123", "D1Mit156")
+geno.crosstab(hyper, "DXMit22", "DXMit16")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

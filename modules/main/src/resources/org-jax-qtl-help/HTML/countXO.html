@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Count number of obligate crossovers for each individual</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for countXO {qtl}"><tr><td>countXO {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Count number of obligate crossovers for each individual</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Count the number of obligate crossovers for each individual in a
+cross, either by chromosome or overall.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+countXO(cross, chr, bychr=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+The chromosomes to investigate.  If missing, all chromosomes
+are considered.</td></tr>
+<tr valign="top"><td><code>bychr</code></td>
+<td>
+If TRUE, return counts for each individual chromosome; if
+FALSE, return the overall number across the selected chromosomes.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+For each individual we count the minimal number of crossovers that
+explain the observed genotype data.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+If <code>bychr=TRUE</code>, a matrix of counts is returned, with rows
+corresponding to individuals and columns corresponding to
+chromosomes. 
+<br>
+If <code>bychr=FALSE</code>, a vector of counts (the total number of
+crossovers across all selected chromosomes) is returned.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="ripple.html">ripple</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(hyper)
+plot(countXO(hyper))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

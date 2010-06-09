@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: An intercross with misplaced markers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for badorder {qtl}"><tr><td>badorder {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>An intercross with misplaced markers</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Simulated data for an intercross with some markers out of order.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(badorder)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+An object of class <code>cross</code>.  See <code><A href="read.cross.html">read.cross</a></code>
+for details.
+</p>
+
+
+<h3>Details</h3>
+
+<p>
+There are 250 F2 individuals typed at a total of 36 markers on four
+chromosomes.  The data were simulated with QTLs at the center of
+chromosomes 1 and 3. 
+</p>
+<p>
+The order of several markers on chromosome 1 is incorrect.  Markers on
+chromosomes 2 and 3 are switched.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <A href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><A href="est.rf.html">est.rf</a></code>, <code><A href="ripple.html">ripple</a></code>, 
+<code><A href="est.map.html">est.map</a></code>, <code><A href="sim.cross.html">sim.cross</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(badorder)
+
+# estimate recombination fractions
+badorder &lt;- est.rf(badorder)
+plot.rf(badorder)
+
+# re-estimate map
+newmap &lt;- est.map(badorder)
+plot.map(badorder, newmap)
+
+# assess marker order on chr 1
+rip3 &lt;- ripple(badorder, chr=1, window=3)
+summary(rip3)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <A href="00Index.html">Index]</a></div>
+
+</body></html>

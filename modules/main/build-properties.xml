@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <property name="web-dist"             location="web-dist"/>
+    <property name="common.build.dir"     location="../../build-common"/>
+    
+    <!-- WARNING: Don't set this to a real keystore location. -->
+    <!--          It gets deleted in the clean target.        -->
+    <property name="bogus-keystore" location="bogus-keystore"/>
+</project>

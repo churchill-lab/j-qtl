@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<meta name="GENERATOR" content="Solutionsoft HelpBreeze JavaHelp Edition">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
+<title>Fit QTL</title>
+<link rel="stylesheet" type="text/css" href=javahelp.css>
+</head>
+<body bgcolor="#ffffff">
+<h1>Fit QTL</h1>
+<p>The Fit QTL dialog acts as a graphical interface to R/qtl's <A 
+href="HTML/makeqtl.html">makeqtl</A> and <A href="HTML/fitqtl.html">fitqtl</A> 
+functions. See the R/qtl documentation for detailed information on how these 
+functions work.</p>
+<P><IMG hspace=0 src="Images/fit-qtl-1.png" border=0></P>
+<P>&nbsp;</P>
+<H3>Fit Cross, Phenotype and QTL Basket Selection:</H3>
+<P>The first three drop-down selection boxes allow the user 
+to select the cross and phenotype that the fit will be performed against along 
+with the <A href="HTML/Edit_QTL_Basket.htm">QTL Basket</A> that will be the 
+source of all available marker model inputs.</P>
+<P>&nbsp;</P>
+<H3>Fit Formula Editing:</H3>
+<P>The next section of the dialog contains tables and 
+buttons that can be used to edit the fit formula. The model inputs table 
+contains all of the available inputs to the formula, and the model terms which 
+is initially empty contains a list representation of the terms selected. The 
+Formula Editing buttons work as follows:</P>
+<P>
+<TABLE cellSpacing=0 cellPadding=3 width="100%" align=center border=0>
+  
+  <TR>
+    <TD><STRONG>Button Name</STRONG></TD>
+    <TD><STRONG>Button is Enabled When ...</STRONG></TD>
+    <TD><STRONG>Button Action</STRONG></TD></TR>
+  <TR>
+    <TD>Add Term(s)</TD>
+    <TD>Any Model Inputs are selected</TD>
+    <TD>Adds the selected inputs as individual additive terms</TD></TR>
+  <TR>
+    <TD>Add as Interactive Term</TD>
+    <TD>More than one Model Input is selected</TD>
+    <TD>Adds the selected inputs as an interactive term. Since J/qtl uses the 
+      '*' operator instead of the ':' operator for interaction, the terms are 
+      also treaded as additive.</TD></TR>
+  <TR>
+    <TD>Append Interaction(s) to Term</TD>
+    <TD>At least one Model Input is selected and one Model Term is selected</TD>
+    <TD>Appends the selected Model Input as an interaction with the selected 
+      model term.</TD></TR>
+  <TR>
+    <TD>Remove Term</TD>
+    <TD>A Model Term is selected</TD>
+    <TD>Removes the selected term from the model's 
+formula</TD></TR></TABLE></P>
+<P>&nbsp;</P>
+<H3>Drop-One-Term, Estimate QTL Effects and Fit Analysis Name:</H3>
+<P>The remaining settings work as follows:</P>
+<UL>
+  <LI>Drop-One-Term Analysis: performs additional analysis 
+  on the Fit Model which can be helpful in determining which model terms are the 
+  most/least significant. If you choose to perform Drop-One-Term Analysis, the 
+  results will be available in the <A href="Fit_Results.htm">Fit Results</A> 
+  dialog.
+  <LI>Estimate QTL Effects: performs additional analysis output which is 
+  currently not used by J/qtl, but which can be acessed directly from R/qtl. See 
+  the&nbsp;<A href="HTML/fitqtl.html">fitqtl</A> documentation for details.
+  <LI>Name Your Fit Analysis: Determines which name the Fit QTL results will be 
+  given in the J/qtl data tree</LI>accessed</UL>
+</body>
+</html>

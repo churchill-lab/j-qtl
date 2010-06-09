@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot phenotype means against genotypes at one or two markers.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for effectplot {qtl}"><tr><td>effectplot {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot phenotype means against genotypes at one or two markers.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plot the phenotype means for each group defined by the genotypes at 
+one or two markers (or the values at a discrete covariate).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+effectplot(cross, pheno.col=1, mname1, mark1, geno1, mname2, mark2,
+           geno2, main, ylim, xlab, ylab, col, add.legend=TRUE,
+           legend.lab, draw=TRUE, var.flag=c("pooled","group"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.</td></tr>
+<tr valign="top"><td><code>pheno.col</code></td>
+<td>
+Column number in the phenotype matrix to be
+drawn in the plot.  One may also give a character string matching
+a phenotype name.</td></tr>
+<tr valign="top"><td><code>mname1</code></td>
+<td>
+Name for the first marker or pseudomarker.</td></tr>
+<tr valign="top"><td><code>mark1</code></td>
+<td>
+Genotype data for the first marker.  If unspecified,
+genotypes will be taken from the data in the input cross object,
+using the name specified in <code>mname1</code>.</td></tr>
+<tr valign="top"><td><code>geno1</code></td>
+<td>
+Optional labels for the genotypes (or classes in a covariate).</td></tr>
+<tr valign="top"><td><code>mname2</code></td>
+<td>
+Name for the second marker or pseudomarker (optional).</td></tr>
+<tr valign="top"><td><code>mark2</code></td>
+<td>
+Like <code>mark1</code> (optional).</td></tr>
+<tr valign="top"><td><code>geno2</code></td>
+<td>
+Optional labels for the genotypes (or classes in a covariate).</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+Optional figure title.</td></tr>
+<tr valign="top"><td><code>ylim</code></td>
+<td>
+Optional y-axis limits.</td></tr>
+<tr valign="top"><td><code>xlab</code></td>
+<td>
+Optional x-axis label.</td></tr>
+<tr valign="top"><td><code>ylab</code></td>
+<td>
+Optional y-axis label.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+Optional vector of colors for the different line segments.</td></tr>
+<tr valign="top"><td><code>add.legend</code></td>
+<td>
+A logical value to indicate whether to add a legend.</td></tr>
+<tr valign="top"><td><code>legend.lab</code></td>
+<td>
+Optional title for the legend.</td></tr>
+<tr valign="top"><td><code>draw</code></td>
+<td>
+A logical value to indicate generate the plot or not. If
+FALSE, no figure will be plotted and this function can be used to
+calculate the group means and standard errors.</td></tr>
+<tr valign="top"><td><code>var.flag</code></td>
+<td>
+The method to calculate the group variance. "pooled"
+means to use the pooled variance and "group" means to calculate from
+individual group.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+In the plot, the y-axis is the phenotype.  In the case of one marker,
+the x-axis is the genotype for that marker. In the case of two
+markers, the x-axis is for different genotypes of the second marker,
+and the genotypes of first marker are represented by lines in
+different colors.  Error bars are plotted at <i>+/-</i> 1 SE. 
+</p>
+<p>
+The results of <code>sim.geno</code> are used; if they are not available,
+<code>sim.geno</code> is run with <code>n.draws=16</code>.  The average phenotype
+for each genotype group takes account of missing genotype data by
+averaging across the imputations.  The SEs take account of both the
+residual phenotype variation and the imputation error.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A data.frame containing the phenotype means and standard errors
+for each group.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Hao Wu; Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="plot.pxg.html">plot.pxg</a></code>, <code><a href="find.marker.html">find.marker</a></code>,
+<code><a href="effectscan.html">effectscan</a></code>, <code><a href="find.pseudomarker.html">find.pseudomarker</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+
+# impute genotype data
+## Not run: 
+fake.f2 &lt;- sim.geno(fake.f2, step=5, n.draws=64)
+## End(Not run)
+
+########################################
+# one marker plots
+########################################
+### plot of genotype-specific phenotype means for 1 marker
+mname &lt;- find.marker(fake.f2, 1, 37) # marker D1M437
+effectplot(fake.f2, pheno.col=1, mname1=mname)
+
+### plot a phenotype
+# Plot of sex-specific phenotype means,
+# note that "sex" must be a phenotype name here
+effectplot(fake.f2, mname1="sex", geno1=c("F","M"))
+# alternatively:
+sex &lt;- fake.f2$pheno[,2]
+effectplot(fake.f2, mname1="Sex", mark1=sex, geno1=c("F","M"))
+
+########################################
+# two markers plots
+########################################
+
+### plot two markers
+# plot of genotype-specific phenotype means for 2 markers
+mname1 &lt;- find.marker(fake.f2, 1, 37) # marker D1M437
+mname2 &lt;- find.marker(fake.f2, 13, 24) # marker D13M254
+effectplot(fake.f2, mname1=mname1, mname2=mname2)
+
+### plot two pseudomarkers
+pmnames &lt;- find.pseudomarker(fake.f2, chr=c(1, 13), c(35, 25))
+effectplot(fake.f2, mname1=pmnames[1], mname2=pmnames[2])
+
+### Plot of sex- and genotype-specific phenotype means 
+mname &lt;- find.marker(fake.f2, 13, 24) # marker D13M254
+# sex and a marker
+effectplot(fake.f2, mname1=mname, mname2="Sex",
+           mark2=fake.f2$pheno$sex, geno2=c("F","M"))
+
+# Same as above, switch role of sex and the marker
+# sex and marker
+effectplot(fake.f2, mname1="Sex", mark1=fake.f2$pheno$sex,
+           geno1=c("F","M"), mname2=mname)
+
+# X chromosome marker
+mname &lt;- find.marker(fake.f2, "X", 14) # marker DXM66
+effectplot(fake.f2, mname1=mname)
+
+# Two markers, including one on the X
+mnames &lt;- find.marker(fake.f2, c(13, "X"), c(24, 14))
+effectplot(fake.f2, mname1=mnames[1], mname2=mnames[2])
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

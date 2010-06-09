@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Compare individuals' genotype data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for comparegeno {qtl}"><tr><td>comparegeno {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Compare individuals' genotype data</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Count proportion of matching genotypes between all pairs of
+individuals, to look for unusually closely related individuals.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>comparegeno(cross, what=c("proportion","number"))</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>what</code></td>
+<td>
+Indicates whether to return the proportion or number of matching
+genotypes.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A matrix whose (i,j)th element is the proportion or number of matching
+genotypes for individuals i and j.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="nmissing.html">nmissing</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(listeria)
+
+output &lt;- comparegeno(listeria)
+
+# image of the proportions
+n.ind &lt;- nind(listeria)
+image(1:n.ind, 1:n.ind, output, col=gray((0:99)/99),
+      breaks=seq(0,1,len=101))
+
+# histogram of the off-diagonal values
+upper &lt;- output[upper.tri(output)]
+hist(upper, breaks=150,
+     xlab="Proportion of matching genotypes")
+rug(upper)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

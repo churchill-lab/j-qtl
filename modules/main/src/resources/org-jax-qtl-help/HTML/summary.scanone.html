@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Summarize the results of a genome scans</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for summary.scanone {qtl}"><tr><td>summary.scanone {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Summarize the results of a genome scans</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Print the rows of the output from <code><a href="scanone.html">scanone</a></code> that
+correspond to the maximum LOD for each chromosome, provided that they
+exceed some specified thresholds.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scanone':
+summary(object, threshold,
+        format=c("onepheno", "allpheno", "allpeaks"),
+        perms, alpha, lodcolumn=1, pvalues=FALSE, df=FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+An object output by the function
+<code><a href="scanone.html">scanone</a></code>.</td></tr>
+<tr valign="top"><td><code>threshold</code></td>
+<td>
+LOD score thresholds. Only peaks with LOD score above
+this value will be returned. This could be a single number or (for
+formats other than <code>"onepheno"</code>) a threshold for each LOD score
+column.  If <code>alpha</code> is specified, <code>threshold</code> should not be.</td></tr>
+<tr valign="top"><td><code>format</code></td>
+<td>
+Format for the output; used only if there is more than
+one LOD score column in the input.  See Details, below.</td></tr>
+<tr valign="top"><td><code>perms</code></td>
+<td>
+Optional permutation results used to derive thresholds or
+to calculate genome-scan-adjusted p-values.  This must be consistent
+with the <code>object</code> input, in that it must have the same number of
+LOD score columns.</td></tr>
+<tr valign="top"><td><code>alpha</code></td>
+<td>
+If perms are included, this is the significance level used
+to calculate thresholds for determining which peaks to pull out.
+If <code>threshold</code> is specified, <code>alpha</code> should not be.</td></tr>
+<tr valign="top"><td><code>lodcolumn</code></td>
+<td>
+If <code>format="onepheno"</code>, this indicates the LOD
+score column to focus on.  This should be a single number between 1
+and the number of LOD columns in the object input.</td></tr>
+<tr valign="top"><td><code>pvalues</code></td>
+<td>
+If TRUE, include columns with genome-scan-adjusted
+p-values in the results.  This requires that <code>perms</code> be
+provided.</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+If TRUE, the degrees of freedom associated with the LOD
+scores are shown.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored at this point.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function is used to report loci deemed interesting from a one-QTL
+genome scan (by <code><a href="scanone.html">scanone</a></code>).
+</p>
+<p>
+For <code>format="onepheno"</code>, we focus on a single LOD score column,
+indicated by <code>lodcolumn</code>.  The single largest LOD score peak on
+each chromosome is extracted.  If <code>threshold</code> is specified, only
+those peaks with LOD meeting the threshold will be
+returned.  If <code>perms</code> and <code>alpha</code> are specified, a threshold
+is calculated based on the permutation results in <code>perms</code> for the
+significance level <code>alpha</code>.  If neither <code>threshold</code> nor
+<code>alpha</code> are specified, the peak on each chromosome is returned.
+Again note that with this format, only the LOD score column indicated
+by <code>lodcolumn</code> is considered in deciding which chromosomes to
+return, but the LOD scores from other columns, at the position with
+maximum LOD score in the <code>lodcolumn</code> column, are also returned.
+</p>
+<p>
+For <code>format="allpheno"</code>, we consider all LOD score columns, and
+pull out the position, on each chromosome, showing the largest LOD
+score.  The output thus may contain multiple rows for a chromosome.
+Here <code>threshold</code> may be a vector of LOD score thresholds, one for
+each LOD score column, in which case only those positions for which a
+LOD score column exceeded its threshold are given.  If
+<code>threshold</code> is a single number, it is applied to all of the LOD 
+score columns.  If <code>alpha</code> is specified, it must   be a single
+significance level, applied for all LOD score columns, and again
+<code>perms</code> must be specified, and these are used to calculate the
+LOD score threshold for the significance level <code>alpha</code>.
+</p>
+<p>
+For <code>format="allpeaks"</code>, the output will contain, for each
+chromosome, the maximum LOD score for each LOD score column, at the
+position at which it achieved its maximum.  Thus, the output will
+contain no more than one row per chromosome, but will contain the
+position and maximum LOD score for each of the LOD score columns. 
+The arguments <code>threshold</code> and <code>alpha</code> may be specified as
+for the <code>"allpheno"</code> format.  The results for a chromosome are
+returned if at least one of the LOD score columns exceeded its
+threshold. 
+</p>
+<p>
+If <code>pvalues=TRUE</code>, and <code>perms</code> is specified,
+genome-scan-adjusted p-values are calculated for each LOD score
+column, and there are additional columns in the output containing
+these p-values.
+</p>
+<p>
+In the case that X-chromosome specific permutations were performed
+(with <code>perm.Xsp=TRUE</code> in <code><a href="scanone.html">scanone</a></code>), autosome-
+and X-chromosome specific thresholds and p-values are calculated by
+the method in Broman et al. (in press).
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>summary.scanone</code>, to be printed by
+<code>print.summary.scanone</code>.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Broman, K. W., Sen, 'S, Owens, S. E., Manichaikul, A.,
+Southard-Smith, E. M. and Churchill G. A.  The X chromosome in
+quantitative trait locus mapping.  <EM>Genetics</EM>, to appear.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scanone.html">scanone</a></code>, <code><a href="plot.scanone.html">plot.scanone</a></code>,
+<code><a href="max.scanone.html">max.scanone</a></code>, <code><a href="subset.scanone.html">subset.scanone</a></code>,
+<code><a href="c.scanone.html">c.scanone</a></code>, <code><a href="summary.scanoneperm.html">summary.scanoneperm</a></code>
+<code><a href="c.scanoneperm.html">c.scanoneperm</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.bc)
+
+fake.bc &lt;- calc.genoprob(fake.bc, step=5)
+
+# genome scan by Haley-Knott regression
+out &lt;- scanone(fake.bc, method="hk")
+
+# permutation tests
+## Not run: 
+operm &lt;- scanone(fake.bc, method="hk", n.perm=1000)
+## End(Not run)
+
+# peaks for all chromosomes
+summary(out)
+
+# results with LOD &gt;= 3
+summary(out, threshold=3)
+
+# the same, but also showing the p-values
+summary(out, threshold=3, perms=operm, pvalues=TRUE)
+
+# results with LOD meeting the 0.05 threshold from the permutation results
+summary(out, perms=operm, alpha=0.05)
+
+# the same, also showing the p-values
+summary(out, perms=operm, alpha=0.05, pvalues=TRUE)
+
+##### summary with multiple phenotype results
+out2 &lt;- scanone(fake.bc, pheno.col=1:2, method="hk")
+
+# permutations
+## Not run: 
+operm2 &lt;- scanone(fake.bc, pheno.col=1:2, method="hk", n.perm=1000)
+## End(Not run)
+
+# results with LOD &gt;= 2 for the 1st phenotype and &gt;= 1 for the 2nd phenotype
+#     using format="allpheno"
+summary(out2, thr=c(2, 1), format="allpheno")
+
+# The same with format="allpeaks"
+summary(out2, thr=c(2, 1), format="allpeaks")
+
+# The same with p-values
+summary(out2, thr=c(2, 1), format="allpeaks", perms=operm2, pvalues=TRUE)
+
+# results with LOD meeting the 0.05 significance level by the permutations
+#     using format="allpheno"
+summary(out2, format="allpheno", perms=operm2, alpha=0.05)
+
+# The same with p-values
+summary(out2, format="allpheno", perms=operm2, alpha=0.05, pvalues=TRUE)
+
+# The same with format="allpeaks"
+summary(out2, format="allpeaks", perms=operm2, alpha=0.05, pvalues=TRUE)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

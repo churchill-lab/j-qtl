@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Drop a QTL from a qtl object</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for dropfromqtl {qtl}"><tr><td>dropfromqtl {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Drop a QTL from a qtl object</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Drop a QTL or multiple QTL from a QTL object
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+dropfromqtl(qtl, index, chr, pos, qtl.name, drop.lod.profile=TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>qtl</code></td>
+<td>
+A qtl object, as created by <code><a href="makeqtl.html">makeqtl</a></code>.</td></tr>
+<tr valign="top"><td><code>index</code></td>
+<td>
+Vector specifying the numeric indices of the QTL to be dropped.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Vector indicating the chromosome for each QTL to drop.</td></tr>
+<tr valign="top"><td><code>pos</code></td>
+<td>
+Vector (of same length as <code>chr</code>) indicating the
+positions of the QTL to be dropped.</td></tr>
+<tr valign="top"><td><code>qtl.name</code></td>
+<td>
+Vector specifying the names of the QTL to be dropped.</td></tr>
+<tr valign="top"><td><code>drop.lod.profile</code></td>
+<td>
+If TRUE, remove any LOD profiles from the object.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Provide either <code>chr</code> and <code>pos</code>, or one of <code>qtl.name</code> or
+<code>number</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The input <code>qtl</code> object with the specified QTL omitted.   See <code><a href="makeqtl.html">makeqtl</a></code> for
+details on the format.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <code>kbroman@biostat.wisc.edu</code>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="makeqtl.html">makeqtl</a></code>, <code><a href="fitqtl.html">fitqtl</a></code>,
+<code><a href="addtoqtl.html">addtoqtl</a></code>, <code><a href="replaceqtl.html">replaceqtl</a></code> ,
+<code><a href="reorderqtl.html">reorderqtl</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+# take out several QTLs and make QTL object
+qc &lt;- c(1, 6, 13)
+qp &lt;- c(25.8, 33.6, 18.63)
+fake.f2 &lt;- subset(fake.f2, chr=qc)
+
+fake.f2 &lt;- sim.geno(fake.f2, n.draws=8, step=2, err=0.001)
+qtl &lt;- makeqtl(fake.f2, qc, qp, what="draws")
+
+newqtl &lt;- dropfromqtl(qtl, chr=1, pos=25.8)
+altqtl &lt;- dropfromqtl(qtl, index=1)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

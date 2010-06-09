@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project
+    xmlns:ivy="antlib:org.apache.ivy.ant"
+    name="J/qtl"
+    default="clean-then-web-dist"
+    basedir=".">
+    
+    <description>
+        the main build file for the J/qtl project
+    </description>
+    
+    <import file="build-properties.xml"/>
+    <import file="${common.build.dir}/build-common.xml"/>
+    
+    <target name="clean-then-web-dist" depends="clean,web-dist"/>
+    
+    <target name="web-dist" depends="dist-bogus-sign" description="generate a web distribution">
+        <!-- copy the web source -->
+        <mkdir dir="${web-dist}"/>
+        <copy todir="${web-dist}">
+            <fileset dir="${src}/web"/>
+        </copy>
+        
+        <!-- copy binary files -->
+        <mkdir dir="${web-dist}/app/dist"/>
+        <copy todir="${web-dist}/app/dist">
+            <fileset dir="${dist}">
+            </fileset>
+        </copy>
+    </target>
+    
+    <target name="dist-bogus-sign"
+            depends="dist, bogus-sign"
+            description="Create a distribution and sign it with the bogus signature"/>
+    
+    <target name="bogus-sign" description="Sign jars with bogus key so we can easily test with web start">
+        <!-- Delete the keystore if it exists -->
+        <delete file="${bogus-keystore}"/>
+        
+        <!-- Create a new key -->
+        <genkey alias="TJL"
+                storepass="nosecret"
+                dname="CN=The Jackson Laboratory, OU=NA, O=jax.org, C=US"
+                keystore="${bogus-keystore}"/>
+        
+        <!-- sign all of the jar files -->
+        <signjar alias="TJL" storepass="nosecret" keystore="${bogus-keystore}">
+            <fileset dir="${dist}" includes="**/*.jar"/>
+        </signjar>
+    </target>
+    
+    <target name="jar" description="Jar the distribution.">
+        <!-- Create the lib directory -->
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${dist}/lib"/>
+        
+        <ivy:info file="ivy.xml"/>
+        <zip destfile="${build}/${ivy.module}-configuration.zip"
+             basedir="${src}/configuration"/>
+        <jar destfile="${dist}/${ivy.module}-${ivy.revision}.jar" manifest="${src}/META-INF/MANIFEST.MF">
+            <fileset dir="${build}/classes"/>
+            <fileset dir="${src}/resources"/>
+            <fileset file="${build}/${ivy.module}-configuration.zip"/>
+        </jar>
+        
+        <!-- build the classpath.zip and classpath.jar that contain the whole bundle -->
+        <zip destfile="${build}/${ivy.module}-classpath-bundle.zip">
+             <fileset dir="${lib}"/>
+             <fileset file="${dist}/${ivy.module}-${ivy.revision}.jar"/>
+        </zip>
+        <jar destfile="${dist}/lib/${ivy.module}-classpath-bundle-${ivy.revision}.jar">
+            <fileset file="${build}/${ivy.module}-classpath-bundle.zip"/>
+        </jar>
+    </target>
+    
+    <target name="dist" depends="common.dist" description="like the common dist except we also zip up the application and scripts">
+        <zip destfile="${dist}/${ivy.module}-${ivy.revision}.zip">
+            <zipfileset dir="${dist}" includes="**/*.jar" prefix="${ivy.module}-${ivy.revision}"/>
+            <zipfileset file="doc/Installation_Instructions.txt" prefix="${ivy.module}-${ivy.revision}"/>
+            <zipfileset file="LICENSE.txt" prefix="${ivy.module}-${ivy.revision}"/>
+        </zip>
+    </target>
+    
+    <target name="clean" depends="common.clean" description="remove all of the build files">
+        <delete dir="${web-dist}"/>
+        <delete file="${bogus-keystore}"/>
+    </target>
+</project>

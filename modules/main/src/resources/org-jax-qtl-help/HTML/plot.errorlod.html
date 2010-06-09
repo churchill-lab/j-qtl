@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot grid of error LOD values</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for plot.errorlod {qtl}"><tr><td>plot.errorlod {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot grid of error LOD values</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plot a grid of the LOD scores indicating which genotypes are
+likely to be in error.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'errorlod':
+plot(x, chr, ind, breaks=c(-Inf,2,3,4.5,Inf),
+              col=c("white","gray85","hotpink","purple3"),
+              alternate.chrid=FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+The chromosomes for which the error LOD scores should
+be plotted.</td></tr>
+<tr valign="top"><td><code>ind</code></td>
+<td>
+Indicates the individuals for which the error LOD scores
+should be plotted.</td></tr>
+<tr valign="top"><td><code>breaks</code></td>
+<td>
+A set of breakpoints for the colors; must give one more
+breakpoint than color.  Intervals are open on the left and closed on
+the right, except for the lowest interval.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+A vector of colors to appear in the image.</td></tr>
+<tr valign="top"><td><code>alternate.chrid</code></td>
+<td>
+If TRUE and more than one chromosome is
+plotted, alternate the placement of chromosome 
+axis labels, so that they may be more easily distinguished.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored at this point.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Uses <code><a href="../../graphics/html/image.html">image</a></code> to plot a grid with different shades
+of pixels to indicate which genotypes are likely to be in error.
+</p>
+<p>
+Darker pixels have higher error LOD scores:
+<i>LOD &lt;= 2</i> in white;
+<i>2 &lt; LOD &lt;= 3</i> in gray;
+<i>3 &lt; LOD &lt;= 4.5</i> in pink;
+<i>LOD &gt; 4.5</i> in purple.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+None.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Lincoln, S. E. and Lander, E. S. (1992) Systematic detection of
+errors in genetic linkage data.  <EM>Genomics</EM> <B>14</B>, 604&ndash;610.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="calc.errorlod.html">calc.errorlod</a></code>,
+<code><a href="top.errorlod.html">top.errorlod</a></code>, <code><a href="../../graphics/html/image.html">image</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(hyper)
+
+# Calculate error LOD scores
+hyper &lt;- calc.errorlod(hyper,error.prob=0.01)
+
+# plot the error LOD scores; print those above a specified cutoff 
+plot.errorlod(hyper)
+plot.errorlod(hyper,chr=1)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

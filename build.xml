@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project
+    default="dist"
+    basedir=".">
+    
+    <description>
+        the main build file for the J/qtl project
+    </description>
+    
+    <!-- force a build clean until we have a smarter build system -->
+    <target name="dist" depends="clean">
+        <subant buildpath="${basedir}/modules/main" target="web-dist"/>
+    </target>
+
+    <target name="clean">
+        <subant buildpath="${basedir}/modules/main" target="clean"/>
+    </target>
+
+</project>

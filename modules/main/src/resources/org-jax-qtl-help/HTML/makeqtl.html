@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Make a qtl object</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for makeqtl {qtl}"><tr><td>makeqtl {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Make a qtl object</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function takes a cross object and specified chromosome numbers
+and positions and pulls out the genotype probabilities or imputed
+genotypes at the nearest pseudomarkers, for later use by the function
+<code><a href="fitqtl.html">fitqtl</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+makeqtl(cross, chr, pos, qtl.name, what=c("draws","prob"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Vector indicating the chromosome for each QTL.</td></tr>
+<tr valign="top"><td><code>pos</code></td>
+<td>
+Vector (of same length as <code>chr</code>) indicating the
+positions on the chromosome to be taken. If there is no marker or
+pseudomarker at a position, the nearest position is used.</td></tr>
+<tr valign="top"><td><code>qtl.name</code></td>
+<td>
+Optional user-specified name for each QTL, used in the
+drop-one-term ANOVA table in <code><a href="fitqtl.html">fitqtl</a></code>.
+If unspecified, the names will be of the form <code>"Chr1@10"</code> for a
+QTL on Chromsome 1 at 10 cM.</td></tr>
+<tr valign="top"><td><code>what</code></td>
+<td>
+Indicates whether to pull out the imputed genotypes or the
+genotype probabilities.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function will take out the genotype probabilities and imputed
+genotypes if they are present in the input <code>cross</code> object. If both
+fields are missing in the input object, the function will report an
+error. Before running this function, the user must have first run either
+<code><a href="sim.geno.html">sim.geno</a></code> (for <code>what="draws"</code>) or
+<code><a href="calc.genoprob.html">calc.genoprob</a></code> (for <code>what="prob"</code>).
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>qtl</code> with the following elements (though only
+one of <code>geno</code> and <code>prob</code> will be included, according to
+whether <code>what</code> is given as <code>"draws"</code> or <code>"prob"</code>):
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code><code>geno</code></code></td>
+<td>
+Imputed genotypes.</td></tr>
+<tr valign="top"><td><code><code>prob</code></code></td>
+<td>
+Genotype probabilities.</td></tr>
+<tr valign="top"><td><code><code>name</code></code></td>
+<td>
+User-defined name for each QTL, or a name of the
+form <code>"Chr1@10"</code>.</td></tr>
+<tr valign="top"><td><code><code>altname</code></code></td>
+<td>
+QTL names of the form <code>"Q1"</code>, <code>"Q2"</code>,
+etc.</td></tr>
+<tr valign="top"><td><code><code>chr</code></code></td>
+<td>
+Input vector of chromosome numbers.</td></tr>
+<tr valign="top"><td><code><code>pos</code></code></td>
+<td>
+Input vector of chromosome positions.</td></tr>
+<tr valign="top"><td><code><code>n.qtl</code></code></td>
+<td>
+Number of QTLs.</td></tr>
+<tr valign="top"><td><code><code>n.ind</code></code></td>
+<td>
+Number of individuals.</td></tr>
+<tr valign="top"><td><code><code>n.gen</code></code></td>
+<td>
+A vector indicating the number of genotypes for each QTL.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Hao Wu; Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="fitqtl.html">fitqtl</a></code>, <code><a href="calc.genoprob.html">calc.genoprob</a></code>,
+<code><a href="sim.geno.html">sim.geno</a></code>, <code><a href="dropfromqtl.html">dropfromqtl</a></code>,
+<code><a href="replaceqtl.html">replaceqtl</a></code>, <code><a href="addtoqtl.html">addtoqtl</a></code>, <code><a href="summary.qtl.html">summary.qtl</a></code>,
+<code><a href="reorderqtl.html">reorderqtl</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+# take out several QTLs and make QTL object
+qc &lt;- c("1", "6", "13")
+qp &lt;- c(25.8, 33.6, 18.63)
+fake.f2 &lt;- subset(fake.f2, chr=qc)
+
+fake.f2 &lt;- sim.geno(fake.f2, n.draws=8, step=2, err=0.001)
+qtl &lt;- makeqtl(fake.f2, qc, qp, what="draws")
+summary(qtl)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

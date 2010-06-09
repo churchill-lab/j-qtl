@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Reorder the QTL in a qtl object.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for reorderqtl {qtl}"><tr><td>reorderqtl {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Reorder the QTL in a qtl object.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function changes the order of the QTL in a QTL object.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+reorderqtl(qtl, neworder)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>qtl</code></td>
+<td>
+A qtl object, as created by <code><a href="makeqtl.html">makeqtl</a></code>.</td></tr>
+<tr valign="top"><td><code>neworder</code></td>
+<td>
+A vector containing the positive integers up to the
+number of QTL in <code>qtl</code>, indicating the new order for the QTL.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Everything in the input <code>qtl</code> is reordered except the
+<code>altname</code> component, which contains names of the form <code>Q1</code>,
+<code>Q2</code>, etc.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The input <code>qtl</code> object, with the loci reordered.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="makeqtl.html">makeqtl</a></code>, <code><a href="fitqtl.html">fitqtl</a></code>,
+<code><a href="dropfromqtl.html">dropfromqtl</a></code>, <code><a href="addtoqtl.html">addtoqtl</a></code>,
+<code><a href="replaceqtl.html">replaceqtl</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+# take out several QTLs and make QTL object
+qc &lt;- c(1, 6, 13)
+qp &lt;- c(25.8, 33.6, 18.63)
+fake.f2 &lt;- subset(fake.f2, chr=qc)
+
+fake.f2 &lt;- sim.geno(fake.f2, n.draws=4)
+qtl &lt;- makeqtl(fake.f2, qc, qp, what="draws")
+
+qtl &lt;- reorderqtl(qtl, c(2,3,1))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Maximum peak in genome scan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for max.scanone {qtl}"><tr><td>max.scanone {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Maximum peak in genome scan</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Print the row of the output from <code><a href="scanone.html">scanone</a></code> that
+corresponds to the maximum LOD, genome-wide.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scanone':
+max(object, chr, lodcolumn=1, df=FALSE, na.rm=TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+An object of the form output by the function
+<code><a href="scanone.html">scanone</a></code>: a data.frame whose third column is the
+LOD score.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Numeric or character vector indicating chromosomes
+on which to find the maximum LOD score.</td></tr>
+<tr valign="top"><td><code>lodcolumn</code></td>
+<td>
+An integer, indicating which of the LOD score columns
+should be considered in pulling out the peak (these are indexed 1,
+2, ...).</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+If TRUE, the degrees of freedom associated with the LOD
+scores are shown.</td></tr>
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+A logical indicating whether missing values should be
+removed.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>summary.scanone</code>, to be printed by
+<code>print.summary.scanone</code>.  This is a data.frame with one row,
+corresponding to the maximum LOD peak either genome-wide or for the
+particular chromosome specified.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scanone.html">scanone</a></code>, <code><a href="plot.scanone.html">plot.scanone</a></code>,
+<code><a href="summary.scanone.html">summary.scanone</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(listeria)
+
+listeria &lt;- calc.genoprob(listeria, step=2.5)
+out &lt;- scanone(listeria, model="2part", upper=TRUE)
+# Maximum peak for LOD(p,mu)
+max(out)
+max(out,chr=13)
+
+# Maximum peak for LOD(p)
+max(out, lodcolumn=2)
+
+# Maximum peak for LOD(mu)
+max(out, lodcolumn=3)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: General QTL scan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for scanqtl {qtl}"><tr><td>scanqtl {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>General QTL scan</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Performs a multiple QTL scan for specified chromosomes and positions
+or intervals, with the possible inclusion of QTL-QTL interactions and/or
+covariates.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scanqtl(cross, pheno.col=1, chr, pos, covar=NULL, formula,
+        method=c("imp","hk"), incl.markers=FALSE, verbose=TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>pheno.col</code></td>
+<td>
+Column number in the phenotype matrix to be
+used as the phenotype.  One may also give a character string matching
+a phenotype name.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Vector indicating the chromosome for each QTL.</td></tr>
+<tr valign="top"><td><code>pos</code></td>
+<td>
+List indicating the positions or intervals on the chromosome
+to be scanned.  Each element should be either a single number (for a
+specific position) or a pair of numbers (for an interval).</td></tr>
+<tr valign="top"><td><code>covar</code></td>
+<td>
+A data frame of covariates.</td></tr>
+<tr valign="top"><td><code>formula</code></td>
+<td>
+An object of class <code><a href="../../stats/html/formula.html">formula</a></code>
+indicating the model to be fitted.  QTLs are indicated as <code>Q1</code>,
+<code>Q2</code>, etc.  Covariates are indicated by their names in <code>covar</code>.</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+Indicates whether to use multiple imputation or
+Haley-Knott regression.</td></tr>
+<tr valign="top"><td><code>incl.markers</code></td>
+<td>
+If FALSE, do calculations only at points on an
+evenly spaced grid.</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+If TRUE, give feedback about progress.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The formula is used to specified the model to be fit. In the
+formula, use <code>Q1</code>, <code>Q2</code>, etc., or <code>q1</code>,
+<code>q2</code>, etc., to represent the QTLs, and the column names in the
+covariate data frame to represent the covariates.
+</p>
+<p>
+We enforce a hierarchical structure on the model formula: if a QTL or
+covariate is in involved in an interaction, its main effect are also
+be included.   
+</p>
+<p>
+Only the interaction terms need to be specifed in the formula. The
+main effects of all input QTLs (as specified by chr and pos) and
+covariates (as specifed by covar) will be included by default. For
+example, if the formula is <code>y~Q1*Q2*Sex</code>, and there are three
+elements in input <code>chr</code> and <code>pos</code> and Sex is one of the
+column names for
+input covariates, the formula used in genome scan will be
+<code>y ~ Q1 + Q2 + Q3 + Sex + Q1:Q2 + Q1:Sex + Q2:Sex + Q1:Q2:Sex</code>. 
+</p>
+<p>
+The input <code>pos</code> is a list or vector to specify the position/range
+of the input chromosomes to be scanned. If it is a vector, it gives the
+precise positions of the QTL on the chromosomes. If it is a list, it will
+contain either the precise positions or a range on the chromosomes. For
+example, consider the case that the input <code>chr = c(1, 6,
+    13)</code>. If <code>pos = c(9.8, 34.0, 18.6)</code>, 
+it means to fit a model with QTL on chromosome 1 at 9.8cM, chromosome
+6 at 34cM and  chromosome 13 at 18.6cM.
+If <code>pos = list(c(5,15), c(30,36), 18)</code>, it
+means to scan chromosome 1 from 5cM to 15cM, chromosome 6 from 30cM to
+36cM, fix the QTL on chromosome 13 at 18cM.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>scanqtl</code>. It is a multi-dimensional
+array of LOD scores, with the number of dimension equal to the number
+of QTLs specifed.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Hao Wu
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Haley, C. S. and Knott, S. A. (1992) A simple regression method for mapping
+quantitative trait loci in line crosses using flanking markers.
+<EM>Heredity</EM> <B>69</B>, 315&ndash;324.
+</p>
+<p>
+Sen, 'S. and Churchill, G. A. (2001) A statistical framework for quantitative
+trait mapping.  <EM>Genetics</EM> <B>159</B>, 371&ndash;387.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="fitqtl.html">fitqtl</a></code>, <code><a href="makeqtl.html">makeqtl</a></code>,
+<code><a href="refineqtl.html">refineqtl</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+# take out several QTLs
+qc &lt;- c(1, 8, 13)
+fake.f2 &lt;- subset(fake.f2, chr=qc)
+
+# imputate genotypes
+
+## Not run: 
+fake.f2 &lt;- sim.geno(fake.f2, n.draws=64, step=2, err=0.001)
+## End(Not run)
+
+# 2-dimensional genome scan with additive 3-QTL model
+pos &lt;- list(c(15,35), c(45,65), 28)
+result &lt;- scanqtl(fake.f2, pheno.col=1, chr=qc, pos=pos,
+                  formula=y~Q1+Q2+Q3)
+
+# image of the results
+# chr locations
+chr1 &lt;- as.numeric(matrix(unlist(strsplit(colnames(result),"@")),
+                   ncol=2,byrow=TRUE)[,2])
+chr8 &lt;- as.numeric(matrix(unlist(strsplit(rownames(result),"@")),
+                   ncol=2,byrow=TRUE)[,2])
+# image plot
+image(chr1, chr8, t(result), las=1, col=rev(rainbow(256,start=0,end=2/3)))
+
+# do the same, allowing the QTLs on chr 1 and 13 to interact
+result2 &lt;- scanqtl(fake.f2, pheno.col=1, chr=qc, pos=pos,
+                   formula=y~Q1+Q2+Q3+Q1:Q3)
+# image plot
+image(chr1, chr8, t(result2), las=1, col=rev(rainbow(256,start=0,end=2/3)))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

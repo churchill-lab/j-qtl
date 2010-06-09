@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot 1-d LOD profiles for a multiple QTL model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for plotLodProfile {qtl}"><tr><td>plotLodProfile {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot 1-d LOD profiles for a multiple QTL model</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Use the results of <code><a href="refineqtl.html">refineqtl</a></code> to plot
+one-dimensional LOD profiles for each QTL.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+plotLodProfile(qtl, chr, incl.markers=TRUE, gap=25, lwd=2, lty=1, col="black",
+               qtl.labels=TRUE, mtick=c("line", "triangle"),
+               show.marker.names=FALSE, alternate.chrid=FALSE,
+               add=FALSE, ...)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>qtl</code></td>
+<td>
+An object of class <code>"qtl"</code>; must have been produced by
+<code><a href="refineqtl.html">refineqtl</a></code> using <code>keeplodprofiles=TRUE</code>.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Optional vector specifying which chromosomes to plot. (The
+chromosomes must be specified by name.)</td></tr>
+<tr valign="top"><td><code>incl.markers</code></td>
+<td>
+Indicate whether to plot line segments at the
+marker locations.</td></tr>
+<tr valign="top"><td><code>gap</code></td>
+<td>
+Gap separating chromosomes (in cM).</td></tr>
+<tr valign="top"><td><code>lwd</code></td>
+<td>
+Line widths for each QTL trace (length 1 or the number of QTL).</td></tr>
+<tr valign="top"><td><code>lty</code></td>
+<td>
+Line types for each QTL trace (length 1 or the number of QTL).</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+Line col for each QTL trace (length 1 or the number of QTL).</td></tr>
+<tr valign="top"><td><code>qtl.labels</code></td>
+<td>
+If TRUE, place a label on each QTL trace.</td></tr>
+<tr valign="top"><td><code>mtick</code></td>
+<td>
+Tick mark type for markers (line segments or
+upward-pointing triangels).</td></tr>
+<tr valign="top"><td><code>show.marker.names</code></td>
+<td>
+If TRUE, show the marker names along the x axis.</td></tr>
+<tr valign="top"><td><code>alternate.chrid</code></td>
+<td>
+If TRUE and more than one chromosome is
+plotted, alternate the placement of chromosome 
+axis labels, so that they may be more easily distinguished.</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+If TRUE, add curves to a current plot.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Passed to the function <code><a href="../../graphics/html/plot.html">plot</a></code> when it
+is called.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The function plots LOD profiles in the context of a multiple QTL
+model, using a scheme best described in Zeng et al. (2000).  The
+position of each QTL is varied, keeping all other loci fixed.  If a
+QTL is isolated on a chromosome, the entire chromosome is scanned; if
+there are additional linked QTL, the position of a QTL is scanned over
+the largest interval possible without allowing the order of QTLs along
+a chromosome to change.  At each position for the QTL being scanned,
+we calculate a LOD score comparing the full model, with the QTL of
+interest at that particular position (and all others at their fixed
+positions) to the model with the QTL of interest (and any
+interactions that include that QTL) omitted.  
+</p>
+<p>
+Care should be take regarding the arguments <code>lwd</code>, <code>lty</code>,
+and <code>col</code>; if vectors are given, they should be in the order of
+the QTL within the object, which may be different than the order in
+which they are plotted.  (The LOD profiles are sorted by chromosome
+and position.)
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+None.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Zeng  Z.-B., Liu, J., Stam, L. F., Kao, C.-H., Mercer, J. M. and
+Laurie, C. C. (2000) Genetic architecture of a morphological shape
+difference between two Drosophila species. <EM>Genetics</EM> <B>154</B>,
+299&ndash;310.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="refineqtl.html">refineqtl</a></code>,
+<code><a href="makeqtl.html">makeqtl</a></code>, <code><a href="scanqtl.html">scanqtl</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.bc)
+
+fake.bc &lt;- calc.genoprob(fake.bc, step=2)
+qtl &lt;- makeqtl(fake.bc, chr=c(2,5), pos=c(32.5, 17.5), what="prob")
+
+out &lt;- scanone(fake.bc, method="hk")
+
+# refine QTL positions and keep LOD profiles
+rqtl &lt;- refineqtl(fake.bc, qtl=qtl, method="hk", keeplodprofile=TRUE)
+
+# plot the LOD profiles
+plotLodProfile(rqtl)
+
+# add the initial scan results, for comparison
+plot(out, add=TRUE, chr=c(2,5), col="red")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

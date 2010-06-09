@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>j-qtl</name>
+            <properties/>
+            <folders>
+                <source-folder>
+                    <label>src/java</label>
+                    <type>java</type>
+                    <location>src/java</location>
+                </source-folder>
+                <source-folder>
+                    <label>src/resources</label>
+                    <type>java</type>
+                    <location>src/resources</location>
+                </source-folder>
+                <source-folder>
+                    <label>src/configuration</label>
+                    <type>java</type>
+                    <location>src/configuration</location>
+                </source-folder>
+                <source-folder>
+                    <label>src/web</label>
+                    <type>java</type>
+                    <location>src/web</location>
+                </source-folder>
+                <source-folder>
+                    <label>build/java</label>
+                    <type>java</type>
+                    <location>build/java</location>
+                </source-folder>
+                <source-folder>
+                    <label>libraries/analytic-graph/src/java</label>
+                    <type>java</type>
+                    <location>libraries/analytic-graph/src/java</location>
+                </source-folder>
+                <source-folder>
+                    <label>libraries/jax-schema/src/schema</label>
+                    <type>java</type>
+                    <location>libraries/jax-schema/src/schema</location>
+                </source-folder>
+                <source-folder>
+                    <label>libraries/jax-util/src/java</label>
+                    <type>java</type>
+                    <location>libraries/jax-util/src/java</location>
+                </source-folder>
+                <source-folder>
+                    <label>libraries/managed-jvm-launcher/src/java</label>
+                    <type>java</type>
+                    <location>libraries/managed-jvm-launcher/src/java</location>
+                </source-folder>
+                <source-folder>
+                    <label>libraries/r-interface/src/java</label>
+                    <type>java</type>
+                    <location>libraries/r-interface/src/java</location>
+                </source-folder>
+                <source-folder>
+                    <label>libraries/jax-schema/build/java</label>
+                    <type>java</type>
+                    <location>libraries/jax-schema/build/java</location>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <target>web-dist</target>
+                </action>
+                <action name="clean">
+                    <target>clean</target>
+                </action>
+                <action name="rebuild">
+                    <target>clean</target>
+                    <target>web-dist</target>
+                </action>
+            </ide-actions>
+            <view>
+                <items>
+                    <source-folder style="packages">
+                        <label>src/java</label>
+                        <location>src/java</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>src/resources</label>
+                        <location>src/resources</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>src/configuration</label>
+                        <location>src/configuration</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>src/web</label>
+                        <location>src/web</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>build/java</label>
+                        <location>build/java</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>libraries/analytic-graph/src/java</label>
+                        <location>libraries/analytic-graph/src/java</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>libraries/jax-schema/src/schema</label>
+                        <location>libraries/jax-schema/src/schema</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>libraries/jax-util/src/java</label>
+                        <location>libraries/jax-util/src/java</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>libraries/managed-jvm-launcher/src/java</label>
+                        <location>libraries/managed-jvm-launcher/src/java</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>libraries/r-interface/src/java</label>
+                        <location>libraries/r-interface/src/java</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>libraries/jax-schema/build/java</label>
+                        <location>libraries/jax-schema/build/java</location>
+                    </source-folder>
+                    <source-file>
+                        <location>build.xml</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="rebuild"/>
+                    <ide-action name="clean"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/2">
+            <compilation-unit>
+                <package-root>src/java</package-root>
+                <package-root>src/resources</package-root>
+                <package-root>src/configuration</package-root>
+                <package-root>src/web</package-root>
+                <package-root>build/java</package-root>
+                <package-root>libraries/analytic-graph/src/java</package-root>
+                <package-root>libraries/jax-schema/src/schema</package-root>
+                <package-root>libraries/jax-util/src/java</package-root>
+                <package-root>libraries/managed-jvm-launcher/src/java</package-root>
+                <package-root>libraries/r-interface/src/java</package-root>
+                <package-root>libraries/jax-schema/build/java</package-root>
+                <classpath mode="compile">build-common/repository/third-party/edu.stanford.ejalbert/BrowserLauncher2/1.3/BrowserLauncher2.jar:build-common/repository/third-party/net.java.dev.glassfish/jaxb/2.0.5/activation.jar:build-common/repository/third-party/net.java.dev.glassfish/jaxb/2.0.5/jaxb-api.jar:build-common/repository/third-party/net.java.dev.glassfish/jaxb/2.0.5/jaxb-impl.jar:build-common/repository/third-party/net.java.dev.glassfish/jaxb/2.0.5/JAXB2_20070122.jar:build-common/repository/third-party/net.java.dev.glassfish/jaxb/2.0.5/jsr173_1.0_api.jar:build-common/repository/third-party/net.java.dev.javahelp/javahelp/2.0/jhall.jar:build-common/repository/third-party/org.javadesktop/swing-layout/1.0.3/swing-layout.jar:build-common/repository/third-party/org.rosuda/JRI/0.4/JRI.jar</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+        </java-data>
+    </configuration>
+</project>

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot genetic map</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for plot.map {qtl}"><tr><td>plot.map {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot genetic map</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plot genetic map of marker locations for all chromosomes.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'map':
+plot(x, map2, chr, horizontal=FALSE, shift=TRUE,
+     show.marker.names=FALSE, alternate.chrid=FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A list whose components are vectors of marker locations.  A
+<code>cross</code> object may be given instead, in which case the genetic
+map it contains is used.</td></tr>
+<tr valign="top"><td><code>map2</code></td>
+<td>
+An optional second genetic map with the same number of
+chromosomes and markers as the first.  As with the first argument, a
+<code>cross</code> object may be given instead.  If this argument is
+given, a comparison of the two genetic maps is plotted.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Optional vector specifying which chromosomes to plot. (The
+chromosomes must be specified by name.)</td></tr>
+<tr valign="top"><td><code>horizontal</code></td>
+<td>
+Specifies whether the chromosomes should be
+plotted horizontally.</td></tr>
+<tr valign="top"><td><code>shift</code></td>
+<td>
+If TRUE, shift the first marker on each chromosome to be
+at 0 cM.</td></tr>
+<tr valign="top"><td><code>show.marker.names</code></td>
+<td>
+If TRUE, marker names are included.</td></tr>
+<tr valign="top"><td><code>alternate.chrid</code></td>
+<td>
+If TRUE and more than one chromosome is
+plotted, alternate the placement of chromosome 
+axis labels, so that they may be more easily distinguished.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Passed to <code><a href="../../graphics/html/plot.html">plot</a></code>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Plots the genetic map for each chromosome, or a comparison of the
+genetic maps if two maps are given.
+</p>
+<p>
+For a sex-specific map, female and male maps are plotted against one
+another.  For two sex-specific maps, the two female maps are plotted
+against one another and the two male maps are plotted against one
+another.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+None.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="est.map.html">est.map</a></code>, <code><a href="plot.cross.html">plot.cross</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.bc)
+
+plot.map(fake.bc)
+plot.map(fake.bc,horizontal=TRUE)
+
+newmap &lt;- est.map(fake.bc)
+plot(newmap)
+plot.map(fake.bc, newmap)
+
+plot.map(fake.bc, show.marker.names=TRUE)
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

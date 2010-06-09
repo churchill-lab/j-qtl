@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Bootstrap to get interval estimate of QTL location</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for scanoneboot {qtl}"><tr><td>scanoneboot {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Bootstrap to get interval estimate of QTL location</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Nonparametric bootstrap to get an estimated confidence interval for
+the location of a QTL, in the context of a single-QTL model.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scanoneboot(cross, chr, pheno.col=1, model=c("normal","binary","2part","np"),
+            method=c("em","imp","hk","ehk","mr","mr-imp","mr-argmax"),
+            addcovar=NULL, intcovar=NULL, weights=NULL,
+            use=c("all.obs", "complete.obs"), upper=FALSE,
+            ties.random=FALSE, start=NULL, maxit=4000,
+            tol=1e-4, n.boot=1000, verbose=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>. See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+Indicates the chromosomes for which the bootstrap should be
+performed.</td></tr>
+<tr valign="top"><td><code>pheno.col</code></td>
+<td>
+Column number in the phenotype matrix which should be
+used as the phenotype.  One may also give a character string matching
+a phenotype name.</td></tr>
+<tr valign="top"><td><code>model</code></td>
+<td>
+The phenotypic model: the usual normal model, a model for
+binary traits, a two-part model or non-parametric analysis</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+Indicates whether to use the EM algorithm, 
+imputation, Haley-Knott regression, the extended Haley-Knott method,
+or marker regression.  Not all methods are available for all models.
+Marker regression is performed either by dropping individuals with
+missing genotypes (<code>"mr"</code>), or by first filling in missing data
+using a single imputation (<code>"mr-imp"</code>) or by the Viterbi
+algorithm (<code>"mr-argmax"</code>).</td></tr>
+<tr valign="top"><td><code>addcovar</code></td>
+<td>
+Additive covariates;
+allowed only for the normal and binary models.</td></tr>
+<tr valign="top"><td><code>intcovar</code></td>
+<td>
+Interactive covariates (interact with QTL genotype);
+allowed only for the normal and binary models.</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+Optional weights of individuals.  Should be either NULL
+or a vector of length n.ind containing positive weights.  Used only
+in the case <code>model="normal"</code>.</td></tr>
+<tr valign="top"><td><code>use</code></td>
+<td>
+In the case that multiple phenotypes are selected to be
+scanned, this argument indicates whether to use all individuals, 
+including those missing some phenotypes, or just those individuals
+that have data on all selected phenotypes.</td></tr>
+<tr valign="top"><td><code>upper</code></td>
+<td>
+Used only for the two-part model; if true, the
+"undefined" phenotype is the maximum observed phenotype; otherwise,
+it is the smallest observed phenotype.</td></tr>
+<tr valign="top"><td><code>ties.random</code></td>
+<td>
+Used only for the non-parametric "model"; if TRUE,
+ties in the phenotypes are ranked at random.  If FALSE, average ranks
+are used and a corrected LOD score is calculated.</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+Used only for the EM algorithm with the normal model and
+no covariates.  If <code>NULL</code>, use the usual starting values; if
+length 1, use random initial weights for EM; otherwise, this should
+be a vector of length n+1 (where n is the number of possible
+genotypes for the cross), giving the initial values for EM.</td></tr>
+<tr valign="top"><td><code>maxit</code></td>
+<td>
+Maximum number of iterations for methods <code>"em"</code> and
+<code>"ehk"</code>.</td></tr>
+<tr valign="top"><td><code>tol</code></td>
+<td>
+Tolerance value for determining convergence for methods
+<code>"em"</code> and <code>"ehk"</code>.</td></tr>
+<tr valign="top"><td><code>n.boot</code></td>
+<td>
+Number of bootstrap replicates.</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+If TRUE, display information about the progress of the
+bootstrap.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+We recommend against the use of the bootstrap to derive a confidence
+interval for the location of a QTL; see Manichaikul et al. (2006).
+Use <code><a href="lodint.html">lodint</a></code> or <code><a href="bayesint.html">bayesint</a></code> instead.
+</p>
+<p>
+The bulk of the arguments are the same as for the
+<code><a href="scanone.html">scanone</a></code> function.  A single chromosome should be
+indicated with the <code>chr</code> argument; otherwise, we focus on the
+first chromosome in the input <code>cross</code> object.
+</p>
+<p>
+A single-dimensional scan on the relevant chromosome is performed.  We
+further perform a nonparametric bootstrap (sampling individuals <EM>with
+replacement</EM> from the available data, to create a new data set with
+the same size as the input cross; some individuals with be duplicated
+and some omitted).  The same scan is performed with the resampled data;
+for each bootstrap replicate, we store only the location with maximum
+LOD score. 
+</p>
+<p>
+Use <code><a href="summary.scanoneboot.html">summary.scanoneboot</a></code> to obtain the desired
+confidence interval.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A vector of length <code>n.boot</code>, giving the estimated QTL locations
+in the bootstrap replicates.  The results for the original data are
+included as an attribute, <code>"results"</code>.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Manichaikul, A., Dupuis, J., Sen, 'S and Broman, K. W. (2006) Poor
+performance of bootstrap confidence intervals for the location of a
+quantitative trait locus. <EM>Genetics</EM> <B>174</B>, 481&ndash;489.
+</p>
+<p>
+Visscher, P. M., Thompson, R. and Haley, C. S. (1996) Confidence
+intervals in QTL mapping by bootstrap.  <EM>Genetics</EM> <B>143</B>,
+1013&ndash;1020.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scanone.html">scanone</a></code>, <code><a href="summary.scanoneboot.html">summary.scanoneboot</a></code>,
+<code><a href="plot.scanoneboot.html">plot.scanoneboot</a></code>,
+<code><a href="lodint.html">lodint</a></code>, <code><a href="bayesint.html">bayesint</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+fake.f2 &lt;- calc.genoprob(fake.f2, step=1, err=0.001)
+## Not run: bootoutput &lt;- scanoneboot(fake.f2, chr=13, method="hk")
+
+
+plot(bootoutput)
+summary(bootoutput)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

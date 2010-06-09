@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Fill holes in genotype data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for fill.geno {qtl}"><tr><td>fill.geno {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Fill holes in genotype data</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Replace the genotype data for a cross with a version imputed either
+by simulation with <code><a href="sim.geno.html">sim.geno</a></code> or by the Viterbi
+algorithm with <code><a href="argmax.geno.html">argmax.geno</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fill.geno(cross, method=c("imp","argmax"), error.prob=0.0001,
+          map.function=c("haldane","kosambi","c-f","morgan"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+Indicates whether to impute using a single simulation
+replicate from <code><a href="sim.geno.html">sim.geno</a></code> or using the Viterbi
+algorithm, as implemented in <code><a href="argmax.geno.html">argmax.geno</a></code>.</td></tr>
+<tr valign="top"><td><code>error.prob</code></td>
+<td>
+Assumed genotyping error rate used in the calculation
+of the penetrance Pr(observed genotype | true genotype).</td></tr>
+<tr valign="top"><td><code>map.function</code></td>
+<td>
+Indicates whether to use the Haldane, Kosambi or
+Carter-Falconer map function when converting genetic distances into
+recombination fractions.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function is written so that one may perform rough genome scans by
+marker regression without having to drop individuals with missing
+genotype data.  <B>We must caution the user that little trust
+should be placed in the results</B>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The input <code>cross</code> object with the genotype data replaced by an
+imputed version.  Any intermediate calculations (such as is produced
+by <code><a href="calc.genoprob.html">calc.genoprob</a></code>, <code><a href="argmax.geno.html">argmax.geno</a></code>
+and <code><a href="sim.geno.html">sim.geno</a></code>) are removed.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="sim.geno.html">sim.geno</a></code>,
+<code><a href="argmax.geno.html">argmax.geno</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(hyper)
+
+out.mr &lt;- scantwo(fill.geno(hyper,method="argmax"), method="mr")
+plot(out.mr)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

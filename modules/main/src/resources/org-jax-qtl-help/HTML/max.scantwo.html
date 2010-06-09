@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Maximum peak in two-dimensional genome scan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for max.scantwo {qtl}"><tr><td>max.scantwo {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Maximum peak in two-dimensional genome scan</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Print the pair of loci with the largest LOD score in the results of
+<code><a href="scantwo.html">scantwo</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'scantwo':
+max(object, lodcolumn=1,
+    what=c("best", "full", "add", "int"),
+    df=FALSE, na.rm=TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+An object of class <code>scantwo</code>, the output of the
+function <code><a href="scantwo.html">scantwo</a></code>.</td></tr>
+<tr valign="top"><td><code>lodcolumn</code></td>
+<td>
+If the scantwo results contain LOD scores for
+multiple phenotypes, this argument indicates which to use.</td></tr>
+<tr valign="top"><td><code>what</code></td>
+<td>
+Indicates for which LOD score the maximum should be reported.</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+If TRUE, the degrees of freedom associated with the LOD
+scores are shown.</td></tr>
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+Ignored.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Ignored.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This is very similar to the <code><a href="summary.scantwo.html">summary.scantwo</a></code>
+function, though this pulls out one pair of positions.
+</p>
+<p>
+If <code>what="best"</code>, we find the pair of positions at which the LOD
+score for the full model (2 QTL + interaction) is maximized, and then
+also print the positions on that same pair of chromosomes at which the
+additive LOD score is maximized.
+</p>
+<p>
+In the other cases, we pull out the pair of positions with the largest
+LOD score; which LOD score is considered is indicated by the
+<code>what</code> argument.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class <code>summary.scantwo</code>, to be printed by
+<code>print.summary.scantwo</code>, with the pair of positions with the
+maximum LOD score. (Which LOD score is considered is indicated by the
+<code>what</code> argument.)</p>
+
+<h3>Output of addpair</h3>
+
+<p>
+<B>Note</B> that, for output from <code><a href="addpair.html">addpair</a></code> in which the
+new loci are indicated explicitly in the formula, the summary provided
+by <code>max.scantwo</code> is somewhat special.
+</p>
+<p>
+All arguments (except, of course, the input
+<code>object</code>) are ignored.
+</p>
+<p>
+If the formula is symmetric in the two new QTL, the output has just two LOD
+score columns: <code>lod.2v0</code> comparing the full model to the model
+with neither of the new QTL, and <code>lod.2v1</code> comparing the full
+model to the model with just one new QTL.
+</p>
+<p>
+If the formula is <EM>not</EM> symmetric in the two new QTL, the output
+has three LOD score columns: <code>lod.2v0</code> comparing the full model
+to the model with neither of the new QTL, <code>lod.2v1b</code> comparing
+the full model to the model in which the first of the new QTL is
+omitted, and <code>lod.2v1a</code> comparing the full model to the model
+with the second of the new QTL omitted.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scantwo.html">scantwo</a></code>, <code><a href="plot.scantwo.html">plot.scantwo</a></code>,
+<code><a href="summary.scantwo.html">summary.scantwo</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.f2)
+
+fake.f2 &lt;- calc.genoprob(fake.f2, step=10)
+out.2dim &lt;- scantwo(fake.f2, method="hk")
+max(out.2dim)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

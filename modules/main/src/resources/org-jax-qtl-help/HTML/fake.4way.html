@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Simulated data for a 4-way cross</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for fake.4way {qtl}"><tr><td>fake.4way {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Simulated data for a 4-way cross</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Simulated data for a phase-known 4-way cross, obtained using
+<code><a href="sim.cross.html">sim.cross</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(fake.4way)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+An object of class <code>cross</code>.  See <code><a href="read.cross.html">read.cross</a></code>
+for details.
+</p>
+
+
+<h3>Details</h3>
+
+<p>
+There are 250 individuals typed at 157 markers, including 8 on the X
+chromosome.  
+</p>
+<p>
+There are two phenotypes (including sex, for which 0=female and 1=male).
+The quantitative phenotype is affected by three QTLs: two on chromosome
+2 at positions 10 and 25 cM on the female genetic map, and one on
+chromosome 7 at position 40 cM on the female map.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Karl W Broman, <a href="mailto:kbroman@biostat.wisc.edu">kbroman@biostat.wisc.edu</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="sim.cross.html">sim.cross</a></code>, <code><a href="fake.bc.html">fake.bc</a></code>,
+<code><a href="fake.f2.html">fake.f2</a></code>, <code><a href="listeria.html">listeria</a></code>,
+<code><a href="hyper.html">hyper</a></code>,
+<code><a href="bristle3.html">bristle3</a></code>, <code><a href="bristleX.html">bristleX</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(fake.4way)
+
+plot(fake.4way)
+summary(fake.4way)
+
+# estimate recombination fractions
+fake.4way &lt;- est.rf(fake.4way)
+plot.rf(fake.4way)
+
+# estimate genetic maps
+ssmap &lt;- est.map(fake.4way, verbose=TRUE)
+samap &lt;- est.map(fake.4way, sex.sp=FALSE, verbose=TRUE)
+plot(ssmap, samap)
+
+# error lod scores
+fake.4way &lt;- calc.genoprob(fake.4way, err=0.01)
+fake.4way &lt;- calc.errorlod(fake.4way, err=0.01)
+top.errorlod(fake.4way, cutoff=2.5)
+
+# genome scan
+fake.4way &lt;- calc.genoprob(fake.4way, step=2.5)
+out.hk &lt;- scanone(fake.4way, method="hk")
+out.em &lt;- scanone(fake.4way, method="em")
+plot(out.em,out.hk,chr=c(2,7))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>

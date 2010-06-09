@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.5" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JSpinner" name="markerRelativeFilterSpinner">
+    </Component>
+  </NonVisualComponents>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" max="-2" attributes="1">
+              <Component id="absoluteConfidenceFilterLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="absoluteConfidenceFilterComboBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="absoluteConfidenceFilterValueSpinner" min="-2" pref="78" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="markerRelativeFilterLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="markerRelativeFilterComboBox" min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="absoluteConfidenceFilterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="absoluteConfidenceFilterComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="absoluteConfidenceFilterValueSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="markerRelativeFilterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="markerRelativeFilterComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="absoluteConfidenceFilterLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Absolute Confidence Filter:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="absoluteConfidenceFilterComboBox">
+    </Component>
+    <Component class="javax.swing.JSpinner" name="absoluteConfidenceFilterValueSpinner">
+    </Component>
+    <Component class="javax.swing.JLabel" name="markerRelativeFilterLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Relative Confidence Filter:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="markerRelativeFilterComboBox">
+    </Component>
+  </SubComponents>
+</Form>

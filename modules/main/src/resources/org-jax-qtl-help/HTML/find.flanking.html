@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Find flanking markers for a specified position</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for find.flanking {qtl}"><tr><td>find.flanking {qtl}</td><td align="right">R Documentation</td></tr></table>
+<h2>Find flanking markers for a specified position</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Find the genetic markers flanking a specified position on a
+chromosome, as well as the marker that is closest to the specified
+position.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>find.flanking(cross, chr, pos)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cross</code></td>
+<td>
+An object of class <code>cross</code>.  See
+<code><a href="read.cross.html">read.cross</a></code> for details.</td></tr>
+<tr valign="top"><td><code>chr</code></td>
+<td>
+A vector of chromosome identifiers, or a single such.</td></tr>
+<tr valign="top"><td><code>pos</code></td>
+<td>
+A vector of cM positions.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A data.frame, each row corresponding to one of the input positions.
+The first column contains the left-flanking markers, the second column
+contains the right-flanking markers, and the third column contains the
+markers closest to the specified positions.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Brian Yandell
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="find.marker.html">find.marker</a></code>, <code><a href="plot.pxg.html">plot.pxg</a></code>,
+<code><a href="find.markerpos.html">find.markerpos</a></code>, <code><a href="find.pseudomarker.html">find.pseudomarker</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(listeria)
+find.flanking(listeria, 5, 28)
+find.flanking(listeria, c(1, 5, 13), c(81, 28, 26))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>qtl</em> version 1.08-56 <a href="00Index.html">Index]</a></div>
+
+</body></html>
