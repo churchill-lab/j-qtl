@@ -1,25 +1,20 @@
 J/qtl is a Java graphical user interface (GUI) for the popular QTL data analysis
 software R/qtl. See http://churchill.jax.org/software/jqtl.shtml for details.
 
-LICENSE
-========
-Copyright (c) 2010 The Jackson Laboratory
+WARRANTY DISCLAIMER AND COPYRIGHT NOTICE
+========================================
 
-This software was developed by Gary Churchill's Lab at The Jackson
-Laboratory (see http://churchill.jax.org).
+The Jackson Laboratory makes no representation about the suitability or accuracy
+of this software for any purpose, and makes no warranties, either express or
+implied, including merchantability and fitness for a particular purpose or that
+the use of this software will not infringe any third party patents, copyrights,
+trademarks, or other rights. The software are provided "as is".
 
-This is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This software is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this software.  If not, see <http://www.gnu.org/licenses/>.
+This software is provided to enhance knowledge and encourage progress in the
+scientific community. This is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your option)
+any later version."
 
 BUILDING
 ========
