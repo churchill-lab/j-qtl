@@ -24,7 +24,7 @@ In order successfully complete these build instructions you must have:
 * java development kit (JDK) >= 1.5
 
 To obtain and build the source code enter the following commands:
-    git clone git://github.com/keithshep/j-qtl.git
+    git clone git://github.com/cgd/j-qtl.git
     cd j-qtl
     git submodule init
     git submodule update
