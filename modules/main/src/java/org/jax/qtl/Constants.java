@@ -59,7 +59,7 @@ public interface Constants {
     static final String STEP_SIZE_LABEL = "Step Size(cM)";
     static final String NUM_DRAWS_LABEL = "Number of Imputations";
     static final String GENO_ERROR_RATE_LABEL = "Genotyping error rate";
-    static final String DIST_PASS_TERMINAL_LABEL = "Distance pass terminal";
+    static final String DIST_PAST_TERMINAL_LABEL = "Distance past terminal";
     static final String STEP_WIDTH_TYPE_LABEL = "Step width type";
     static final String M_LABEL = "Interference parameter for the chi-square model";
     static final String P_LABEL = "Proportion of chiasmata from the NI mechanism, in the Stahl model";

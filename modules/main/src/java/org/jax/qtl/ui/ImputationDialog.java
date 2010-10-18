@@ -65,7 +65,7 @@ public class ImputationDialog extends JDialog implements Constants
     
     private Cross selectedCross;
     private final Cross[] availableCrosses;
-    private JTextField tfNumDraws, tfStepSize, tfGenoErrorRate, tfDistPassTerminal;
+    private JTextField tfNumDraws, tfStepSize, tfGenoErrorRate, tfDistPastTerminal;
     private final static String NUM_DRAWS = "16.0", STEP = "2.0"; // default
     private JComboBox mapFunctionCombobox, stepWidthTypeCombobox;
     private Thread runRcommand;
@@ -148,7 +148,7 @@ public class ImputationDialog extends JDialog implements Constants
                         int draws = (int) Double.parseDouble(ImputationDialog.this.tfNumDraws.getText());
                         double step = Double.parseDouble(ImputationDialog.this.tfStepSize.getText());
                         double errorProb = Double.parseDouble(ImputationDialog.this.tfGenoErrorRate.getText());
-                        double offend = Double.parseDouble(ImputationDialog.this.tfDistPassTerminal.getText());
+                        double offend = Double.parseDouble(ImputationDialog.this.tfDistPastTerminal.getText());
                         String mapFunction = MAP_FUNCTION[ImputationDialog.this.mapFunctionCombobox.getSelectedIndex()];
                         String stepwidth = STEP_WIDTH[ImputationDialog.this.stepWidthTypeCombobox.getSelectedIndex()];
 
@@ -232,14 +232,14 @@ public class ImputationDialog extends JDialog implements Constants
         JLabel numDrawsLabel = new JLabel(NUM_DRAWS_LABEL);
         JLabel stepSizeLabel = new JLabel(STEP_SIZE_LABEL);
         JLabel genoErrorRateLabel = new JLabel(GENO_ERROR_RATE_LABEL);
-        JLabel distPassTerminalLabel = new JLabel(DIST_PASS_TERMINAL_LABEL);
+        JLabel distPastTerminalLabel = new JLabel(DIST_PAST_TERMINAL_LABEL);
         JLabel mapFuncLabel = new JLabel(MAP_FUNCTION_LABEL);
         JLabel stepWidthTypeLabel = new JLabel(STEP_WIDTH_TYPE_LABEL);
 
         this.tfNumDraws = new JTextField(NUM_DRAWS);
         this.tfStepSize = new JTextField(STEP);
         this.tfGenoErrorRate = new JTextField(ERROR_PROB_DEFAULT);
-        this.tfDistPassTerminal = new JTextField(OFF_END_DEFAULT);
+        this.tfDistPastTerminal = new JTextField(OFF_END_DEFAULT);
 
         this.mapFunctionCombobox = new JComboBox(MAP_FUNCTION);
         this.stepWidthTypeCombobox = new JComboBox(STEP_WIDTH);
@@ -252,8 +252,8 @@ public class ImputationDialog extends JDialog implements Constants
         result.add(this.tfStepSize, Tools.setGbc(c, 2,2,1,1));
         result.add(genoErrorRateLabel, Tools.setGbc(c, 1,3,1,1));
         result.add(this.tfGenoErrorRate, Tools.setGbc(c, 2,3,1,1));
-        result.add(distPassTerminalLabel, Tools.setGbc(c, 1,4,1,1));
-        result.add(this.tfDistPassTerminal, Tools.setGbc(c, 2,4,1,1));
+        result.add(distPastTerminalLabel, Tools.setGbc(c, 1,4,1,1));
+        result.add(this.tfDistPastTerminal, Tools.setGbc(c, 2,4,1,1));
         result.add(mapFuncLabel, Tools.setGbc(c, 1,5,1,1));
         result.add(this.mapFunctionCombobox, Tools.setGbc(c, 2,5,1,1));
         result.add(stepWidthTypeLabel, Tools.setGbc(c, 1,6,1,1));
