@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ivy-module version="2.0">
-    <info organisation="org.jax" module="j-qtl" revision="1.3.1"/>
+    <info organisation="org.jax" module="j-qtl" revision="1.3.2"/>
     
     <configurations>
         <conf
