@@ -54,6 +54,6 @@ public class CrossSummaryCommand implements RCommand
      */
     public String getCommandText()
     {
-        return "summary.cross(" + this.cross.getAccessorExpressionString() + ")";
+        return "summary(" + this.cross.getAccessorExpressionString() + ")";
     }
 }

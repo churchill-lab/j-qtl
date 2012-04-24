@@ -50,8 +50,6 @@ public class ScanTwoSummaryBuilder
     private static final Logger LOG = Logger.getLogger(
             ScanTwoSummaryBuilder.class.getName());
     
-    private static final String SCANTWO_SUMMARY_METHOD_NAME = "summary.scantwo";
-    
     private static final String TEMPORARY_SUMMARY_OBJECT_SUFFIX =
         ".temp_summary_scantwo";
     
@@ -112,7 +110,7 @@ public class ScanTwoSummaryBuilder
                 permutationsWereCalculated);
         
         RMethodInvocationCommand summaryMethod = new RMethodInvocationCommand(
-                SCANTWO_SUMMARY_METHOD_NAME,
+                "summary",
                 parameters);
         RObject temporarySummaryObject = new RObject(
                 this.resultToSummarize.getRInterface(),

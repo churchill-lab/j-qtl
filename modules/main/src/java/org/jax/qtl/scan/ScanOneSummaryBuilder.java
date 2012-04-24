@@ -54,8 +54,6 @@ public class ScanOneSummaryBuilder
      */
     private static final int NUM_COLUMNS_BEFOR_SIGNIFICANCE_VALUES = 2;
     
-    private static final String SCANONE_SUMMARY_METHOD_NAME = "summary.scanone";
-    
     private static final String TEMPORARY_SUMMARY_OBJECT_SUFFIX =
         ".temp_summary_scanone";
     
@@ -148,7 +146,7 @@ public class ScanOneSummaryBuilder
                 lodColumnIndexNoOffset);
         
         RMethodInvocationCommand summaryMethod = new RMethodInvocationCommand(
-                SCANONE_SUMMARY_METHOD_NAME,
+                "summary",
                 parameters);
         RObject temporarySummaryObject = new RObject(
                 this.resultToSummarize.getRInterface(),

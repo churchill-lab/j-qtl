@@ -57,9 +57,6 @@ public class ScanOneResult extends ScanResult
      */
     private static final int NUM_COLUMNS_BEFOR_SIGNIFICANCE_VALUES = 2;
     
-    private static final String PERMUTATION_SUMMARY_METHOD_NAME =
-        "summary.scanoneperm";
-    
     /**
      * the R type that a {@link ScanOneResult} should have
      */
@@ -537,13 +534,12 @@ public class ScanOneResult extends ScanResult
         {
             if(this.getPermutationsWereCalculated())
             {
-                // build the summary.scanoneperm command
                 RCommandParameter objectParameter = new RCommandParameter(
                         this.scanPermutationsRObject.getAccessorExpressionString());
                 RCommandParameter alphaParameter = new RCommandParameter(
                         RUtilities.doubleArrayToRVector(alphaValues));
                 RMethodInvocationCommand summaryCommand = new RMethodInvocationCommand(
-                        PERMUTATION_SUMMARY_METHOD_NAME,
+                        "summary",
                         new RCommandParameter[] {objectParameter, alphaParameter});
                 String summaryCommandString = summaryCommand.getCommandText();
                 
