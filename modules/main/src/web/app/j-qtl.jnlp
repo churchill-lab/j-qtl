@@ -3,11 +3,11 @@
 <!-- for public deployment -->
 <jnlp
     spec="1.5+"
-    codebase="http://cgd.jax.org/churchill-apps/jqtl-1.3.3/app"
+    codebase="http://cgd.jax.org/churchill-apps/jqtl-1.3.4/app"
     href="j-qtl.jnlp">
     
     <information>
-        <title>J-qtl 1.3.3</title>
+        <title>J-qtl 1.3.4</title>
         <vendor>The Jackson Laboratory</vendor>
         <homepage href="http://research.jax.org/faculty/churchill/software/Jqtl/index.html"/>
         <description kind="one-line">A graphical QTL analysis tool using R/qtl algorithms</description>
@@ -24,9 +24,9 @@
     
     <resources>
         <j2se version="1.5+"/>
-        <jar href="dist/j-qtl-1.3.3.jar"/>
-        <jar href="dist/lib/j-qtl-classpath-bundle-1.3.3.jar"/>
-        <jar href="dist/lib/JRI-0.9-3.jar"/>
+        <jar href="dist/j-qtl-1.3.4.jar"/>
+        <jar href="dist/lib/j-qtl-classpath-bundle-1.3.4.jar"/>
+        <jar href="dist/lib/JRI-0.9-4.jar"/>
         <jar href="dist/lib/activation-2.1.6.jar"/>
         <jar href="dist/lib/data-plots-1.0.jar"/>
         <jar href="dist/lib/rjava-conf-schema-1.0.jar"/>
@@ -44,11 +44,11 @@
     </resources>
     
     <resources os="Mac OS X">
-        <jar href="dist/lib/JRI-Mac-natives-0.9-3.jar"/>
+        <jar href="dist/lib/JRI-Mac-natives-0.9-4.jar"/>
     </resources>
     
     <resources os="Windows">
-        <jar href="dist/lib/JRI-Windows-natives-0.9-3.jar"/>
+        <jar href="dist/lib/JRI-Windows-natives-0.9-4.jar"/>
     </resources>
     
     <application-desc main-class="org.jax.qtl.QtlLauncher"/>

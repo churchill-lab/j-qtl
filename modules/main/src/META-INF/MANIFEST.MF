@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Main-Class: org.jax.qtl.QtlLauncher
 Class-Path: \
-    lib/j-qtl-classpath-bundle-1.3.3.jar \
-    lib/JRI-0.9-3.jar \
-    lib/JRI-Mac-natives-0.9-3.jar \
-    lib/JRI-Windows-natives-0.9-3.jar \
+    lib/j-qtl-classpath-bundle-1.3.4.jar \
+    lib/JRI-0.9-4.jar \
+    lib/JRI-Mac-natives-0.9-4.jar \
+    lib/JRI-Windows-natives-0.9-4.jar \
     lib/activation-2.1.6.jar \
     lib/data-plots-1.0.jar \
     lib/rjava-conf-schema-1.0.jar \

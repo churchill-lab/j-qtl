@@ -69,8 +69,8 @@ public class AboutDialog extends JDialog
         super(QTL.getInstance().getApplicationFrame(), "About J/qtl", false);
 
         String msg =
-            "<html><body><DIV align=\"center\">J/qtl 1.3.3 - GUI for R/qtl<br>Works " +
-            "with R 2.15.*, and R/qtl 1.22 and above" +
+            "<html><body><DIV align=\"center\">J/qtl 1.3.4 - GUI for R/qtl<br>Works " +
+            "with R 3.0.*, and R/qtl 1.22 and above" +
             "<p>Copyright (c) 2009 The Jackson Laboratory</p>" +
             "<br>" +
             "This program is free software: you can redistribute it and/or modify<br>" +

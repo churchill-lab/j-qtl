@@ -42,6 +42,7 @@
         <genkey alias="TJL"
                 storepass="nosecret"
                 dname="CN=The Jackson Laboratory, OU=NA, O=jax.org, C=US"
+                validity="1800"
                 keystore="${bogus-keystore}"/>
         
         <!-- sign all of the jar files -->
