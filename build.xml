@@ -10,7 +10,7 @@
     
     <!-- force a build clean until we have a smarter build system -->
     <target name="dist" depends="clean">
-        <subant buildpath="${basedir}/modules/main" target="web-dist"/>
+        <subant buildpath="${basedir}/modules/main" target="dist"/>
     </target>
 
     <target name="clean">

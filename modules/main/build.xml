@@ -3,7 +3,7 @@
 <project
     xmlns:ivy="antlib:org.apache.ivy.ant"
     name="J/qtl"
-    default="clean-then-web-dist"
+    default="clean-then-dist"
     basedir=".">
     
     <description>
@@ -13,43 +13,7 @@
     <import file="build-properties.xml"/>
     <import file="${common.build.dir}/build-common.xml"/>
     
-    <target name="clean-then-web-dist" depends="clean,web-dist"/>
-    
-    <target name="web-dist" depends="dist-bogus-sign" description="generate a web distribution">
-        <!-- copy the web source -->
-        <mkdir dir="${web-dist}"/>
-        <copy todir="${web-dist}">
-            <fileset dir="${src}/web"/>
-        </copy>
-        
-        <!-- copy binary files -->
-        <mkdir dir="${web-dist}/app/dist"/>
-        <copy todir="${web-dist}/app/dist">
-            <fileset dir="${dist}">
-            </fileset>
-        </copy>
-    </target>
-    
-    <target name="dist-bogus-sign"
-            depends="dist, bogus-sign"
-            description="Create a distribution and sign it with the bogus signature"/>
-    
-    <target name="bogus-sign" description="Sign jars with bogus key so we can easily test with web start">
-        <!-- Delete the keystore if it exists -->
-        <delete file="${bogus-keystore}"/>
-        
-        <!-- Create a new key -->
-        <genkey alias="TJL"
-                storepass="nosecret"
-                dname="CN=The Jackson Laboratory, OU=NA, O=jax.org, C=US"
-                validity="1800"
-                keystore="${bogus-keystore}"/>
-        
-        <!-- sign all of the jar files -->
-        <signjar alias="TJL" storepass="nosecret" keystore="${bogus-keystore}">
-            <fileset dir="${dist}" includes="**/*.jar"/>
-        </signjar>
-    </target>
+    <target name="clean-then-dist" depends="clean,dist"/>
     
     <target name="jar" description="Jar the distribution.">
         <!-- Create the lib directory -->
